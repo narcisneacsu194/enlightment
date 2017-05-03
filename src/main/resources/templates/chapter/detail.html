@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="layout :: head"></head>
+<body>
+<header th:replace="layout :: header"></header>
+<!--<section th:replace="layout :: banner"></section>-->
+<!--=========== BEGIN COURSE BANNER SECTION ================-->
+<section id="courseArchive">
+    <div class="container">
+        <div class="row">
+            <!-- start course content -->
+            <div class="col-lg-8 col-md-8 col-sm-8">
+                <div class="courseArchive_content">
+                    <!-- start blog archive  -->
+                    <div class="row">
+                        <!-- start single blog -->
+                        <div class="col-lg-12 col-12 col-sm-12">
+                            <div class="single_blog">
+                                <div class="blogimg_container">
+                                    <img alt="img" th:src="@{|/chapters/${chapter.id}.png|}" class="blog_img"/>
+                                </div>
+                                <h2 class="blog_title" th:text="${chapter.title}">Curabitur ac dictum nisl eu hendrerit ante</h2>
+                                <div class="blog_commentbox">
+                                    <p><i class="fa fa-user"></i>Richard Remus</p>
+                                </div>
+                                <strong>Course: </strong><span th:text="${course.name}"></span>
+                                <p th:text="${chapter.content}" style="word-wrap: break-word;"></p><br/>
+                                <a th:href="@{|/chapters/${chapter.id}/chapter-edit-form|}" class="wpcf7-submit">Edit Chapter</a><br/><br/>
+                                <form th:action="@{|/chapters/${chapter.id}/delete-chapter|}" method="post">
+                                    <input type="submit" value="Delete" class="wpcf7-submit"/>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- End single blog -->
+                    </div>
+
+                    <div class="row">
+                        <h2 class="blog_title2" style="margin-top: 50px;
+                            margin-bottom: 50px;">Previous Chapters:</h2>
+                        <!-- start single course -->
+                        <div class="col-lg-4 col-md-4 col-sm-4" th:each="previousChapter : ${previousChapters}">
+                            <div class="single_course wow fadeInUp">
+                                <div class="singCourse_imgarea">
+                                    <img th:src="@{|/chapters/${previousChapter.id}.png|}" width="500" height="150"/>
+                                    <div class="mask">
+                                        <a th:href="@{|/chapters/${previousChapter.id}/detail|}" class="course_more">View Chapter</a>
+                                    </div>
+                                </div>
+                                <div class="singCourse_content">
+                                    <h3 class="singCourse_title"><a th:href="@{|/chapters/${previousChapter.id}/detail|}" th:text="${previousChapter.title}">Introduction To Matrix</a></h3>
+                                    <p th:text="${previousChapter.content}" style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>
+                                </div>
+                                <div class="singCourse_author">
+                                    <p>Richard Remus, Teacher</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End single course -->
+                    </div>
+
+                    <div class="row">
+                        <h2 class="blog_title2" style="margin-top: 50px;
+                            margin-bottom: 50px;">Next Chapters:</h2>
+                        <!-- start single course -->
+                        <div class="col-lg-4 col-md-4 col-sm-4" th:each="nextChapter : ${nextChapters}">
+                            <div class="single_course wow fadeInUp">
+                                <div class="singCourse_imgarea">
+                                    <img th:src="@{|/chapters/${nextChapter.id}.png|}" width="500" height="150"/>
+                                    <div class="mask">
+                                        <a th:href="@{|/chapters/${nextChapter.id}/detail|}" class="course_more">View Chapter</a>
+                                    </div>
+                                </div>
+                                <div class="singCourse_content">
+                                    <h3 class="singCourse_title"><a th:href="@{|/chapters/${nextChapter.id}/detail|}" th:text="${nextChapter.title}">Introduction To Matrix</a></h3>
+                                    <p th:text="${nextChapter.content}" style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>
+                                </div>
+                                <div class="singCourse_author">
+                                    <p>Richard Remus, Teacher</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End single course -->
+                    </div>
+
+                    <!-- end blog archive  -->
+                </div>
+            </div>
+            <!-- End course content -->
+        </div>
+    </div>
+    <!-- start course archive sidebar -->
+</section>
+<!--=========== END COURSE BANNER SECTION ================-->
+
+<div th:replace="layout :: footer"></div>
+<div th:replace="layout :: javascript-files"></div>
+</body>
+</html>

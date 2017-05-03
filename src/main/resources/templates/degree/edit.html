@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="layout :: head"></head>
+<body>
+<header th:replace="layout :: header"></header>
+<section th:replace="layout :: banner"></section>
+<section id="courseArchive">
+    <div class="container">
+        <div class="row">
+            <!-- start course content -->
+            <div class="col-lg-8 col-md-8 col-sm-8">
+                <div class="courseArchive_content">
+                    <!-- start blog archive  -->
+                    <div class="row">
+                        <h2 class="blog_title2" style="margin-top: 50px;
+                            margin-bottom: 50px;">Edit Degree:</h2>
+                        <!-- start single blog -->
+                        <div class="col-lg-12 col-12 col-sm-12">
+                            <div class="single_blog">
+                                <form th:action="@{|/degrees/${degree.id}/edit-degree|}" method="post" th:object="${degree}" enctype="multipart/form-data" class="submitphoto_form" >
+                                    <input type="hidden" th:field="*{id}"/>
+                                    <input type="text" class="wp-form-control wpcf7-text" th:field="*{name}" placeholder="Name"/>
+                                    <textarea class="wp-form-control wpcf7-textarea" th:field="*{description}" cols="30" rows="10" placeholder="Description"></textarea>
+                                    <label>Degree diploma: </label><br/>
+                                    <input type="file" name="file"/><br/><br/>
+
+                                    <label>Available subjects</label><br/>
+                                    <ul>
+                                        <li th:each="subject : ${subjects}">
+                                            <!--<input type="checkbox" th:field="*{courses}" th:value="${course.id}"/>-->
+                                            <input type="radio" th:field="*{subject}" th:value="${subject.id}"/>
+                                            <span th:text="${subject.name}"></span>
+                                        </li>
+                                    </ul><br/>
+                                    <!--<input type="mail" class="wp-form-control wpcf7-email" placeholder="Email address"/>-->
+                                    <input type="submit" value="Submit" class="wpcf7-submit"/>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- End single blog -->
+                    </div>
+
+                    <!-- end blog archive  -->
+                </div>
+            </div>
+            <!-- End course content -->
+        </div>
+    </div>
+    <!-- start course archive sidebar -->
+</section>
+
+<footer th:replace="layout :: footer"></footer>
+<div th:replace="layout :: javascript-files"></div>
+</body>
+</html>
+

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head th:replace="layout :: head"></head>
+    <body>
+        <header th:replace="layout :: header"></header>
+        <section id="courseArchive">
+            <div class="container">
+                <div class="row">
+                    <!-- start course content -->
+                    <div class="col-lg-8 col-md-8 col-sm-8" >
+                        <div class="courseArchive_content">
+                            <div class="row">
+                                <!-- start single course -->
+                                <div th:replace="layout :: create-links"></div>
+                                <div class="col-lg-4 col-md-4 col-sm-4" th:each="subject : ${subjects}">
+                                    <div class="single_course wow fadeInUp">
+                                        <div class="singCourse_imgarea">
+                                            <img th:src="@{|/subjects/${subject.id}.png|}" width="500" height="150"/>
+                                            <div class="mask">
+                                                <a th:href="@{|/subjects/${subject.id}/detail|}" class="course_more">View Subject</a>
+                                            </div>
+                                        </div>
+                                        <div class="singCourse_content">
+                                            <h3 class="singCourse_title"><a th:href="@{|/subjects/${subject.id}/detail|}" th:text="${subject.name}">Introduction To Matrix</a></h3>
+                                            <p th:text="${subject.description}" style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>
+                                        </div>
+                                        <div class="singCourse_author">
+                                            <p>Richard Remus, Teacher</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End single course -->
+                            </div>
+                            <!-- start previous & next button -->
+                        </div>
+                    </div>
+                    <!-- End course content -->
+                </div>
+            </div>
+        </section>
+
+        <div th:replace="layout :: footer"></div>
+    <div th:replace="layout :: javascript-files"></div>
+    </body>
+</html>

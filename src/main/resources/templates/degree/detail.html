@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="layout :: head"></head>
+<body>
+<header th:replace="layout :: header"></header>
+<!--<section th:replace="layout :: banner"></section>-->
+<!--=========== BEGIN COURSE BANNER SECTION ================-->
+<section id="courseArchive">
+    <div class="container">
+        <div class="row">
+            <!-- start course content -->
+            <div class="col-lg-8 col-md-8 col-sm-8">
+                <div class="courseArchive_content">
+                    <!-- start blog archive  -->
+                    <div class="row">
+                        <!-- start single blog -->
+                        <div class="col-lg-12 col-12 col-sm-12">
+                            <div class="single_blog">
+                                <div class="blogimg_container">
+                                    <img alt="img" th:src="@{|/degrees/${degree.id}.png|}" class="blog_img"/>
+                                </div>
+                                <h2 class="blog_title" th:text="${degree.name}">Curabitur ac dictum nisl eu hendrerit ante</h2>
+                                <div class="blog_commentbox">
+                                    <p><i class="fa fa-user"></i>Richard Remus</p>
+                                </div>
+                                <strong>Subject: </strong><span th:text="${subject.name}"></span>
+                                <p th:text="${degree.description}" style="word-wrap: break-word;"></p><br/>
+                                <a th:href="@{|/degrees/${degree.id}/degree-edit-form|}" class="wpcf7-submit">Edit Degree</a><br/><br/>
+                                <form th:action="@{|/degrees/${degree.id}/delete-degree|}" method="post">
+                                    <input type="submit" value="Delete" class="wpcf7-submit"/>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- End single blog -->
+                    </div>
+
+                    <!-- end blog archive  -->
+                </div>
+            </div>
+            <!-- End course content -->
+        </div>
+    </div>
+    <!-- start course archive sidebar -->
+</section>
+<!--=========== END COURSE BANNER SECTION ================-->
+
+<div th:replace="layout :: footer"></div>
+<div th:replace="layout :: javascript-files"></div>
+</body>
+</html>

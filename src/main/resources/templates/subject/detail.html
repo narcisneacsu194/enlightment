@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="layout :: head"></head>
+<body>
+<header th:replace="layout :: header"></header>
+<!--<section th:replace="layout :: banner"></section>-->
+<!--=========== BEGIN COURSE BANNER SECTION ================-->
+<section id="courseArchive">
+    <div class="container">
+        <div class="row">
+            <!-- start course content -->
+            <div class="col-lg-8 col-md-8 col-sm-8">
+                <div class="courseArchive_content">
+                    <!-- start blog archive  -->
+                    <div class="row">
+                        <!-- start single blog -->
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="single_blog">
+                                <div class="blogimg_container">
+                                    <img alt="img" th:src="@{|/subjects/${subject.id}.png|}" class="blog_img"/>
+                                </div>
+                                <h2 class="blog_title" th:text="${subject.name}">Curabitur ac dictum nisl eu hendrerit ante</h2>
+                                <div class="blog_commentbox">
+                                    <p><i class="fa fa-user"></i>Richard Remus</p>
+                                </div>
+                                <p th:text="${subject.description}" style="word-wrap:break-word;"></p><br/>
+                                <a th:href="@{|/subjects/${subject.id}/subject-edit-form|}" class="wpcf7-submit">Edit Subject</a><br/><br/>
+                                <form th:action="@{|/subjects/${subject.id}/delete-subject|}" method="post">
+                                    <input type="submit" value="Delete" class="wpcf7-submit"/>
+                                </form>
+                            </div>
+
+                        </div>
+                        <!-- End single blog -->
+                    </div>
+
+                    <div class="row">
+                        <h2 class="blog_title2" style="margin-top: 50px;
+                            margin-bottom: 50px;">Courses:</h2>
+                        <!-- start single course -->
+                        <div class="col-lg-4 col-md-4 col-sm-4" th:each="course : ${courses}">
+                            <div class="single_course wow fadeInUp">
+                                <div class="singCourse_imgarea">
+                                    <img th:src="@{|/courses/${course.id}.png|}" width="500" height="150"/>
+                                    <div class="mask">
+                                        <a th:href="@{|/courses/${course.id}/detail|}" class="course_more">View Course</a>
+                                    </div>
+                                </div>
+                                <div class="singCourse_content">
+                                    <h3 class="singCourse_title"><a th:href="@{|/courses/${course.id}/detail|}" th:text="${course.name}">Introduction To Matrix</a></h3>
+                                    <p th:text="${course.description}" style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>
+                                </div>
+                                <div class="singCourse_author">
+                                    <p>Richard Remus, Teacher</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End single course -->
+                    </div>
+
+                    <div class="row">
+                        <h2 class="blog_title2" style="margin-top: 50px;
+                            margin-bottom: 50px;">Achievements:</h2>
+                        <!-- start single course -->
+                        <div class="col-lg-4 col-md-4 col-sm-4" th:each="achievement : ${achievements}">
+                            <div class="single_course wow fadeInUp">
+                                <div class="singCourse_imgarea">
+                                    <img th:src="@{|/achievements/${achievement.id}.png|}" width="500" height="150"/>
+                                    <div class="mask">
+                                        <a th:href="@{|/achievements/${achievement.id}/detail|}" class="course_more">View Achievement</a>
+                                    </div>
+                                </div>
+                                <div class="singCourse_content">
+                                    <h3 class="singCourse_title"><a th:href="@{|/achievements/${achievement.id}/detail|}" th:text="${achievement.name}">Introduction To Matrix</a></h3>
+                                    <p th:text="${achievement.description}" style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>
+                                </div>
+                                <div class="singCourse_author">
+                                    <p>Richard Remus, Teacher</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End single course -->
+                    </div>
+
+                    <div class="row">
+                        <h2 class="blog_title2" style="margin-top: 50px;
+                            margin-bottom: 50px;">Degrees:</h2>
+                        <!-- start single course -->
+                        <div class="col-lg-4 col-md-4 col-sm-4" th:each="degree : ${degrees}">
+                            <div class="single_course wow fadeInUp">
+                                <div class="singCourse_imgarea">
+                                    <img th:src="@{|/degrees/${degree.id}.png|}" width="500" height="150"/>
+                                    <div class="mask">
+                                        <a th:href="@{|/degrees/${degree.id}/detail|}" class="course_more">View Degree</a>
+                                    </div>
+                                </div>
+                                <div class="singCourse_content">
+                                    <h3 class="singCourse_title"><a th:href="@{|/degrees/${degree.id}/detail|}" th:text="${degree.name}">Introduction To Matrix</a></h3>
+                                    <p th:text="${degree.description}" style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>
+                                </div>
+                                <div class="singCourse_author">
+                                    <p>Richard Remus, Teacher</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End single course -->
+                    </div>
+                    <!-- end blog archive  -->
+                </div>
+            </div>
+            <!-- End course content -->
+        </div>
+    </div>
+    <!-- start course archive sidebar -->
+</section>
+<!--=========== END COURSE BANNER SECTION ================-->
+
+<div th:replace="layout :: footer"></div>
+<div th:replace="layout :: javascript-files"></div>
+</body>
+</html>
