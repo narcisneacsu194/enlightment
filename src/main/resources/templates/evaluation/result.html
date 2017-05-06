@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="layout :: head"></head>
+<body>
+<header th:replace="layout :: header"></header>
+<!--<section th:replace="layout :: banner"></section>-->
+<!--=========== BEGIN COURSE BANNER SECTION ================-->
+<section id="courseArchive">
+    <div class="container">
+        <div class="row">
+            <!-- start course content -->
+            <div class="col-lg-8 col-md-8 col-sm-8">
+                <div class="courseArchive_content">
+                    <!-- start blog archive  -->
+                    <div class="row">
+                        <!-- start single blog -->
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="single_blog">
+                                <h1 class="blog_title2" style="margin-top: 50px;
+                            margin-bottom: 50px;" th:text="|Course '${course.name}' Evaluation Result|"></h1>
+                                <h2 th:text="|${evaluation.percentage}%|"></h2><br/><br/>
+
+                                <a th:href="@{|/courses/${course.id}/detail|}" class="wpcf7-submit">Go Back</a>
+                                <a th:href="@{|/evaluations/${evaluation.id}/evaluation-page|}" class="wpcf7-submit" >Retake Evaluation</a>
+                                <br/>
+                            </div>
+                        </div>
+                        <!-- End single blog -->
+                    </div>
+                    <!-- end blog archive  -->
+                </div>
+            </div>
+            <!-- End course content -->
+        </div>
+    </div>
+    <!-- start course archive sidebar -->
+</section>
+<!--=========== END COURSE BANNER SECTION ================-->
+
+<div th:replace="layout :: footer"></div>
+<div th:replace="layout :: javascript-files"></div>
+</body>
+</html>

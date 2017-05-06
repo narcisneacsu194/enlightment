@@ -29,7 +29,10 @@
                                 <a th:href="@{|/courses/${course.id}/course-edit-form|}" class="wpcf7-submit">Edit Course</a><br/><br/>
                                 <form th:action="@{|/courses/${course.id}/delete-course|}" method="post">
                                     <input type="submit" value="Delete" class="wpcf7-submit"/>
-                                </form>
+                                </form><br/><br/>
+
+                                <a th:href="@{|/evaluations/${evaluationId}/evaluation-page|}" class="wpcf7-submit">Take Course Evaluation</a><br/><br/><br/>
+                                <a th:href="@{|/evaluations/${evaluationId}/evaluation-result-page|}" class="wpcf7-submit">View Evaluation Results</a><br/><br/>
                             </div>
                         </div>
                         <!-- End single blog -->

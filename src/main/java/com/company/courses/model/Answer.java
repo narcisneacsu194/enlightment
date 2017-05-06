@@ -12,8 +12,23 @@ public class Answer {
 
     private String description;
 
-    @ManyToMany(mappedBy = "answers")
+    @ManyToMany(mappedBy = "answers", cascade = CascadeType.ALL)
     private List<Question> questions = new ArrayList<>();
+
+    @ManyToMany(mappedBy = "userAnswers", cascade = CascadeType.ALL)
+    private List<Evaluation> userAnswersEvaluations = new ArrayList<>();
+
+    @ManyToMany(mappedBy = "correctAnswers", cascade = CascadeType.ALL)
+    private List<Evaluation> correctAnswersEvaluations = new ArrayList<>();
+
+//    @ManyToMany( cascade = CascadeType.ALL)
+//    @JoinTable(name = "question_correct_answer",
+//            joinColumns = @JoinColumn(name = "answer_id"),
+//            inverseJoinColumns = @JoinColumn(name = "question_id"))
+//    private List<Question> correctAnswersQuestions = new ArrayList<>();
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Question> correctAnswerToQuestions = new ArrayList<>();
 
     public Answer(){}
 
@@ -44,4 +59,53 @@ public class Answer {
     public void addQuestion(Question question){
         this.questions.add(question);
     }
+
+    public List<Evaluation> getUserAnswersEvaluations() {
+        return userAnswersEvaluations;
+    }
+
+    public void setUserAnswersEvaluations(List<Evaluation> evaluation1) {
+        this.userAnswersEvaluations = evaluation1;
+    }
+
+    public void addUserAnswersEvaluation(Evaluation evaluation){
+        userAnswersEvaluations.add(evaluation);
+    }
+
+    public List<Evaluation> getCorrectAnswersEvaluations() {
+        return correctAnswersEvaluations;
+    }
+
+    public void setCorrectAnswersEvaluations(List<Evaluation> correctAnswersEvaluations) {
+        this.correctAnswersEvaluations = correctAnswersEvaluations;
+    }
+
+    public void addCorrectAnswersEvaluations(Evaluation evaluation){
+        correctAnswersEvaluations.add(evaluation);
+    }
+
+    public List<Question> getCorrectAnswerToQuestions() {
+        return correctAnswerToQuestions;
+    }
+
+    public void setCorrectAnswerToQuestions(List<Question> correctAnswerToQuestions) {
+        this.correctAnswerToQuestions = correctAnswerToQuestions;
+    }
+
+    public void addCorrectAnswerToQuestion(Question question){
+        correctAnswerToQuestions.add(question);
+    }
+
+
+//    public List<Question> getCorrectAnswersQuestions() {
+//        return correctAnswersQuestions;
+//    }
+//
+//    public void setCorrectAnswersQuestions(List<Question> correctAnswersQuestions) {
+//        this.correctAnswersQuestions = correctAnswersQuestions;
+//    }
+//
+//    public void addCorrectAnswersQuestion(Question question){
+//        correctAnswersQuestions.add(question);
+//    }
 }

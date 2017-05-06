@@ -15,7 +15,7 @@ import static org.hamcrest.Matchers.*;
 
 @RunWith(value = SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT,
-        properties = "spring.datasource.url = jdbc:h2:./database/test-QuestionDaoTest-questions;DB_CLOSE_ON_EXIT=FALSE")
+        properties = "spring.datasource.url = jdbc:h2:./database/evaluation-QuestionDaoTest-questions;DB_CLOSE_ON_EXIT=FALSE")
 public class QuestionDaoTest {
     @Autowired
     private QuestionDao questionDao;

@@ -10,9 +10,11 @@ public class Evaluation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-//    private boolean is_passed;
+//    private boolean isPassed;
 
-    @ManyToMany
+    private int percentage;
+
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "test_question",
         joinColumns = @JoinColumn(name = "test_id"),
         inverseJoinColumns = @JoinColumn(name = "question_id"))
@@ -20,6 +22,18 @@ public class Evaluation {
 
     @ManyToOne
     private Course course;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "test_userAnswer",
+    joinColumns = @JoinColumn(name = "test_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_answer_id"))
+    private List<Answer> userAnswers = new ArrayList<>();
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "test_correctAnswer",
+    joinColumns = @JoinColumn(name = "test_id"),
+    inverseJoinColumns = @JoinColumn(name = "correct_answer_id"))
+    private List<Answer> correctAnswers = new ArrayList<>();
 
     public Evaluation(){}
 
@@ -49,5 +63,45 @@ public class Evaluation {
 
     public void setCourse(Course course) {
         this.course = course;
+    }
+
+    public List<Answer> getUserAnswers() {
+        return userAnswers;
+    }
+
+    public void setUserAnswers(List<Answer> userAnswers) {
+        this.userAnswers = userAnswers;
+    }
+
+    public void addUserAnswer(Answer answer){
+        userAnswers.add(answer);
+    }
+
+    public List<Answer> getCorrectAnswers() {
+        return correctAnswers;
+    }
+
+    public void setCorrectAnswers(List<Answer> correctAnswers) {
+        this.correctAnswers = correctAnswers;
+    }
+
+    public void addCorrectAnswer(Answer answer){
+        correctAnswers.add(answer);
+    }
+
+//    public boolean isPassed() {
+//        return isPassed;
+//    }
+//
+//    public void setPassed(boolean passed) {
+//        isPassed = passed;
+//    }
+
+    public int getPercentage() {
+        return percentage;
+    }
+
+    public void setPercentage(int percentage) {
+        this.percentage = percentage;
     }
 }

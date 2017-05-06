@@ -36,10 +36,12 @@ public class CourseController {
     @RequestMapping("/courses/{courseId}/detail")
     public String courseDetails(@PathVariable Long courseId, Model model){
         Course course = courseService.findCourseById(courseId);
+        Long evaluationId = course.getEvaluations().get(0).getId();
         model.addAttribute("course", course);
         model.addAttribute("subject", course.getSubject());
         model.addAttribute("achievements", course.getAchievements());
         model.addAttribute("chapters", course.getChapters());
+        model.addAttribute("evaluationId", evaluationId);
 
         return "course/detail";
     }

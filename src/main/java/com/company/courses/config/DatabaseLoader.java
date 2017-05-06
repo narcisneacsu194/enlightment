@@ -10,7 +10,8 @@ import org.springframework.stereotype.Component;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.util.stream.IntStream;
+import java.util.Arrays;
+import java.util.List;
 
 @Component
 public class DatabaseLoader implements ApplicationRunner{
@@ -167,7 +168,7 @@ public class DatabaseLoader implements ApplicationRunner{
         course.setName("Polymorphism");
         course.setDescription("Polymorphism is the ability of an object to take on many forms. The most common use of polymorphism in OOP occurs when a parent class reference is used to refer to a child class object.\n" +
                 "\n" +
-                "Any Java object that can pass more than one IS-A test is considered to be polymorphic. In Java, all Java objects are polymorphic since any object will pass the IS-A test for their own type and for the class Object.\n" +
+                "Any Java object that can pass more than one IS-A evaluation is considered to be polymorphic. In Java, all Java objects are polymorphic since any object will pass the IS-A evaluation for their own type and for the class Object.\n" +
                 "\n" +
                 "It is important to know that the only possible way to access an object is through a reference variable. A reference variable can be of only one type. Once declared, the type of a reference variable cannot be changed.\n" +
                 "\n" +
@@ -279,6 +280,149 @@ public class DatabaseLoader implements ApplicationRunner{
 
         course.addChapter(chapter);
         chapter.setCourse(course);
+
+/////////////////////////////////////////////////////////////////////////////////
+
+        Evaluation evaluation = new Evaluation();
+        Question question = new Question();
+        question.setDescription("First Question ?");
+        Answer answer1 = new Answer();
+        answer1.setDescription("First Question First Answer.");
+        answer1.addQuestion(question);
+        evaluation.addCorrectAnswer(answer1);
+        answer1.addCorrectAnswersEvaluations(evaluation);
+        question.setAnswer(answer1);
+        answer1.addCorrectAnswerToQuestion(question);
+        Answer answer2 = new Answer();
+        answer2.setDescription("First Question Second Answer");
+        answer2.addQuestion(question);
+        Answer answer3 = new Answer();
+        answer3.setDescription("First Question Third Answer");
+        answer3.addQuestion(question);
+        Answer answer4 = new Answer();
+        answer4.setDescription("First Question Fourth Answer");
+        answer4.addQuestion(question);
+        List<Answer> answers = Arrays.asList(answer1,answer2,answer3,answer4);
+        question.setAnswers(answers);
+        evaluation.addQuestion(question);
+        question.addEvaluation(evaluation);
+        evaluation.setCourse(course);
+        course.addEvaluation(evaluation);
+
+        question = new Question();
+        question.setDescription("Second Question ?");
+        answer1 = new Answer();
+        answer1.setDescription("Second Question First Answer");
+        answer1.addQuestion(question);
+        answer2 = new Answer();
+        answer2.setDescription("Second Question Second Answer");
+        answer2.addQuestion(question);
+        evaluation.addCorrectAnswer(answer2);
+        answer2.addCorrectAnswersEvaluations(evaluation);
+        answer3 = new Answer();
+        answer3.setDescription("Second Question Third Answer");
+        answer3.addQuestion(question);
+        answer4 = new Answer();
+        answer4.setDescription("Second Question Fourth Answer");
+        answer4.addQuestion(question);
+        answers = Arrays.asList(answer1,answer2,answer3,answer4);
+        question.setAnswers(answers);
+        evaluation.addQuestion(question);
+        question.addEvaluation(evaluation);
+        evaluation.setCourse(course);
+        course.addEvaluation(evaluation);
+
+        question = new Question();
+        question.setDescription("Third Question ?");
+        answer1 = new Answer();
+        answer1.setDescription("Third Question First Answer");
+        answer1.addQuestion(question);
+        answer2 = new Answer();
+        answer2.setDescription("Third Question Second Answer");
+        answer2.addQuestion(question);
+        answer3 = new Answer();
+        answer3.setDescription("Third Question Third Answer");
+        answer3.addQuestion(question);
+        evaluation.addCorrectAnswer(answer3);
+        answer3.addCorrectAnswersEvaluations(evaluation);
+        answer4 = new Answer();
+        answer4.setDescription("Third Question Fourth Answer");
+        answer4.addQuestion(question);
+        answers = Arrays.asList(answer1,answer2,answer3,answer4);
+        question.setAnswers(answers);
+        evaluation.addQuestion(question);
+        question.addEvaluation(evaluation);
+        evaluation.setCourse(course);
+        course.addEvaluation(evaluation);
+
+        question = new Question();
+        question.setDescription("Fourth Question ?");
+        answer1 = new Answer();
+        answer1.setDescription("Fourth Question First Answer");
+        answer1.addQuestion(question);
+        answer2 = new Answer();
+        answer2.setDescription("Fourth Question Second Answer");
+        answer2.addQuestion(question);
+        answer3 = new Answer();
+        answer3.setDescription("Fourth Question Third Answer");
+        answer3.addQuestion(question);
+        answer4 = new Answer();
+        answer4.setDescription("Fourth Question Fourth Answer");
+        answer4.addQuestion(question);
+        evaluation.addCorrectAnswer(answer4);
+        answer4.addCorrectAnswersEvaluations(evaluation);
+        answers = Arrays.asList(answer1,answer2,answer3,answer4);
+        question.setAnswers(answers);
+        evaluation.addQuestion(question);
+        question.addEvaluation(evaluation);
+        evaluation.setCourse(course);
+        course.addEvaluation(evaluation);
+
+        question = new Question();
+        question.setDescription("Fifth Question ?");
+        answer1 = new Answer();
+        answer1.setDescription("Fifth Question First Answer");
+        answer1.addQuestion(question);
+        evaluation.addCorrectAnswer(answer1);
+        answer1.addCorrectAnswersEvaluations(evaluation);
+        answer2 = new Answer();
+        answer2.setDescription("Fifth Question Second Answer");
+        answer2.addQuestion(question);
+        answer3 = new Answer();
+        answer3.setDescription("Fifth Question Third Answer");
+        answer3.addQuestion(question);
+        answer4 = new Answer();
+        answer4.setDescription("Fifth Question Fourth Answer");
+        answer4.addQuestion(question);
+        answers = Arrays.asList(answer1,answer2,answer3,answer4);
+        question.setAnswers(answers);
+        evaluation.addQuestion(question);
+        question.addEvaluation(evaluation);
+        evaluation.setCourse(course);
+        course.addEvaluation(evaluation);
+
+        question = new Question();
+        question.setDescription("Sixth Question ?");
+        answer1 = new Answer();
+        answer1.setDescription("Sixth Question First Answer");
+        answer1.addQuestion(question);
+        answer2 = new Answer();
+        answer2.setDescription("Sixth Question Second Answer");
+        answer2.addQuestion(question);
+        evaluation.addCorrectAnswer(answer2);
+        answer2.addCorrectAnswersEvaluations(evaluation);
+        answer3 = new Answer();
+        answer3.setDescription("Sixth Question Third Answer");
+        answer3.addQuestion(question);
+        answer4 = new Answer();
+        answer4.setDescription("Sixth Question Fourth Answer");
+        answer4.addQuestion(question);
+        answers = Arrays.asList(answer1,answer2,answer3,answer4);
+        question.setAnswers(answers);
+        evaluation.addQuestion(question);
+        question.addEvaluation(evaluation);
+        evaluation.setCourse(course);
+        course.addEvaluation(evaluation);
 
 //////////////////////////////////////////////////////////////////
 

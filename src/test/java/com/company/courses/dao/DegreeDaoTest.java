@@ -15,7 +15,7 @@ import static org.hamcrest.Matchers.*;
 
 @RunWith(value = SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT,
-        properties = "spring.datasource.url = jdbc:h2:./database/test-DegreeDaoTest-degrees;DB_CLOSE_ON_EXIT=FALSE")
+        properties = "spring.datasource.url = jdbc:h2:./database/evaluation-DegreeDaoTest-degrees;DB_CLOSE_ON_EXIT=FALSE")
 public class DegreeDaoTest {
     @Autowired
     private DegreeDao degreeDao;
