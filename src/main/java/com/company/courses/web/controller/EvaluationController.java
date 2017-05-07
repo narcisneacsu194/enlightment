@@ -6,6 +6,7 @@ import com.company.courses.model.Evaluation;
 import com.company.courses.model.Question;
 import com.company.courses.services.CourseService;
 import com.company.courses.services.EvaluationService;
+import com.company.courses.services.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,6 +25,9 @@ public class EvaluationController {
 
     @Autowired
     private CourseService courseService;
+
+    @Autowired
+    private QuestionService questionService;
 
     @RequestMapping("/evaluations/{evaluationId}/evaluation-page")
     public String displayQuestions(@PathVariable Long evaluationId, Model model){
@@ -83,6 +87,56 @@ public class EvaluationController {
         model.addAttribute("questions", evaluation.getQuestions());
 
         return "evaluation/result";
+    }
+
+    @RequestMapping("/evaluations/evaluation-form")
+    public String evaluationForm(Model model){
+        List<Course> courses = courseService.findAllCourses();
+        model.addAttribute("evaluation", new Evaluation());
+        model.addAttribute("courses", courses);
+        return "evaluation/create";
+    }
+
+    @RequestMapping(value = "/evaluations/create-evaluation", method = RequestMethod.POST)
+    public String createEvaluation(Evaluation evaluation){
+        evaluationService.save(evaluation);
+        return String.format("redirect:/evaluations/%s/evaluation-page", evaluation.getId());
+    }
+
+    @RequestMapping("/questions/{evaluationId}/question-form")
+    public String questionForm(@PathVariable Long evaluationId, Model model){
+        Evaluation evaluation = evaluationService.findEvaluationById(evaluationId);
+        Question question = new Question();
+        question.addEvaluation(evaluation);
+//        evaluation.addQuestion(question);
+        model.addAttribute("question", question);
+        return "question/create";
+    }
+
+    @RequestMapping(value = "/questions/create-question", method = RequestMethod.POST)
+    public String createQuestion(Question question){
+        question.getAnswers().remove(0);
+        Evaluation evaluation = question.getEvaluations().get(0);
+        evaluation.addQuestion(question);
+        questionService.save(question);
+        return String.format("redirect:/questions/%s/correct-answer-choice-page", question.getId());
+    }
+
+    @RequestMapping("/questions/{questionId}/correct-answer-choice-page")
+    public String correctAnswerChoicePage(@PathVariable Long questionId, Model model){
+        Question question = questionService.findQuestionById(questionId);
+        model.addAttribute("question", question);
+        return "question/answer";
+    }
+
+    @RequestMapping(value = "/questions/choose-correct-answer", method = RequestMethod.POST)
+    public String chooseCorrectAnswer(Question question){
+        Evaluation evaluation = question.getEvaluations().get(0);
+        questionService.save(question);
+        evaluation.addCorrectAnswer(question.getAnswer());
+        evaluationService.save(evaluation);
+
+        return String.format("redirect:/evaluations/%s/evaluation-page", evaluation.getId());
     }
 
 }

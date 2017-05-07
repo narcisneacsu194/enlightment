@@ -291,8 +291,8 @@ public class DatabaseLoader implements ApplicationRunner{
         answer1.addQuestion(question);
         evaluation.addCorrectAnswer(answer1);
         answer1.addCorrectAnswersEvaluations(evaluation);
-        question.setAnswer(answer1);
-        answer1.addCorrectAnswerToQuestion(question);
+//        question.setAnswer(answer1);
+//        answer1.addCorrectAnswerToQuestion(question);
         Answer answer2 = new Answer();
         answer2.setDescription("First Question Second Answer");
         answer2.addQuestion(question);

@@ -12,32 +12,104 @@
                 <div class="courseArchive_content">
                     <!-- start blog archive  -->
                     <div class="row">
-                        <h2 class="blog_title2" style="margin-top: 50px;
-                            margin-bottom: 50px;">Create Degree:</h2>
+                        <h1 class="blog_title2" style="margin-top: 50px;
+                            margin-bottom: 50px;">Create Evaluation:</h1>
                         <!-- start single blog -->
-                        <div class="col-lg-12 col-12 col-sm-12">
+                        <div class="col-lg-6 col-6 col-sm-6">
                             <div class="single_blog">
-                                <form th:action="@{/degrees/create-degree}" method="post" th:object="${degree}" enctype="multipart/form-data" class="submitphoto_form" >
-                                    <input type="text" class="wp-form-control wpcf7-text" th:field="*{name}" placeholder="Name"/>
-                                    <textarea class="wp-form-control wpcf7-textarea" th:field="*{description}" cols="30" rows="10" placeholder="Description"></textarea>
-                                    <label>Degree diploma: </label><br/>
-                                    <input type="file" name="file"/><br/><br/>
+                                <form th:action="@{/evaluation/create-evaluation}" method="post" th:object="${evaluation}" enctype="multipart/form-data" class="submitphoto_form" >
 
-                                    <label>Available subjects</label><br/>
-                                    <ul>
-                                        <li th:each="subject : ${subjects}">
-                                            <!--<input type="checkbox" th:field="*{courses}" th:value="${course.id}"/>-->
-                                            <input type="radio" th:field="*{subject}" th:value="${subject.id}"/>
-                                            <span th:text="${subject.name}"></span>
-                                        </li>
-                                    </ul><br/>
-                                    <!--<input type="mail" class="wp-form-control wpcf7-email" placeholder="Email address"/>-->
+                                <label>Available courses: </label><br/>
+                                <ul>
+                                    <li th:each="course : ${courses}">
+                                        <input type="radio" th:field="*{course}" th:value="${course.id}"/>
+                                        <span th:text="${course.name}"></span>
+                                    </li>
+                                </ul><br/>
+
+                                    <div class="question-row">
+                                        <div>
+                                            <p>
+                                                <input id="questions1.description" name="questions[1].description" class="wp-form-control wpcf7-text" placeholder="Question 1"/>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                <div class="answer-row" style="margin-left: 50px;">
+                                    <div>
+                                        <p>
+                                            <input id="answers1.description" name="answers[1].description" class="wp-form-control wpcf7-text" placeholder="answer..."/>
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="answer-row" style="margin-left: 50px;">
+                                    <div>
+                                        <p>
+                                            <input id="answers2.description" name="answers[2].description" class="wp-form-control wpcf7-text" placeholder="answer..."/>
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="answer-row" style="margin-left: 50px;">
+                                    <div>
+                                        <p>
+                                            <input id="answers3.description" name="answers[3].description" class="wp-form-control wpcf7-text" placeholder="answer..."/>
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="answer-row" style="margin-left: 50px;">
+                                    <div>
+                                        <p>
+                                            <input id="answers4.description" name="answers[4].description" class="wp-form-control wpcf7-text" placeholder="answer..."/>
+                                        </p>
+                                    </div>
+                                </div>
+
+                                    <div>
+                                        <p>
+                                            <button id="add-another-question-button" class="wpcf7-submit">+ Add Another Question</button>
+                                        </p>
+                                    </div>
+
                                     <input type="submit" value="Submit" class="wpcf7-submit"/>
+
                                 </form>
                             </div>
                         </div>
-                        <!-- End single blog -->
                     </div>
+                        <!--<div class="col-lg-6 col-6 col-sm-6">-->
+                            <!--<div class="single_blog">-->
+                                <!--<div class="answer-row" th:if="*{answers == null}">-->
+                                    <!--<div>-->
+                                        <!--<p>-->
+                                            <!--<input id="answers0.description" name="answers[0].description" class="wp-form-control wpcf7-text" placeholder="answer..."/>-->
+                                        <!--</p>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+
+                                <!--<div class="answer-row" th:each="answer : *{answers}" th:if="*{answers.size() > 0}">-->
+<!--&lt;!&ndash;&ndash;&gt;-->
+                                    <!--<input type="hidden" th:field="*{answer[__${answerStat.index}__].id}" class="wp-form-control wpcf7-text"/>-->
+<!--&lt;!&ndash;&ndash;&gt;-->
+                                    <!--<div>-->
+                                        <!--<p>-->
+                                            <!--<input th:field="*{answer[__${answerStat.index}__].description}" placeholder="answer..." class="wp-form-control wpcf7-text"/>-->
+                                        <!--</p>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+<!---->
+                                <!--<div>-->
+                                    <!--<p>-->
+                                        <!--<button id="add-another-answer-button" class="wpcf7-submit">+ Add Another Answer</button>-->
+                                    <!--</p>-->
+                                <!--</div>-->
+                            <!--</div>-->
+
+                        <!--</div>-->
+                        <!-- End single blog -->
+                    <!--</div>-->
 
                     <!-- end blog archive  -->
                 </div>

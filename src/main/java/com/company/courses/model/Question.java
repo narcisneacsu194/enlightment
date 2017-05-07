@@ -27,7 +27,7 @@ public class Question {
     @ManyToOne
     private Answer answer;
 
-    @ManyToMany(mappedBy = "questions")
+    @ManyToMany(mappedBy = "questions", cascade = CascadeType.ALL)
     private List<Evaluation> evaluations = new ArrayList<>();
 
     public Long getId() {

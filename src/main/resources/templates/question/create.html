@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="layout :: head"></head>
+<body>
+<header th:replace="layout :: header"></header>
+<section th:replace="layout :: banner"></section>
+<section id="courseArchive">
+    <div class="container">
+        <div class="row">
+            <!-- start course content -->
+            <div class="col-lg-8 col-md-8 col-sm-8">
+                <div class="courseArchive_content">
+                    <!-- start blog archive  -->
+                    <div class="row">
+                        <h1 class="blog_title2" style="margin-top: 50px;
+                            margin-bottom: 50px;">Create Evaluation:</h1>
+                        <!-- start single blog -->
+                        <div class="col-lg-6 col-6 col-sm-6">
+                            <div class="single_blog">
+                                <form th:action="@{/questions/create-question}" method="post" th:object="${question}" enctype="multipart/form-data" class="submitphoto_form" >
+
+                                    <input type="hidden" th:field="*{evaluations}"/>
+
+                                    <div class="question-row">
+                                        <div>
+                                            <p>
+                                                <input th:field="*{description}" class="wp-form-control wpcf7-text" placeholder="Question 1"/>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <h2 class="blog_title2">Answers:</h2>
+
+                                    <div class="answer-row" style="margin-left: 50px;">
+                                        <div>
+                                            <p>
+                                                <input id="answers1.description" name="answers[1].description" class="wp-form-control wpcf7-text" placeholder="answer..."/>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="answer-row" style="margin-left: 50px;">
+                                        <div>
+                                            <p>
+                                                <input id="answers2.description" name="answers[2].description" class="wp-form-control wpcf7-text" placeholder="answer..."/>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="answer-row" style="margin-left: 50px;">
+                                        <div>
+                                            <p>
+                                                <input id="answers3.description" name="answers[3].description" class="wp-form-control wpcf7-text" placeholder="answer..."/>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="answer-row" style="margin-left: 50px;">
+                                        <div>
+                                            <p>
+                                                <input id="answers4.description" name="answers[4].description" class="wp-form-control wpcf7-text" placeholder="answer..."/>
+                                            </p>
+                                        </div>
+                                    </div>
+
+
+                                    <input type="submit" value="Submit" class="wpcf7-submit"/>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--</div>-->
+                    <!-- End single blog -->
+                    <!--</div>-->
+
+                    <!-- end blog archive  -->
+                </div>
+            </div>
+            <!-- End course content -->
+        </div>
+    </div>
+    <!-- start course archive sidebar -->
+</section>
+
+<footer th:replace="layout :: footer"></footer>
+<div th:replace="layout :: javascript-files"></div>
+</body>
+</html>
+
