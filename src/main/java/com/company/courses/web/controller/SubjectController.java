@@ -116,20 +116,37 @@ public class SubjectController {
 
     @RequestMapping(value = "/subjects/{subjectId}/edit-subject", method = RequestMethod.POST)
     public String editSubject(Subject subject, @RequestParam MultipartFile file){
+        List<Course> allCourses = courseService.findAllCourses();
         List<Course> courses = subject.getCourses();
-        List<Achievement> achievements = subject.getAchievements();
-        List<Degree> degrees = subject.getDegrees();
 
         for(Course course : courses){
-            course.setSubject(subject);
+            for(Course course2 : allCourses){
+                if(!course.getId().equals(course2.getId())){
+                    course2.setSubject(null);
+                }
+            }
         }
+
+        List<Achievement> allAchievements = achievementService.findAllAchievements();
+        List<Achievement> achievements = subject.getAchievements();
 
         for(Achievement achievement : achievements){
-            achievement.setSubject(subject);
+            for(Achievement achievement2 : allAchievements){
+                if(!achievement.getId().equals(achievement2.getId())){
+                    achievement2.setSubject(null);
+                }
+            }
         }
 
+        List<Degree> allDegrees = degreeService.findAllDegrees();
+        List<Degree> degrees = subject.getDegrees();
+
         for(Degree degree : degrees){
-            degree.setSubject(subject);
+            for(Degree degree2 : allDegrees){
+                if(!degree.getId().equals(degree2.getId())){
+                    degree2.setSubject(null);
+                }
+            }
         }
 
         subjectService.save(subject, file);

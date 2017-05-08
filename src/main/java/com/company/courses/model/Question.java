@@ -25,10 +25,10 @@ public class Question {
 //    private List<Answer> correctQuestionAnswers = new ArrayList<>();
 
     @ManyToOne
-    private Answer answer;
+    private Answer correctAnswer;
 
-    @ManyToMany(mappedBy = "questions", cascade = CascadeType.ALL)
-    private List<Evaluation> evaluations = new ArrayList<>();
+    @ManyToOne
+    private Evaluation evaluation;
 
     public Long getId() {
         return id;
@@ -58,24 +58,32 @@ public class Question {
         this.answers.add(answer);
     }
 
-    public List<Evaluation> getEvaluations() {
-        return evaluations;
+//    public List<Evaluation> getEvaluations() {
+//        return evaluations;
+//    }
+//
+//    public void setEvaluations(List<Evaluation> evaluations) {
+//        this.evaluations = evaluations;
+//    }
+//
+//    public void addEvaluation(Evaluation evaluation){
+//        this.evaluations.add(evaluation);
+//    }
+
+    public Answer getCorrectAnswer() {
+        return correctAnswer;
     }
 
-    public void setEvaluations(List<Evaluation> evaluations) {
-        this.evaluations = evaluations;
+    public void setCorrectAnswer(Answer correctAnswer) {
+        this.correctAnswer = correctAnswer;
     }
 
-    public void addEvaluation(Evaluation evaluation){
-        this.evaluations.add(evaluation);
+    public Evaluation getEvaluation() {
+        return evaluation;
     }
 
-    public Answer getAnswer() {
-        return answer;
-    }
-
-    public void setAnswer(Answer answer) {
-        this.answer = answer;
+    public void setEvaluation(Evaluation evaluation) {
+        this.evaluation = evaluation;
     }
 
 //    public List<Answer> getCorrectQuestionAnswers() {
@@ -86,7 +94,7 @@ public class Question {
 //        this.correctQuestionAnswers = correctQuestionAnswers;
 //    }
 //
-//    public void addCorrectQuestionAnswer(Answer answer){
-//        correctQuestionAnswers.add(answer);
+//    public void addCorrectQuestionAnswer(Answer correctAnswer){
+//        correctQuestionAnswers.add(correctAnswer);
 //    }
 }

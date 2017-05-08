@@ -2,6 +2,7 @@ package com.company.courses.web.controller;
 
 import com.company.courses.model.Achievement;
 import com.company.courses.model.Course;
+import com.company.courses.model.Evaluation;
 import com.company.courses.model.Subject;
 import com.company.courses.services.AchievementService;
 import com.company.courses.services.CourseService;
@@ -39,7 +40,8 @@ public class CourseController {
         Long evaluationId = course.getEvaluations().get(0).getId();
         model.addAttribute("course", course);
         model.addAttribute("subject", course.getSubject());
-        model.addAttribute("achievements", course.getAchievements());
+//        model.addAttribute("achievements", course.getAchievements());
+        model.addAttribute("achievement", course.getAchievement());
         model.addAttribute("chapters", course.getChapters());
         model.addAttribute("evaluationId", evaluationId);
 
@@ -63,11 +65,17 @@ public class CourseController {
 
     @RequestMapping(value = "/courses/create-course", method = RequestMethod.POST)
     public String createCourse(Course course, @RequestParam MultipartFile file){
-        List<Achievement> achievements = course.getAchievements();
+//        List<Achievement> achievements = course.getAchievements();
+        Achievement achievement = course.getAchievement();
+        achievement.setCourse(course);
 
-        for(Achievement achievement : achievements){
-            achievement.setCourse(course);
-        }
+//        for(Achievement achievement : achievements){
+//            achievement.setCourse(course);
+//        }
+
+        Evaluation evaluation = new Evaluation();
+        evaluation.setCourse(course);
+        course.addEvaluation(evaluation);
 
         courseService.save(course, file);
 
@@ -97,11 +105,13 @@ public class CourseController {
 
     @RequestMapping(value = "/courses/{coursesId}/edit-course", method = RequestMethod.POST)
     public String editCourse(Course course, @RequestParam MultipartFile file){
-        List<Achievement> achievements = course.getAchievements();
+//        List<Achievement> achievements = course.getAchievements();
+        Achievement achievement = course.getAchievement();
+        achievement.setCourse(course);
 
-        for(Achievement achievement : achievements){
-            achievement.setCourse(course);
-        }
+//        for(Achievement achievement : achievements){
+//            achievement.setCourse(course);
+//        }
 
         courseService.save(course, file);
 

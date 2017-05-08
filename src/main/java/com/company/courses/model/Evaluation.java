@@ -14,25 +14,25 @@ public class Evaluation {
 
     private int percentage;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "test_question",
-        joinColumns = @JoinColumn(name = "test_id"),
-        inverseJoinColumns = @JoinColumn(name = "question_id"))
+    @OneToMany(mappedBy = "evaluation", cascade = CascadeType.ALL)
     private List<Question> questions = new ArrayList<>();
 
     @ManyToOne
     private Course course;
 
+//    @OneToOne
+//    private Course course;
+
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "test_userAnswer",
-    joinColumns = @JoinColumn(name = "test_id"),
+    @JoinTable(name = "evaluation_userAnswer",
+    joinColumns = @JoinColumn(name = "evaluation_id"),
             inverseJoinColumns = @JoinColumn(name = "user_answer_id"))
     private List<Answer> userAnswers = new ArrayList<>();
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "test_correctAnswer",
-    joinColumns = @JoinColumn(name = "test_id"),
-    inverseJoinColumns = @JoinColumn(name = "correct_answer_id"))
+    @OneToMany(cascade = CascadeType.ALL)
+//    @JoinTable(name = "evaluation_correctAnswer",
+//    joinColumns = @JoinColumn(name = "evaluation_id"),
+//    inverseJoinColumns = @JoinColumn(name = "correct_answer_id"))
     private List<Answer> correctAnswers = new ArrayList<>();
 
     public Evaluation(){}
@@ -87,6 +87,10 @@ public class Evaluation {
 
     public void addCorrectAnswer(Answer answer){
         correctAnswers.add(answer);
+    }
+
+    public void removeCorrectAnswer(Answer answer){
+        correctAnswers.remove(answer);
     }
 
 //    public boolean isPassed() {

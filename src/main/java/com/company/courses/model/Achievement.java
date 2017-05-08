@@ -23,7 +23,10 @@ public class Achievement {
     @ManyToOne
     private Subject subject;
 
-    @ManyToOne
+//    @ManyToOne
+//    private Course course;
+
+    @OneToOne
     private Course course;
 
     public Achievement(){}

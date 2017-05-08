@@ -20,10 +20,11 @@ public class Course {
 
     private String difficulty;
 
-    //private boolean completed;
+//    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
+//    private List<Achievement> achievements = new ArrayList<>();
 
-    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
-    private List<Achievement> achievements = new ArrayList<>();
+    @OneToOne
+    private Achievement achievement;
 
     @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
     private List<Chapter> chapters = new ArrayList<>();
@@ -68,17 +69,17 @@ public class Course {
         this.image = image;
     }
 
-    public List<Achievement> getAchievements() {
-        return achievements;
-    }
-
-    public void setAchievements(List<Achievement> achievements) {
-        this.achievements = achievements;
-    }
-
-    public void addAchievement(Achievement achievement){
-        this.achievements.add(achievement);
-    }
+//    public List<Achievement> getAchievements() {
+//        return achievements;
+//    }
+//
+//    public void setAchievements(List<Achievement> achievements) {
+//        this.achievements = achievements;
+//    }
+//
+//    public void addAchievement(Achievement achievement){
+//        this.achievements.add(achievement);
+//    }
 
     public List<Chapter> getChapters() {
         return chapters;
@@ -118,5 +119,13 @@ public class Course {
 
     public void setDifficulty(String difficulty) {
         this.difficulty = difficulty;
+    }
+
+    public Achievement getAchievement() {
+        return achievement;
+    }
+
+    public void setAchievement(Achievement achievement) {
+        this.achievement = achievement;
     }
 }

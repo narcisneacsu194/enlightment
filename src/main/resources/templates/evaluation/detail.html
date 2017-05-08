@@ -18,6 +18,7 @@
                             <div class="single_blog">
                                 <h1 class="blog_title2" style="margin-top: 50px;
                             margin-bottom: 50px;" th:text="|Course '${courseName}' Evaluation|"></h1>
+                                <h3 class="blog_title2">All the questions only have one correct correctAnswer.</h3>
                                 <form th:action="@{|/evaluation/${evaluation.id}/process-evaluation|}" method="post" th:object="${evaluation}">
                                     <input type="hidden" th:field="*{correctAnswers}"/>
                                     <input type="hidden" th:field="*{id}"/>
@@ -27,11 +28,12 @@
                                     <li th:each="question : ${tempQuestions}">
                                         <p th:text="${question.description}" style="font-weight: bold;"></p><br/>
                                         <ol type="a">
-                                            <li th:each="answer : ${question.answers}">
-                                                <input type="checkbox" th:field="*{userAnswers}" th:value="${answer.id}"/>
-                                                <span th:text="${answer.description}"></span>
+                                            <li th:each="correctAnswer : ${question.answers}">
+                                                <input type="checkbox" th:field="*{userAnswers}" th:value="${correctAnswer.id}"/>
+                                                <span th:text="${correctAnswer.description}"></span>
                                             </li>
-                                        </ol>
+                                        </ol><br/>
+                                        <a th:href="@{|/questions/${question.id}/question-edit-form|}" class="wpcf7-submit">Edit Question</a>
                                     </li>
                                 </ol><br/>
 

@@ -21,17 +21,17 @@
 
                                     <input type="hidden" th:field="*{id}"/>
 
-                                    <input type="hidden" th:field="*{evaluations}"/>
+                                    <input type="hidden" th:field="*{evaluation}"/>
 
                                     <input type="hidden" th:field="*{description}"/>
 
                                     <input type="hidden" th:field="*{answers}"/>
 
-                                    <label>Which answer is correct ?</label><br/>
+                                    <label>Which correctAnswer is correct ?</label><br/>
                                     <ul>
-                                        <li th:each="answer : *{answers}">
-                                            <input type="radio" th:field="*{answer}" th:value="${answer.id}"/>
-                                            <span th:text="${answer.description}"></span>
+                                        <li th:each="correctAnswer : *{answers}">
+                                            <input type="radio" th:field="*{correctAnswer}" th:value="${correctAnswer.id}"/>
+                                            <span th:text="${correctAnswer.description}"></span>
                                         </li>
                                     </ul><br/>
 

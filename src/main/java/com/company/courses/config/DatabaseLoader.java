@@ -152,21 +152,21 @@ public class DatabaseLoader implements ApplicationRunner{
 ///////////////////////////////////////////////
 
 
-        Course course = new Course();
-        course.setName("Inheritance");
-        course.setDescription("Inheritance can be defined as the process where one class acquires the properties (methods and fields) of another. With the use of inheritance the information is made manageable in a hierarchical order.\n" +
+        Course course1 = new Course();
+        course1.setName("Inheritance");
+        course1.setDescription("Inheritance can be defined as the process where one class acquires the properties (methods and fields) of another. With the use of inheritance the information is made manageable in a hierarchical order.\n" +
                 "\n" +
                 "The class which inherits the properties of other is known as subclass (derived class, child class) and the class whose properties are inherited is known as superclass (base class, parent class).");
         bytes = extractBytes("src/main/resources/static/img/inheritance.jpg");
-        course.setImage(bytes);
-        course.setDifficulty("easy");
+        course1.setImage(bytes);
+        course1.setDifficulty("easy");
 
-        subject.addCourse(course);
-        course.setSubject(subject);
+        subject.addCourse(course1);
+        course1.setSubject(subject);
 
-        course = new Course();
-        course.setName("Polymorphism");
-        course.setDescription("Polymorphism is the ability of an object to take on many forms. The most common use of polymorphism in OOP occurs when a parent class reference is used to refer to a child class object.\n" +
+        Course course2 = new Course();
+        course2.setName("Polymorphism");
+        course2.setDescription("Polymorphism is the ability of an object to take on many forms. The most common use of polymorphism in OOP occurs when a parent class reference is used to refer to a child class object.\n" +
                 "\n" +
                 "Any Java object that can pass more than one IS-A evaluation is considered to be polymorphic. In Java, all Java objects are polymorphic since any object will pass the IS-A evaluation for their own type and for the class Object.\n" +
                 "\n" +
@@ -177,16 +177,16 @@ public class DatabaseLoader implements ApplicationRunner{
                 "A reference variable can refer to any object of its declared type or any subtype of its declared type. A reference variable can be declared as a class or interface type.");
 
         bytes = extractBytes("src/main/resources/static/img/polymorphism.gif");
-        course.setImage(bytes);
-        course.setDifficulty("easy");
+        course2.setImage(bytes);
+        course2.setDifficulty("easy");
 
-        subject.addCourse(course);
-        course.setSubject(subject);
+        subject.addCourse(course2);
+        course2.setSubject(subject);
 
 
-        course = new Course();
-        course.setName("Encapsulation");
-        course.setDescription("In programming languages, encapsulation is used to refer to one of two related but distinct notions, and sometimes to the combination[1][2] thereof:\n" +
+        Course course3 = new Course();
+        course3.setName("Encapsulation");
+        course3.setDescription("In programming languages, encapsulation is used to refer to one of two related but distinct notions, and sometimes to the combination[1][2] thereof:\n" +
                 "\n" +
                 "A language mechanism for restricting direct access to some of the object's components.[3][4]\n" +
                 "A language construct that facilitates the bundling of data with the methods (or other functions) operating on that data.[5][6]\n" +
@@ -196,52 +196,52 @@ public class DatabaseLoader implements ApplicationRunner{
                 "\n" +
                 "The features of encapsulation are supported using classes in most object-oriented programming languages, although other alternatives also exist.");
         bytes = extractBytes("src/main/resources/static/img/encapsulation.jpg");
-        course.setImage(bytes);
-        course.setDifficulty("easy");
+        course3.setImage(bytes);
+        course3.setDifficulty("easy");
 
-        subject.addCourse(course);
-        course.setSubject(subject);
+        subject.addCourse(course3);
+        course3.setSubject(subject);
 
 
-        course = new Course();
-        course.setName("Abstraction");
-        course.setDescription("In software engineering and computer science, abstraction is a technique for arranging complexity of computer systems. It works by establishing a level of complexity on which a person interacts with the system, suppressing the more complex details below the current level. The programmer works with an idealized interface (usually well defined) and can add additional levels of functionality that would otherwise be too complex to handle. For example, a programmer writing code that involves numerical operations may not be interested in the way numbers are represented in the underlying hardware (e.g. whether they're 16 bit or 32 bit integers), and where those details have been suppressed it can be said that they were abstracted away, leaving simply numbers with which the programmer can work. In addition, a task of sending an email message across continents would be extremely complex if the programmer had to start with a piece of fiber optic cable and basic hardware components. By using layers of complexity that have been created to abstract away the physical cables and network layout, and presenting the programmer with a virtual data channel, this task is manageable.");
+        Course course4 = new Course();
+        course4.setName("Abstraction");
+        course4.setDescription("In software engineering and computer science, abstraction is a technique for arranging complexity of computer systems. It works by establishing a level of complexity on which a person interacts with the system, suppressing the more complex details below the current level. The programmer works with an idealized interface (usually well defined) and can add additional levels of functionality that would otherwise be too complex to handle. For example, a programmer writing code that involves numerical operations may not be interested in the way numbers are represented in the underlying hardware (e.g. whether they're 16 bit or 32 bit integers), and where those details have been suppressed it can be said that they were abstracted away, leaving simply numbers with which the programmer can work. In addition, a task of sending an email message across continents would be extremely complex if the programmer had to start with a piece of fiber optic cable and basic hardware components. By using layers of complexity that have been created to abstract away the physical cables and network layout, and presenting the programmer with a virtual data channel, this task is manageable.");
         bytes = extractBytes("src/main/resources/static/img/abstraction.gif");
-        course.setImage(bytes);
-        course.setDifficulty("easy");
+        course4.setImage(bytes);
+        course4.setDifficulty("easy");
 
-        subject.addCourse(course);
-        course.setSubject(subject);
+        subject.addCourse(course4);
+        course4.setSubject(subject);
 
 
-        course = new Course();
-        course.setName("Class");
-        course.setDescription("In object-oriented programming, a class is an extensible program-code-template for creating objects, providing initial values for state (member variables) and implementations of behavior (member functions or methods).[1][2] In many languages, the class name is used as the name for the class (the template itself), the name for the default constructor of the class (a subroutine that creates objects), and as the type of objects generated by instantiating the class; these distinct concepts are easily conflated.[2]\n" +
+        Course course5 = new Course();
+        course5.setName("Class");
+        course5.setDescription("In object-oriented programming, a class is an extensible program-code-template for creating objects, providing initial values for state (member variables) and implementations of behavior (member functions or methods).[1][2] In many languages, the class name is used as the name for the class (the template itself), the name for the default constructor of the class (a subroutine that creates objects), and as the type of objects generated by instantiating the class; these distinct concepts are easily conflated.[2]\n" +
                 "\n" +
                 "When an object is created by a constructor of the class, the resulting object is called an instance of the class, and the member variables specific to the object are called instance variables, to contrast with the class variables shared across the class.\n" +
                 "\n" +
                 "In some languages, classes are only a compile-time feature (new classes cannot be declared at runtime), while in other languages classes are first-class citizens, and are generally themselves objects (typically of type Class or similar). In these languages, a class that creates classes is called a metaclass.");
         bytes = extractBytes("src/main/resources/static/img/class.png");
-        course.setImage(bytes);
-        course.setDifficulty("easy");
+        course5.setImage(bytes);
+        course5.setDifficulty("easy");
 
-        subject.addCourse(course);
-        course.setSubject(subject);
+        subject.addCourse(course5);
+        course5.setSubject(subject);
 
 
-        course = new Course();
-        course.setName("Object");
-        course.setDescription("In computer science, an object can be a variable, a data structure, a function, or a method, and as such, is a location in memory having a value and possibly referenced by an identifier.\n" +
+        Course course6 = new Course();
+        course6.setName("Object");
+        course6.setDescription("In computer science, an object can be a variable, a data structure, a function, or a method, and as such, is a location in memory having a value and possibly referenced by an identifier.\n" +
                 "\n" +
                 "In the class-based object-oriented programming paradigm, \"object\" refers to a particular instance of a class where the object can be a combination of variables, functions, and data structures.\n" +
                 "\n" +
                 "In relational database management, an object can be a table or column, or an association between data and a database entity (such as relating a person's age to a specific person).");
         bytes = extractBytes("src/main/resources/static/img/object.png");
-        course.setImage(bytes);
-        course.setDifficulty("easy");
+        course6.setImage(bytes);
+        course6.setDifficulty("easy");
 
-        subject.addCourse(course);
-        course.setSubject(subject);
+        subject.addCourse(course6);
+        course6.setSubject(subject);
 //////////////////////////////////////////////////////////////////
 
         Chapter chapter = new Chapter();
@@ -250,8 +250,8 @@ public class DatabaseLoader implements ApplicationRunner{
         bytes = extractBytes("src/main/resources/static/img/javascript-java.jpg");
         chapter.setImage(bytes);
 
-        course.addChapter(chapter);
-        chapter.setCourse(course);
+        course6.addChapter(chapter);
+        chapter.setCourse(course6);
 
         chapter = new Chapter();
         chapter.setTitle("Object-oriented programming");
@@ -261,8 +261,8 @@ public class DatabaseLoader implements ApplicationRunner{
         bytes = extractBytes("src/main/resources/static/img/javascript-java.jpg");
         chapter.setImage(bytes);
 
-        course.addChapter(chapter);
-        chapter.setCourse(course);
+        course6.addChapter(chapter);
+        chapter.setCourse(course6);
 
         chapter = new Chapter();
         chapter.setTitle("The Semantic Web");
@@ -278,21 +278,23 @@ public class DatabaseLoader implements ApplicationRunner{
         bytes = extractBytes("src/main/resources/static/img/javascript-java.jpg");
         chapter.setImage(bytes);
 
-        course.addChapter(chapter);
-        chapter.setCourse(course);
+        course6.addChapter(chapter);
+        chapter.setCourse(course6);
 
 /////////////////////////////////////////////////////////////////////////////////
+        Evaluation evaluation1 = new Evaluation();
 
-        Evaluation evaluation = new Evaluation();
+        evaluation1.setCourse(course1);
+        course6.addEvaluation(evaluation1);
+
         Question question = new Question();
         question.setDescription("First Question ?");
         Answer answer1 = new Answer();
         answer1.setDescription("First Question First Answer.");
         answer1.addQuestion(question);
-        evaluation.addCorrectAnswer(answer1);
-        answer1.addCorrectAnswersEvaluations(evaluation);
-//        question.setAnswer(answer1);
-//        answer1.addCorrectAnswerToQuestion(question);
+        evaluation1.addCorrectAnswer(answer1);
+//        answer1.addCorrectAnswersEvaluations(evaluation);
+        answer1.setEvaluation(evaluation1);
         Answer answer2 = new Answer();
         answer2.setDescription("First Question Second Answer");
         answer2.addQuestion(question);
@@ -304,10 +306,12 @@ public class DatabaseLoader implements ApplicationRunner{
         answer4.addQuestion(question);
         List<Answer> answers = Arrays.asList(answer1,answer2,answer3,answer4);
         question.setAnswers(answers);
-        evaluation.addQuestion(question);
-        question.addEvaluation(evaluation);
-        evaluation.setCourse(course);
-        course.addEvaluation(evaluation);
+        question.setCorrectAnswer(answer1);
+        answer1.addCorrectAnswerToQuestion(question);
+        evaluation1.addQuestion(question);
+//        question.addEvaluation(evaluation);
+        question.setEvaluation(evaluation1);
+
 
         question = new Question();
         question.setDescription("Second Question ?");
@@ -317,8 +321,9 @@ public class DatabaseLoader implements ApplicationRunner{
         answer2 = new Answer();
         answer2.setDescription("Second Question Second Answer");
         answer2.addQuestion(question);
-        evaluation.addCorrectAnswer(answer2);
-        answer2.addCorrectAnswersEvaluations(evaluation);
+        evaluation1.addCorrectAnswer(answer2);
+//        answer2.addCorrectAnswersEvaluations(evaluation);
+        answer2.setEvaluation(evaluation1);
         answer3 = new Answer();
         answer3.setDescription("Second Question Third Answer");
         answer3.addQuestion(question);
@@ -327,10 +332,11 @@ public class DatabaseLoader implements ApplicationRunner{
         answer4.addQuestion(question);
         answers = Arrays.asList(answer1,answer2,answer3,answer4);
         question.setAnswers(answers);
-        evaluation.addQuestion(question);
-        question.addEvaluation(evaluation);
-        evaluation.setCourse(course);
-        course.addEvaluation(evaluation);
+        question.setCorrectAnswer(answer2);
+        answer2.addCorrectAnswerToQuestion(question);
+        evaluation1.addQuestion(question);
+//        question.addEvaluation(evaluation);
+        question.setEvaluation(evaluation1);
 
         question = new Question();
         question.setDescription("Third Question ?");
@@ -343,17 +349,19 @@ public class DatabaseLoader implements ApplicationRunner{
         answer3 = new Answer();
         answer3.setDescription("Third Question Third Answer");
         answer3.addQuestion(question);
-        evaluation.addCorrectAnswer(answer3);
-        answer3.addCorrectAnswersEvaluations(evaluation);
+        evaluation1.addCorrectAnswer(answer3);
+//        answer3.addCorrectAnswersEvaluations(evaluation);
+        answer3.setEvaluation(evaluation1);
         answer4 = new Answer();
         answer4.setDescription("Third Question Fourth Answer");
         answer4.addQuestion(question);
         answers = Arrays.asList(answer1,answer2,answer3,answer4);
         question.setAnswers(answers);
-        evaluation.addQuestion(question);
-        question.addEvaluation(evaluation);
-        evaluation.setCourse(course);
-        course.addEvaluation(evaluation);
+        question.setCorrectAnswer(answer3);
+        answer3.addCorrectAnswerToQuestion(question);
+        evaluation1.addQuestion(question);
+//        question.addEvaluation(evaluation);
+        question.setEvaluation(evaluation1);
 
         question = new Question();
         question.setDescription("Fourth Question ?");
@@ -369,22 +377,25 @@ public class DatabaseLoader implements ApplicationRunner{
         answer4 = new Answer();
         answer4.setDescription("Fourth Question Fourth Answer");
         answer4.addQuestion(question);
-        evaluation.addCorrectAnswer(answer4);
-        answer4.addCorrectAnswersEvaluations(evaluation);
+        evaluation1.addCorrectAnswer(answer4);
+//        answer4.addCorrectAnswersEvaluations(evaluation);
+        answer4.setEvaluation(evaluation1);
         answers = Arrays.asList(answer1,answer2,answer3,answer4);
         question.setAnswers(answers);
-        evaluation.addQuestion(question);
-        question.addEvaluation(evaluation);
-        evaluation.setCourse(course);
-        course.addEvaluation(evaluation);
+        question.setCorrectAnswer(answer4);
+        answer4.addCorrectAnswerToQuestion(question);
+        evaluation1.addQuestion(question);
+//        question.addEvaluation(evaluation);
+        question.setEvaluation(evaluation1);
 
         question = new Question();
         question.setDescription("Fifth Question ?");
         answer1 = new Answer();
         answer1.setDescription("Fifth Question First Answer");
         answer1.addQuestion(question);
-        evaluation.addCorrectAnswer(answer1);
-        answer1.addCorrectAnswersEvaluations(evaluation);
+        evaluation1.addCorrectAnswer(answer1);
+//        answer1.addCorrectAnswersEvaluations(evaluation);
+        answer1.setEvaluation(evaluation1);
         answer2 = new Answer();
         answer2.setDescription("Fifth Question Second Answer");
         answer2.addQuestion(question);
@@ -396,10 +407,11 @@ public class DatabaseLoader implements ApplicationRunner{
         answer4.addQuestion(question);
         answers = Arrays.asList(answer1,answer2,answer3,answer4);
         question.setAnswers(answers);
-        evaluation.addQuestion(question);
-        question.addEvaluation(evaluation);
-        evaluation.setCourse(course);
-        course.addEvaluation(evaluation);
+        question.setCorrectAnswer(answer1);
+        answer1.addCorrectAnswerToQuestion(question);
+        evaluation1.addQuestion(question);
+//        question.addEvaluation(evaluation);
+        question.setEvaluation(evaluation1);
 
         question = new Question();
         question.setDescription("Sixth Question ?");
@@ -409,8 +421,9 @@ public class DatabaseLoader implements ApplicationRunner{
         answer2 = new Answer();
         answer2.setDescription("Sixth Question Second Answer");
         answer2.addQuestion(question);
-        evaluation.addCorrectAnswer(answer2);
-        answer2.addCorrectAnswersEvaluations(evaluation);
+        evaluation1.addCorrectAnswer(answer2);
+//        answer2.addCorrectAnswersEvaluations(evaluation);
+        answer2.setEvaluation(evaluation1);
         answer3 = new Answer();
         answer3.setDescription("Sixth Question Third Answer");
         answer3.addQuestion(question);
@@ -419,10 +432,806 @@ public class DatabaseLoader implements ApplicationRunner{
         answer4.addQuestion(question);
         answers = Arrays.asList(answer1,answer2,answer3,answer4);
         question.setAnswers(answers);
-        evaluation.addQuestion(question);
-        question.addEvaluation(evaluation);
-        evaluation.setCourse(course);
-        course.addEvaluation(evaluation);
+        question.setCorrectAnswer(answer2);
+        answer2.addCorrectAnswerToQuestion(question);
+        evaluation1.addQuestion(question);
+//        question.addEvaluation(evaluation);
+
+        question.setEvaluation(evaluation1);
+
+
+
+        Evaluation evaluation2 = new Evaluation();
+
+        evaluation2.setCourse(course2);
+        course6.addEvaluation(evaluation2);
+
+        question = new Question();
+        question.setDescription("First Question ?");
+        answer1 = new Answer();
+        answer1.setDescription("First Question First Answer.");
+        answer1.addQuestion(question);
+        evaluation2.addCorrectAnswer(answer1);
+//        answer1.addCorrectAnswersEvaluations(evaluation);
+        answer1.setEvaluation(evaluation2);
+        answer2 = new Answer();
+        answer2.setDescription("First Question Second Answer");
+        answer2.addQuestion(question);
+        answer3 = new Answer();
+        answer3.setDescription("First Question Third Answer");
+        answer3.addQuestion(question);
+        answer4 = new Answer();
+        answer4.setDescription("First Question Fourth Answer");
+        answer4.addQuestion(question);
+        answers = Arrays.asList(answer1,answer2,answer3,answer4);
+        question.setAnswers(answers);
+        question.setCorrectAnswer(answer1);
+        answer1.addCorrectAnswerToQuestion(question);
+        evaluation2.addQuestion(question);
+//        question.addEvaluation(evaluation);
+        question.setEvaluation(evaluation2);
+
+
+        question = new Question();
+        question.setDescription("Second Question ?");
+        answer1 = new Answer();
+        answer1.setDescription("Second Question First Answer");
+        answer1.addQuestion(question);
+        answer2 = new Answer();
+        answer2.setDescription("Second Question Second Answer");
+        answer2.addQuestion(question);
+        evaluation2.addCorrectAnswer(answer2);
+//        answer2.addCorrectAnswersEvaluations(evaluation);
+        answer2.setEvaluation(evaluation2);
+        answer3 = new Answer();
+        answer3.setDescription("Second Question Third Answer");
+        answer3.addQuestion(question);
+        answer4 = new Answer();
+        answer4.setDescription("Second Question Fourth Answer");
+        answer4.addQuestion(question);
+        answers = Arrays.asList(answer1,answer2,answer3,answer4);
+        question.setAnswers(answers);
+        question.setCorrectAnswer(answer2);
+        answer2.addCorrectAnswerToQuestion(question);
+        evaluation2.addQuestion(question);
+//        question.addEvaluation(evaluation);
+        question.setEvaluation(evaluation2);
+
+        question = new Question();
+        question.setDescription("Third Question ?");
+        answer1 = new Answer();
+        answer1.setDescription("Third Question First Answer");
+        answer1.addQuestion(question);
+        answer2 = new Answer();
+        answer2.setDescription("Third Question Second Answer");
+        answer2.addQuestion(question);
+        answer3 = new Answer();
+        answer3.setDescription("Third Question Third Answer");
+        answer3.addQuestion(question);
+        evaluation2.addCorrectAnswer(answer3);
+//        answer3.addCorrectAnswersEvaluations(evaluation);
+        answer3.setEvaluation(evaluation2);
+        answer4 = new Answer();
+        answer4.setDescription("Third Question Fourth Answer");
+        answer4.addQuestion(question);
+        answers = Arrays.asList(answer1,answer2,answer3,answer4);
+        question.setAnswers(answers);
+        question.setCorrectAnswer(answer3);
+        answer3.addCorrectAnswerToQuestion(question);
+        evaluation2.addQuestion(question);
+//        question.addEvaluation(evaluation);
+        question.setEvaluation(evaluation2);
+
+        question = new Question();
+        question.setDescription("Fourth Question ?");
+        answer1 = new Answer();
+        answer1.setDescription("Fourth Question First Answer");
+        answer1.addQuestion(question);
+        answer2 = new Answer();
+        answer2.setDescription("Fourth Question Second Answer");
+        answer2.addQuestion(question);
+        answer3 = new Answer();
+        answer3.setDescription("Fourth Question Third Answer");
+        answer3.addQuestion(question);
+        answer4 = new Answer();
+        answer4.setDescription("Fourth Question Fourth Answer");
+        answer4.addQuestion(question);
+        evaluation2.addCorrectAnswer(answer4);
+//        answer4.addCorrectAnswersEvaluations(evaluation);
+        answer4.setEvaluation(evaluation2);
+        answers = Arrays.asList(answer1,answer2,answer3,answer4);
+        question.setAnswers(answers);
+        question.setCorrectAnswer(answer4);
+        answer4.addCorrectAnswerToQuestion(question);
+        evaluation2.addQuestion(question);
+//        question.addEvaluation(evaluation);
+        question.setEvaluation(evaluation2);
+
+        question = new Question();
+        question.setDescription("Fifth Question ?");
+        answer1 = new Answer();
+        answer1.setDescription("Fifth Question First Answer");
+        answer1.addQuestion(question);
+        evaluation2.addCorrectAnswer(answer1);
+//        answer1.addCorrectAnswersEvaluations(evaluation);
+        answer1.setEvaluation(evaluation2);
+        answer2 = new Answer();
+        answer2.setDescription("Fifth Question Second Answer");
+        answer2.addQuestion(question);
+        answer3 = new Answer();
+        answer3.setDescription("Fifth Question Third Answer");
+        answer3.addQuestion(question);
+        answer4 = new Answer();
+        answer4.setDescription("Fifth Question Fourth Answer");
+        answer4.addQuestion(question);
+        answers = Arrays.asList(answer1,answer2,answer3,answer4);
+        question.setAnswers(answers);
+        question.setCorrectAnswer(answer1);
+        answer1.addCorrectAnswerToQuestion(question);
+        evaluation2.addQuestion(question);
+//        question.addEvaluation(evaluation);
+        question.setEvaluation(evaluation2);
+
+        question = new Question();
+        question.setDescription("Sixth Question ?");
+        answer1 = new Answer();
+        answer1.setDescription("Sixth Question First Answer");
+        answer1.addQuestion(question);
+        answer2 = new Answer();
+        answer2.setDescription("Sixth Question Second Answer");
+        answer2.addQuestion(question);
+        evaluation2.addCorrectAnswer(answer2);
+//        answer2.addCorrectAnswersEvaluations(evaluation);
+        answer2.setEvaluation(evaluation2);
+        answer3 = new Answer();
+        answer3.setDescription("Sixth Question Third Answer");
+        answer3.addQuestion(question);
+        answer4 = new Answer();
+        answer4.setDescription("Sixth Question Fourth Answer");
+        answer4.addQuestion(question);
+        answers = Arrays.asList(answer1,answer2,answer3,answer4);
+        question.setAnswers(answers);
+        question.setCorrectAnswer(answer2);
+        answer2.addCorrectAnswerToQuestion(question);
+        evaluation2.addQuestion(question);
+//        question.addEvaluation(evaluation);
+
+        question.setEvaluation(evaluation2);
+
+
+
+        Evaluation evaluation3 = new Evaluation();
+
+        evaluation3.setCourse(course3);
+        course6.addEvaluation(evaluation3);
+
+        question = new Question();
+        question.setDescription("First Question ?");
+        answer1 = new Answer();
+        answer1.setDescription("First Question First Answer.");
+        answer1.addQuestion(question);
+        evaluation3.addCorrectAnswer(answer1);
+//        answer1.addCorrectAnswersEvaluations(evaluation);
+        answer1.setEvaluation(evaluation3);
+        answer2 = new Answer();
+        answer2.setDescription("First Question Second Answer");
+        answer2.addQuestion(question);
+        answer3 = new Answer();
+        answer3.setDescription("First Question Third Answer");
+        answer3.addQuestion(question);
+        answer4 = new Answer();
+        answer4.setDescription("First Question Fourth Answer");
+        answer4.addQuestion(question);
+        answers = Arrays.asList(answer1,answer2,answer3,answer4);
+        question.setAnswers(answers);
+        question.setCorrectAnswer(answer1);
+        answer1.addCorrectAnswerToQuestion(question);
+        evaluation3.addQuestion(question);
+//        question.addEvaluation(evaluation);
+        question.setEvaluation(evaluation3);
+
+
+        question = new Question();
+        question.setDescription("Second Question ?");
+        answer1 = new Answer();
+        answer1.setDescription("Second Question First Answer");
+        answer1.addQuestion(question);
+        answer2 = new Answer();
+        answer2.setDescription("Second Question Second Answer");
+        answer2.addQuestion(question);
+        evaluation3.addCorrectAnswer(answer2);
+//        answer2.addCorrectAnswersEvaluations(evaluation);
+        answer2.setEvaluation(evaluation3);
+        answer3 = new Answer();
+        answer3.setDescription("Second Question Third Answer");
+        answer3.addQuestion(question);
+        answer4 = new Answer();
+        answer4.setDescription("Second Question Fourth Answer");
+        answer4.addQuestion(question);
+        answers = Arrays.asList(answer1,answer2,answer3,answer4);
+        question.setAnswers(answers);
+        question.setCorrectAnswer(answer2);
+        answer2.addCorrectAnswerToQuestion(question);
+        evaluation3.addQuestion(question);
+//        question.addEvaluation(evaluation);
+        question.setEvaluation(evaluation3);
+
+        question = new Question();
+        question.setDescription("Third Question ?");
+        answer1 = new Answer();
+        answer1.setDescription("Third Question First Answer");
+        answer1.addQuestion(question);
+        answer2 = new Answer();
+        answer2.setDescription("Third Question Second Answer");
+        answer2.addQuestion(question);
+        answer3 = new Answer();
+        answer3.setDescription("Third Question Third Answer");
+        answer3.addQuestion(question);
+        evaluation3.addCorrectAnswer(answer3);
+//        answer3.addCorrectAnswersEvaluations(evaluation);
+        answer3.setEvaluation(evaluation3);
+        answer4 = new Answer();
+        answer4.setDescription("Third Question Fourth Answer");
+        answer4.addQuestion(question);
+        answers = Arrays.asList(answer1,answer2,answer3,answer4);
+        question.setAnswers(answers);
+        question.setCorrectAnswer(answer3);
+        answer3.addCorrectAnswerToQuestion(question);
+        evaluation3.addQuestion(question);
+//        question.addEvaluation(evaluation);
+        question.setEvaluation(evaluation3);
+
+        question = new Question();
+        question.setDescription("Fourth Question ?");
+        answer1 = new Answer();
+        answer1.setDescription("Fourth Question First Answer");
+        answer1.addQuestion(question);
+        answer2 = new Answer();
+        answer2.setDescription("Fourth Question Second Answer");
+        answer2.addQuestion(question);
+        answer3 = new Answer();
+        answer3.setDescription("Fourth Question Third Answer");
+        answer3.addQuestion(question);
+        answer4 = new Answer();
+        answer4.setDescription("Fourth Question Fourth Answer");
+        answer4.addQuestion(question);
+        evaluation3.addCorrectAnswer(answer4);
+//        answer4.addCorrectAnswersEvaluations(evaluation);
+        answer4.setEvaluation(evaluation3);
+        answers = Arrays.asList(answer1,answer2,answer3,answer4);
+        question.setAnswers(answers);
+        question.setCorrectAnswer(answer4);
+        answer4.addCorrectAnswerToQuestion(question);
+        evaluation3.addQuestion(question);
+//        question.addEvaluation(evaluation);
+        question.setEvaluation(evaluation3);
+
+        question = new Question();
+        question.setDescription("Fifth Question ?");
+        answer1 = new Answer();
+        answer1.setDescription("Fifth Question First Answer");
+        answer1.addQuestion(question);
+        evaluation3.addCorrectAnswer(answer1);
+//        answer1.addCorrectAnswersEvaluations(evaluation);
+        answer1.setEvaluation(evaluation3);
+        answer2 = new Answer();
+        answer2.setDescription("Fifth Question Second Answer");
+        answer2.addQuestion(question);
+        answer3 = new Answer();
+        answer3.setDescription("Fifth Question Third Answer");
+        answer3.addQuestion(question);
+        answer4 = new Answer();
+        answer4.setDescription("Fifth Question Fourth Answer");
+        answer4.addQuestion(question);
+        answers = Arrays.asList(answer1,answer2,answer3,answer4);
+        question.setAnswers(answers);
+        question.setCorrectAnswer(answer1);
+        answer1.addCorrectAnswerToQuestion(question);
+        evaluation3.addQuestion(question);
+//        question.addEvaluation(evaluation);
+        question.setEvaluation(evaluation3);
+
+        question = new Question();
+        question.setDescription("Sixth Question ?");
+        answer1 = new Answer();
+        answer1.setDescription("Sixth Question First Answer");
+        answer1.addQuestion(question);
+        answer2 = new Answer();
+        answer2.setDescription("Sixth Question Second Answer");
+        answer2.addQuestion(question);
+        evaluation3.addCorrectAnswer(answer2);
+//        answer2.addCorrectAnswersEvaluations(evaluation);
+        answer2.setEvaluation(evaluation3);
+        answer3 = new Answer();
+        answer3.setDescription("Sixth Question Third Answer");
+        answer3.addQuestion(question);
+        answer4 = new Answer();
+        answer4.setDescription("Sixth Question Fourth Answer");
+        answer4.addQuestion(question);
+        answers = Arrays.asList(answer1,answer2,answer3,answer4);
+        question.setAnswers(answers);
+        question.setCorrectAnswer(answer2);
+        answer2.addCorrectAnswerToQuestion(question);
+        evaluation3.addQuestion(question);
+//        question.addEvaluation(evaluation);
+
+        question.setEvaluation(evaluation3);
+
+
+        Evaluation evaluation4 = new Evaluation();
+
+        evaluation4.setCourse(course4);
+        course6.addEvaluation(evaluation4);
+
+        question = new Question();
+        question.setDescription("First Question ?");
+        answer1 = new Answer();
+        answer1.setDescription("First Question First Answer.");
+        answer1.addQuestion(question);
+        evaluation4.addCorrectAnswer(answer1);
+//        answer1.addCorrectAnswersEvaluations(evaluation);
+        answer1.setEvaluation(evaluation4);
+        answer2 = new Answer();
+        answer2.setDescription("First Question Second Answer");
+        answer2.addQuestion(question);
+        answer3 = new Answer();
+        answer3.setDescription("First Question Third Answer");
+        answer3.addQuestion(question);
+        answer4 = new Answer();
+        answer4.setDescription("First Question Fourth Answer");
+        answer4.addQuestion(question);
+        answers = Arrays.asList(answer1,answer2,answer3,answer4);
+        question.setAnswers(answers);
+        question.setCorrectAnswer(answer1);
+        answer1.addCorrectAnswerToQuestion(question);
+        evaluation4.addQuestion(question);
+//        question.addEvaluation(evaluation);
+        question.setEvaluation(evaluation4);
+
+
+        question = new Question();
+        question.setDescription("Second Question ?");
+        answer1 = new Answer();
+        answer1.setDescription("Second Question First Answer");
+        answer1.addQuestion(question);
+        answer2 = new Answer();
+        answer2.setDescription("Second Question Second Answer");
+        answer2.addQuestion(question);
+        evaluation4.addCorrectAnswer(answer2);
+//        answer2.addCorrectAnswersEvaluations(evaluation);
+        answer2.setEvaluation(evaluation4);
+        answer3 = new Answer();
+        answer3.setDescription("Second Question Third Answer");
+        answer3.addQuestion(question);
+        answer4 = new Answer();
+        answer4.setDescription("Second Question Fourth Answer");
+        answer4.addQuestion(question);
+        answers = Arrays.asList(answer1,answer2,answer3,answer4);
+        question.setAnswers(answers);
+        question.setCorrectAnswer(answer2);
+        answer2.addCorrectAnswerToQuestion(question);
+        evaluation4.addQuestion(question);
+//        question.addEvaluation(evaluation);
+        question.setEvaluation(evaluation4);
+
+        question = new Question();
+        question.setDescription("Third Question ?");
+        answer1 = new Answer();
+        answer1.setDescription("Third Question First Answer");
+        answer1.addQuestion(question);
+        answer2 = new Answer();
+        answer2.setDescription("Third Question Second Answer");
+        answer2.addQuestion(question);
+        answer3 = new Answer();
+        answer3.setDescription("Third Question Third Answer");
+        answer3.addQuestion(question);
+        evaluation4.addCorrectAnswer(answer3);
+//        answer3.addCorrectAnswersEvaluations(evaluation);
+        answer3.setEvaluation(evaluation4);
+        answer4 = new Answer();
+        answer4.setDescription("Third Question Fourth Answer");
+        answer4.addQuestion(question);
+        answers = Arrays.asList(answer1,answer2,answer3,answer4);
+        question.setAnswers(answers);
+        question.setCorrectAnswer(answer3);
+        answer3.addCorrectAnswerToQuestion(question);
+        evaluation4.addQuestion(question);
+//        question.addEvaluation(evaluation);
+        question.setEvaluation(evaluation4);
+
+        question = new Question();
+        question.setDescription("Fourth Question ?");
+        answer1 = new Answer();
+        answer1.setDescription("Fourth Question First Answer");
+        answer1.addQuestion(question);
+        answer2 = new Answer();
+        answer2.setDescription("Fourth Question Second Answer");
+        answer2.addQuestion(question);
+        answer3 = new Answer();
+        answer3.setDescription("Fourth Question Third Answer");
+        answer3.addQuestion(question);
+        answer4 = new Answer();
+        answer4.setDescription("Fourth Question Fourth Answer");
+        answer4.addQuestion(question);
+        evaluation4.addCorrectAnswer(answer4);
+//        answer4.addCorrectAnswersEvaluations(evaluation);
+        answer4.setEvaluation(evaluation4);
+        answers = Arrays.asList(answer1,answer2,answer3,answer4);
+        question.setAnswers(answers);
+        question.setCorrectAnswer(answer4);
+        answer4.addCorrectAnswerToQuestion(question);
+        evaluation4.addQuestion(question);
+//        question.addEvaluation(evaluation);
+        question.setEvaluation(evaluation4);
+
+        question = new Question();
+        question.setDescription("Fifth Question ?");
+        answer1 = new Answer();
+        answer1.setDescription("Fifth Question First Answer");
+        answer1.addQuestion(question);
+        evaluation4.addCorrectAnswer(answer1);
+//        answer1.addCorrectAnswersEvaluations(evaluation);
+        answer1.setEvaluation(evaluation4);
+        answer2 = new Answer();
+        answer2.setDescription("Fifth Question Second Answer");
+        answer2.addQuestion(question);
+        answer3 = new Answer();
+        answer3.setDescription("Fifth Question Third Answer");
+        answer3.addQuestion(question);
+        answer4 = new Answer();
+        answer4.setDescription("Fifth Question Fourth Answer");
+        answer4.addQuestion(question);
+        answers = Arrays.asList(answer1,answer2,answer3,answer4);
+        question.setAnswers(answers);
+        question.setCorrectAnswer(answer1);
+        answer1.addCorrectAnswerToQuestion(question);
+        evaluation4.addQuestion(question);
+//        question.addEvaluation(evaluation);
+        question.setEvaluation(evaluation4);
+
+        question = new Question();
+        question.setDescription("Sixth Question ?");
+        answer1 = new Answer();
+        answer1.setDescription("Sixth Question First Answer");
+        answer1.addQuestion(question);
+        answer2 = new Answer();
+        answer2.setDescription("Sixth Question Second Answer");
+        answer2.addQuestion(question);
+        evaluation4.addCorrectAnswer(answer2);
+//        answer2.addCorrectAnswersEvaluations(evaluation);
+        answer2.setEvaluation(evaluation4);
+        answer3 = new Answer();
+        answer3.setDescription("Sixth Question Third Answer");
+        answer3.addQuestion(question);
+        answer4 = new Answer();
+        answer4.setDescription("Sixth Question Fourth Answer");
+        answer4.addQuestion(question);
+        answers = Arrays.asList(answer1,answer2,answer3,answer4);
+        question.setAnswers(answers);
+        question.setCorrectAnswer(answer2);
+        answer2.addCorrectAnswerToQuestion(question);
+        evaluation4.addQuestion(question);
+//        question.addEvaluation(evaluation);
+
+        question.setEvaluation(evaluation4);
+
+
+
+        Evaluation evaluation5 = new Evaluation();
+
+        evaluation5.setCourse(course5);
+        course6.addEvaluation(evaluation5);
+
+        question = new Question();
+        question.setDescription("First Question ?");
+        answer1 = new Answer();
+        answer1.setDescription("First Question First Answer.");
+        answer1.addQuestion(question);
+        evaluation5.addCorrectAnswer(answer1);
+//        answer1.addCorrectAnswersEvaluations(evaluation);
+        answer1.setEvaluation(evaluation5);
+        answer2 = new Answer();
+        answer2.setDescription("First Question Second Answer");
+        answer2.addQuestion(question);
+        answer3 = new Answer();
+        answer3.setDescription("First Question Third Answer");
+        answer3.addQuestion(question);
+        answer4 = new Answer();
+        answer4.setDescription("First Question Fourth Answer");
+        answer4.addQuestion(question);
+        answers = Arrays.asList(answer1,answer2,answer3,answer4);
+        question.setAnswers(answers);
+        question.setCorrectAnswer(answer1);
+        answer1.addCorrectAnswerToQuestion(question);
+        evaluation5.addQuestion(question);
+//        question.addEvaluation(evaluation);
+        question.setEvaluation(evaluation5);
+
+
+        question = new Question();
+        question.setDescription("Second Question ?");
+        answer1 = new Answer();
+        answer1.setDescription("Second Question First Answer");
+        answer1.addQuestion(question);
+        answer2 = new Answer();
+        answer2.setDescription("Second Question Second Answer");
+        answer2.addQuestion(question);
+        evaluation5.addCorrectAnswer(answer2);
+//        answer2.addCorrectAnswersEvaluations(evaluation);
+        answer2.setEvaluation(evaluation5);
+        answer3 = new Answer();
+        answer3.setDescription("Second Question Third Answer");
+        answer3.addQuestion(question);
+        answer4 = new Answer();
+        answer4.setDescription("Second Question Fourth Answer");
+        answer4.addQuestion(question);
+        answers = Arrays.asList(answer1,answer2,answer3,answer4);
+        question.setAnswers(answers);
+        question.setCorrectAnswer(answer2);
+        answer2.addCorrectAnswerToQuestion(question);
+        evaluation5.addQuestion(question);
+//        question.addEvaluation(evaluation);
+        question.setEvaluation(evaluation5);
+
+        question = new Question();
+        question.setDescription("Third Question ?");
+        answer1 = new Answer();
+        answer1.setDescription("Third Question First Answer");
+        answer1.addQuestion(question);
+        answer2 = new Answer();
+        answer2.setDescription("Third Question Second Answer");
+        answer2.addQuestion(question);
+        answer3 = new Answer();
+        answer3.setDescription("Third Question Third Answer");
+        answer3.addQuestion(question);
+        evaluation5.addCorrectAnswer(answer3);
+//        answer3.addCorrectAnswersEvaluations(evaluation);
+        answer3.setEvaluation(evaluation5);
+        answer4 = new Answer();
+        answer4.setDescription("Third Question Fourth Answer");
+        answer4.addQuestion(question);
+        answers = Arrays.asList(answer1,answer2,answer3,answer4);
+        question.setAnswers(answers);
+        question.setCorrectAnswer(answer3);
+        answer3.addCorrectAnswerToQuestion(question);
+        evaluation5.addQuestion(question);
+//        question.addEvaluation(evaluation);
+        question.setEvaluation(evaluation5);
+
+        question = new Question();
+        question.setDescription("Fourth Question ?");
+        answer1 = new Answer();
+        answer1.setDescription("Fourth Question First Answer");
+        answer1.addQuestion(question);
+        answer2 = new Answer();
+        answer2.setDescription("Fourth Question Second Answer");
+        answer2.addQuestion(question);
+        answer3 = new Answer();
+        answer3.setDescription("Fourth Question Third Answer");
+        answer3.addQuestion(question);
+        answer4 = new Answer();
+        answer4.setDescription("Fourth Question Fourth Answer");
+        answer4.addQuestion(question);
+        evaluation5.addCorrectAnswer(answer4);
+//        answer4.addCorrectAnswersEvaluations(evaluation);
+        answer4.setEvaluation(evaluation5);
+        answers = Arrays.asList(answer1,answer2,answer3,answer4);
+        question.setAnswers(answers);
+        question.setCorrectAnswer(answer4);
+        answer4.addCorrectAnswerToQuestion(question);
+        evaluation5.addQuestion(question);
+//        question.addEvaluation(evaluation);
+        question.setEvaluation(evaluation5);
+
+        question = new Question();
+        question.setDescription("Fifth Question ?");
+        answer1 = new Answer();
+        answer1.setDescription("Fifth Question First Answer");
+        answer1.addQuestion(question);
+        evaluation5.addCorrectAnswer(answer1);
+//        answer1.addCorrectAnswersEvaluations(evaluation);
+        answer1.setEvaluation(evaluation5);
+        answer2 = new Answer();
+        answer2.setDescription("Fifth Question Second Answer");
+        answer2.addQuestion(question);
+        answer3 = new Answer();
+        answer3.setDescription("Fifth Question Third Answer");
+        answer3.addQuestion(question);
+        answer4 = new Answer();
+        answer4.setDescription("Fifth Question Fourth Answer");
+        answer4.addQuestion(question);
+        answers = Arrays.asList(answer1,answer2,answer3,answer4);
+        question.setAnswers(answers);
+        question.setCorrectAnswer(answer1);
+        answer1.addCorrectAnswerToQuestion(question);
+        evaluation5.addQuestion(question);
+//        question.addEvaluation(evaluation);
+        question.setEvaluation(evaluation5);
+
+        question = new Question();
+        question.setDescription("Sixth Question ?");
+        answer1 = new Answer();
+        answer1.setDescription("Sixth Question First Answer");
+        answer1.addQuestion(question);
+        answer2 = new Answer();
+        answer2.setDescription("Sixth Question Second Answer");
+        answer2.addQuestion(question);
+        evaluation5.addCorrectAnswer(answer2);
+//        answer2.addCorrectAnswersEvaluations(evaluation);
+        answer2.setEvaluation(evaluation5);
+        answer3 = new Answer();
+        answer3.setDescription("Sixth Question Third Answer");
+        answer3.addQuestion(question);
+        answer4 = new Answer();
+        answer4.setDescription("Sixth Question Fourth Answer");
+        answer4.addQuestion(question);
+        answers = Arrays.asList(answer1,answer2,answer3,answer4);
+        question.setAnswers(answers);
+        question.setCorrectAnswer(answer2);
+        answer2.addCorrectAnswerToQuestion(question);
+        evaluation5.addQuestion(question);
+//        question.addEvaluation(evaluation);
+
+        question.setEvaluation(evaluation5);
+
+
+
+        Evaluation evaluation6 = new Evaluation();
+
+        evaluation6.setCourse(course6);
+        course6.addEvaluation(evaluation6);
+
+        question = new Question();
+        question.setDescription("First Question ?");
+        answer1 = new Answer();
+        answer1.setDescription("First Question First Answer.");
+        answer1.addQuestion(question);
+        evaluation6.addCorrectAnswer(answer1);
+//        answer1.addCorrectAnswersEvaluations(evaluation);
+        answer1.setEvaluation(evaluation6);
+        answer2 = new Answer();
+        answer2.setDescription("First Question Second Answer");
+        answer2.addQuestion(question);
+        answer3 = new Answer();
+        answer3.setDescription("First Question Third Answer");
+        answer3.addQuestion(question);
+        answer4 = new Answer();
+        answer4.setDescription("First Question Fourth Answer");
+        answer4.addQuestion(question);
+        answers = Arrays.asList(answer1,answer2,answer3,answer4);
+        question.setAnswers(answers);
+        question.setCorrectAnswer(answer1);
+        answer1.addCorrectAnswerToQuestion(question);
+        evaluation6.addQuestion(question);
+//        question.addEvaluation(evaluation);
+        question.setEvaluation(evaluation6);
+
+
+        question = new Question();
+        question.setDescription("Second Question ?");
+        answer1 = new Answer();
+        answer1.setDescription("Second Question First Answer");
+        answer1.addQuestion(question);
+        answer2 = new Answer();
+        answer2.setDescription("Second Question Second Answer");
+        answer2.addQuestion(question);
+        evaluation6.addCorrectAnswer(answer2);
+//        answer2.addCorrectAnswersEvaluations(evaluation);
+        answer2.setEvaluation(evaluation6);
+        answer3 = new Answer();
+        answer3.setDescription("Second Question Third Answer");
+        answer3.addQuestion(question);
+        answer4 = new Answer();
+        answer4.setDescription("Second Question Fourth Answer");
+        answer4.addQuestion(question);
+        answers = Arrays.asList(answer1,answer2,answer3,answer4);
+        question.setAnswers(answers);
+        question.setCorrectAnswer(answer2);
+        answer2.addCorrectAnswerToQuestion(question);
+        evaluation6.addQuestion(question);
+//        question.addEvaluation(evaluation);
+        question.setEvaluation(evaluation6);
+
+        question = new Question();
+        question.setDescription("Third Question ?");
+        answer1 = new Answer();
+        answer1.setDescription("Third Question First Answer");
+        answer1.addQuestion(question);
+        answer2 = new Answer();
+        answer2.setDescription("Third Question Second Answer");
+        answer2.addQuestion(question);
+        answer3 = new Answer();
+        answer3.setDescription("Third Question Third Answer");
+        answer3.addQuestion(question);
+        evaluation6.addCorrectAnswer(answer3);
+//        answer3.addCorrectAnswersEvaluations(evaluation);
+        answer3.setEvaluation(evaluation6);
+        answer4 = new Answer();
+        answer4.setDescription("Third Question Fourth Answer");
+        answer4.addQuestion(question);
+        answers = Arrays.asList(answer1,answer2,answer3,answer4);
+        question.setAnswers(answers);
+        question.setCorrectAnswer(answer3);
+        answer3.addCorrectAnswerToQuestion(question);
+        evaluation6.addQuestion(question);
+//        question.addEvaluation(evaluation);
+        question.setEvaluation(evaluation6);
+
+        question = new Question();
+        question.setDescription("Fourth Question ?");
+        answer1 = new Answer();
+        answer1.setDescription("Fourth Question First Answer");
+        answer1.addQuestion(question);
+        answer2 = new Answer();
+        answer2.setDescription("Fourth Question Second Answer");
+        answer2.addQuestion(question);
+        answer3 = new Answer();
+        answer3.setDescription("Fourth Question Third Answer");
+        answer3.addQuestion(question);
+        answer4 = new Answer();
+        answer4.setDescription("Fourth Question Fourth Answer");
+        answer4.addQuestion(question);
+        evaluation6.addCorrectAnswer(answer4);
+//        answer4.addCorrectAnswersEvaluations(evaluation);
+        answer4.setEvaluation(evaluation6);
+        answers = Arrays.asList(answer1,answer2,answer3,answer4);
+        question.setAnswers(answers);
+        question.setCorrectAnswer(answer4);
+        answer4.addCorrectAnswerToQuestion(question);
+        evaluation6.addQuestion(question);
+//        question.addEvaluation(evaluation);
+        question.setEvaluation(evaluation6);
+
+        question = new Question();
+        question.setDescription("Fifth Question ?");
+        answer1 = new Answer();
+        answer1.setDescription("Fifth Question First Answer");
+        answer1.addQuestion(question);
+        evaluation6.addCorrectAnswer(answer1);
+//        answer1.addCorrectAnswersEvaluations(evaluation);
+        answer1.setEvaluation(evaluation6);
+        answer2 = new Answer();
+        answer2.setDescription("Fifth Question Second Answer");
+        answer2.addQuestion(question);
+        answer3 = new Answer();
+        answer3.setDescription("Fifth Question Third Answer");
+        answer3.addQuestion(question);
+        answer4 = new Answer();
+        answer4.setDescription("Fifth Question Fourth Answer");
+        answer4.addQuestion(question);
+        answers = Arrays.asList(answer1,answer2,answer3,answer4);
+        question.setAnswers(answers);
+        question.setCorrectAnswer(answer1);
+        answer1.addCorrectAnswerToQuestion(question);
+        evaluation6.addQuestion(question);
+//        question.addEvaluation(evaluation);
+        question.setEvaluation(evaluation6);
+
+        question = new Question();
+        question.setDescription("Sixth Question ?");
+        answer1 = new Answer();
+        answer1.setDescription("Sixth Question First Answer");
+        answer1.addQuestion(question);
+        answer2 = new Answer();
+        answer2.setDescription("Sixth Question Second Answer");
+        answer2.addQuestion(question);
+        evaluation6.addCorrectAnswer(answer2);
+//        answer2.addCorrectAnswersEvaluations(evaluation);
+        answer2.setEvaluation(evaluation6);
+        answer3 = new Answer();
+        answer3.setDescription("Sixth Question Third Answer");
+        answer3.addQuestion(question);
+        answer4 = new Answer();
+        answer4.setDescription("Sixth Question Fourth Answer");
+        answer4.addQuestion(question);
+        answers = Arrays.asList(answer1,answer2,answer3,answer4);
+        question.setAnswers(answers);
+        question.setCorrectAnswer(answer2);
+        answer2.addCorrectAnswerToQuestion(question);
+        evaluation6.addQuestion(question);
+//        question.addEvaluation(evaluation);
+
+        question.setEvaluation(evaluation6);
 
 //////////////////////////////////////////////////////////////////
 
@@ -435,10 +1244,9 @@ public class DatabaseLoader implements ApplicationRunner{
 
         subject.addAchievement(achievement);
         achievement.setSubject(subject);
-        course.addAchievement(achievement);
-        achievement.setCourse(course);
 
-//        achievementDao.save(achievement);
+        course6.setAchievement(achievement);
+        achievement.setCourse(course6);
 
         achievement = new Achievement();
         achievement.setName("Polymorphism apprentice");
@@ -449,10 +1257,8 @@ public class DatabaseLoader implements ApplicationRunner{
 
         subject.addAchievement(achievement);
         achievement.setSubject(subject);
-        course.addAchievement(achievement);
-        achievement.setCourse(course);
-
-//        achievementDao.save(achievement);
+        course5.setAchievement(achievement);
+        achievement.setCourse(course5);
 
         achievement = new Achievement();
         achievement.setName("Abstraction apprentice");
@@ -463,10 +1269,8 @@ public class DatabaseLoader implements ApplicationRunner{
 
         subject.addAchievement(achievement);
         achievement.setSubject(subject);
-        course.addAchievement(achievement);
-        achievement.setCourse(course);
-
-//        achievementDao.save(achievement);
+        course4.setAchievement(achievement);
+        achievement.setCourse(course4);
 
         achievement = new Achievement();
         achievement.setName("Encapsulation apprentice");
@@ -477,10 +1281,8 @@ public class DatabaseLoader implements ApplicationRunner{
 
         subject.addAchievement(achievement);
         achievement.setSubject(subject);
-        course.addAchievement(achievement);
-        achievement.setCourse(course);
-
-//        achievementDao.save(achievement);
+        course3.setAchievement(achievement);
+        achievement.setCourse(course3);
 
         achievement = new Achievement();
         achievement.setName("Objects apprentice");
@@ -491,10 +1293,8 @@ public class DatabaseLoader implements ApplicationRunner{
 
         subject.addAchievement(achievement);
         achievement.setSubject(subject);
-        course.addAchievement(achievement);
-        achievement.setCourse(course);
-
-//        achievementDao.save(achievement);
+        course2.setAchievement(achievement);
+        achievement.setCourse(course2);
 
         achievement = new Achievement();
         achievement.setName("Classes apprentice");
@@ -502,13 +1302,11 @@ public class DatabaseLoader implements ApplicationRunner{
         achievement.setPoints(350);
         bytes = extractBytes("src/main/resources/static/img/badges/classes.png");
         achievement.setBadge(bytes);
-        course.addAchievement(achievement);
-        achievement.setCourse(course);
 
         subject.addAchievement(achievement);
         achievement.setSubject(subject);
-
-//        achievementDao.save(achievement);
+        course1.setAchievement(achievement);
+        achievement.setCourse(course1);
 
         achievement = new Achievement();
         achievement.setName("Polymorphism apprentice");
@@ -517,11 +1315,8 @@ public class DatabaseLoader implements ApplicationRunner{
         bytes = extractBytes("src/main/resources/static/img/badges/polymorphism.png");
         achievement.setBadge(bytes);
 
-//        achievementDao.save(achievement);
         subject.addAchievement(achievement);
         achievement.setSubject(subject);
-        course.addAchievement(achievement);
-        achievement.setCourse(course);
 
         achievement = new Achievement();
         achievement.setName("Polymorphism apprentice");
@@ -530,12 +1325,8 @@ public class DatabaseLoader implements ApplicationRunner{
         bytes = extractBytes("src/main/resources/static/img/badges/polymorphism.png");
         achievement.setBadge(bytes);
 
-//        achievementDao.save(achievement);
-
         subject.addAchievement(achievement);
         achievement.setSubject(subject);
-        course.addAchievement(achievement);
-        achievement.setCourse(course);
 
         achievement = new Achievement();
         achievement.setName("Polymorphism apprentice");
@@ -544,12 +1335,8 @@ public class DatabaseLoader implements ApplicationRunner{
         bytes = extractBytes("src/main/resources/static/img/badges/polymorphism.png");
         achievement.setBadge(bytes);
 
-//        achievementDao.save(achievement);
-
         subject.addAchievement(achievement);
         achievement.setSubject(subject);
-        course.addAchievement(achievement);
-        achievement.setCourse(course);
 
         achievement = new Achievement();
         achievement.setName("Polymorphism apprentice");
@@ -558,12 +1345,8 @@ public class DatabaseLoader implements ApplicationRunner{
         bytes = extractBytes("src/main/resources/static/img/badges/polymorphism.png");
         achievement.setBadge(bytes);
 
-//        achievementDao.save(achievement);
-
         subject.addAchievement(achievement);
         achievement.setSubject(subject);
-        course.addAchievement(achievement);
-        achievement.setCourse(course);
 
         achievement = new Achievement();
         achievement.setName("Polymorphism apprentice");
@@ -572,12 +1355,8 @@ public class DatabaseLoader implements ApplicationRunner{
         bytes = extractBytes("src/main/resources/static/img/badges/polymorphism.png");
         achievement.setBadge(bytes);
 
-//        achievementDao.save(achievement);
-
         subject.addAchievement(achievement);
         achievement.setSubject(subject);
-        course.addAchievement(achievement);
-        achievement.setCourse(course);
 
         Degree degree = new Degree();
         degree.setName("Object oriented programming master");
@@ -589,15 +1368,11 @@ public class DatabaseLoader implements ApplicationRunner{
         degree.setSubject(subject);
 
 
-//        degreeDao.save(degree);
-
         degree = new Degree();
         degree.setName("Java Web Development");
         degree.setDescription("This is a degree in Java Web Development.");
         bytes = extractBytes("src/main/resources/static/img/degrees/certificate.png");
         degree.setDiploma(bytes);
-
-//        degreeDao.save(degree);
 
         subject.addDegree(degree);
         degree.setSubject(subject);
@@ -608,7 +1383,14 @@ public class DatabaseLoader implements ApplicationRunner{
         bytes = extractBytes("src/main/resources/static/img/degrees/certificate.png");
         degree.setDiploma(bytes);
 
-//        degreeDao.save(degree);
+        subject.addDegree(degree);
+        degree.setSubject(subject);
+
+        degree = new Degree();
+        degree.setName("Java Web Development");
+        degree.setDescription("This is a degree in Java Web Development.");
+        bytes = extractBytes("src/main/resources/static/img/degrees/certificate.png");
+        degree.setDiploma(bytes);
 
         subject.addDegree(degree);
         degree.setSubject(subject);
@@ -619,7 +1401,14 @@ public class DatabaseLoader implements ApplicationRunner{
         bytes = extractBytes("src/main/resources/static/img/degrees/certificate.png");
         degree.setDiploma(bytes);
 
-//        degreeDao.save(degree);
+        subject.addDegree(degree);
+        degree.setSubject(subject);
+
+        degree = new Degree();
+        degree.setName("Java Web Development");
+        degree.setDescription("This is a degree in Java Web Development.");
+        bytes = extractBytes("src/main/resources/static/img/degrees/certificate.png");
+        degree.setDiploma(bytes);
 
         subject.addDegree(degree);
         degree.setSubject(subject);
@@ -630,7 +1419,14 @@ public class DatabaseLoader implements ApplicationRunner{
         bytes = extractBytes("src/main/resources/static/img/degrees/certificate.png");
         degree.setDiploma(bytes);
 
-//        degreeDao.save(degree);
+        subject.addDegree(degree);
+        degree.setSubject(subject);
+
+        degree = new Degree();
+        degree.setName("Java Web Development");
+        degree.setDescription("This is a degree in Java Web Development.");
+        bytes = extractBytes("src/main/resources/static/img/degrees/certificate.png");
+        degree.setDiploma(bytes);
 
         subject.addDegree(degree);
         degree.setSubject(subject);
@@ -641,8 +1437,6 @@ public class DatabaseLoader implements ApplicationRunner{
         bytes = extractBytes("src/main/resources/static/img/degrees/certificate.png");
         degree.setDiploma(bytes);
 
-//        degreeDao.save(degree);
-
         subject.addDegree(degree);
         degree.setSubject(subject);
 
@@ -651,41 +1445,6 @@ public class DatabaseLoader implements ApplicationRunner{
         degree.setDescription("This is a degree in Java Web Development.");
         bytes = extractBytes("src/main/resources/static/img/degrees/certificate.png");
         degree.setDiploma(bytes);
-
-//        degreeDao.save(degree);
-
-        subject.addDegree(degree);
-        degree.setSubject(subject);
-
-        degree = new Degree();
-        degree.setName("Java Web Development");
-        degree.setDescription("This is a degree in Java Web Development.");
-        bytes = extractBytes("src/main/resources/static/img/degrees/certificate.png");
-        degree.setDiploma(bytes);
-
-//        degreeDao.save(degree);
-
-        subject.addDegree(degree);
-        degree.setSubject(subject);
-
-        degree = new Degree();
-        degree.setName("Java Web Development");
-        degree.setDescription("This is a degree in Java Web Development.");
-        bytes = extractBytes("src/main/resources/static/img/degrees/certificate.png");
-        degree.setDiploma(bytes);
-
-//        degreeDao.save(degree);
-
-        subject.addDegree(degree);
-        degree.setSubject(subject);
-
-        degree = new Degree();
-        degree.setName("Java Web Development");
-        degree.setDescription("This is a degree in Java Web Development.");
-        bytes = extractBytes("src/main/resources/static/img/degrees/certificate.png");
-        degree.setDiploma(bytes);
-
-//        degreeDao.save(degree);
 
         subject.addDegree(degree);
         degree.setSubject(subject);

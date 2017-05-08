@@ -94,6 +94,7 @@ public class EvaluationController {
         List<Course> courses = courseService.findAllCourses();
         model.addAttribute("evaluation", new Evaluation());
         model.addAttribute("courses", courses);
+        model.addAttribute("questions", questionService.findAllQuestions());
         return "evaluation/create";
     }
 
@@ -107,7 +108,8 @@ public class EvaluationController {
     public String questionForm(@PathVariable Long evaluationId, Model model){
         Evaluation evaluation = evaluationService.findEvaluationById(evaluationId);
         Question question = new Question();
-        question.addEvaluation(evaluation);
+//        question.addEvaluation(evaluation);
+        question.setEvaluation(evaluation);
 //        evaluation.addQuestion(question);
         model.addAttribute("question", question);
         return "question/create";
@@ -116,7 +118,8 @@ public class EvaluationController {
     @RequestMapping(value = "/questions/create-question", method = RequestMethod.POST)
     public String createQuestion(Question question){
         question.getAnswers().remove(0);
-        Evaluation evaluation = question.getEvaluations().get(0);
+//        Evaluation evaluation = question.getEvaluations().get(0);
+        Evaluation evaluation = question.getEvaluation();
         evaluation.addQuestion(question);
         questionService.save(question);
         return String.format("redirect:/questions/%s/correct-answer-choice-page", question.getId());
@@ -131,12 +134,42 @@ public class EvaluationController {
 
     @RequestMapping(value = "/questions/choose-correct-answer", method = RequestMethod.POST)
     public String chooseCorrectAnswer(Question question){
-        Evaluation evaluation = question.getEvaluations().get(0);
+//        Evaluation evaluation = question.getEvaluations().get(0);
+        Evaluation evaluation = question.getEvaluation();
         questionService.save(question);
-        evaluation.addCorrectAnswer(question.getAnswer());
+        evaluation.addCorrectAnswer(question.getCorrectAnswer());
         evaluationService.save(evaluation);
 
         return String.format("redirect:/evaluations/%s/evaluation-page", evaluation.getId());
+    }
+
+    @RequestMapping(value = "/questions/{questionId}/delete-question", method = RequestMethod.POST)
+    public String deleteQuestion(@PathVariable Long questionId){
+        Question question = questionService.findQuestionById(questionId);
+        Evaluation evaluation = question.getEvaluation();
+        List<Answer> answers = question.getAnswers();
+
+        for(Answer answer : answers){
+            evaluation.getCorrectAnswers().remove(answer);
+        }
+
+        questionService.delete(question);
+
+        return String.format("redirect:/evaluations/%s/evaluation-page", evaluation.getId());
+    }
+
+    @RequestMapping("/questions/{questionId}/question-edit-form")
+    public String editQuestionForm(@PathVariable Long questionId, Model model){
+        Question question = questionService.findQuestionById(questionId);
+        model.addAttribute("question", question);
+        return "question/edit";
+    }
+
+    @RequestMapping(value = "/questions/edit-question", method = RequestMethod.POST)
+    public String editQuestion(Question question){
+        questionService.save(question);
+
+        return String.format("redirect:/evaluations/%s/evaluation-page", question.getEvaluation().getId());
     }
 
 }

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="layout :: head"></head>
+<body>
+<header th:replace="layout :: header"></header>
+<section th:replace="layout :: banner"></section>
+<section id="courseArchive">
+    <div class="container">
+        <div class="row">
+            <!-- start course content -->
+            <div class="col-lg-8 col-md-8 col-sm-8">
+                <div class="courseArchive_content">
+                    <!-- start blog archive  -->
+                    <div class="row">
+                        <h1 class="blog_title2" style="margin-top: 50px;
+                            margin-bottom: 50px;">Edit Question:</h1>
+                        <!-- start single blog -->
+                        <div class="col-lg-8 col-8 col-sm-8">
+                            <div class="single_blog">
+                                <form th:action="@{/questions/edit-question}" method="post" th:object="${question}" class="submitphoto_form">
+                                    <input type="hidden" th:field="*{id}"/>
+                                    <input type="hidden" th:field="*{evaluation}"/>
+
+                                    <div class="question-row">
+                                        <div>
+                                            <p>
+                                                <input th:field="*{description}" class="wp-form-control wpcf7-text"/>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <!--<h3 class="blog_title2">Correct answer:</h3>-->
+<!---->
+                                    <!--<div class="answer-row">-->
+                                        <!--<div>-->
+                                            <!--<p>-->
+                                                <!--<input th:field="*{correctAnswer.description}" class="wp-form-control wpcf7-text" readonly="readonly"-->
+                                                    <!--style="background-color: gray"/>-->
+                                            <!--</p>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+
+                                    <h3 class="blog_title2">Answers:</h3>
+
+                                    <ul>
+                                        <li th:each="answer : *{answers}">
+                                            <input type="hidden" th:field="*{answers[__${answerStat.index}__].id}" />
+                                            <input th:field="*{answers[__${answerStat.index}__].description}" class="wp-form-control wpcf7-text"/>
+                                        </li>
+                                    </ul><br/>
+
+
+                                    <input type="submit" value="Edit Question" class="wpcf7-submit"/>
+
+                                </form><br/><br/>
+
+                                <form th:action="@{|/questions/${question.id}/delete-question|}" method="post">
+                                    <input type="submit" value="Delete Question" class="wpcf7-submit"/>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--</div>-->
+                    <!-- End single blog -->
+                    <!--</div>-->
+
+                    <!-- end blog archive  -->
+                </div>
+            </div>
+            <!-- End course content -->
+        </div>
+    </div>
+    <!-- start course archive sidebar -->
+</section>
+
+<footer th:replace="layout :: footer"></footer>
+<div th:replace="layout :: javascript-files"></div>
+</body>
+</html>
+

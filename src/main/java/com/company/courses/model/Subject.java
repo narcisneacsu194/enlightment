@@ -79,6 +79,10 @@ public class Subject {
         this.achievements.add(achievement);
     }
 
+    public void removeAchievement(Achievement achievement){
+        achievements.remove(achievement);
+    }
+
     public List<Degree> getDegrees() {
         return degrees;
     }
@@ -91,6 +95,10 @@ public class Subject {
         this.degrees.add(degree);
     }
 
+    public void removeDegree(Degree degree){
+        degrees.remove(degree);
+    }
+
     public List<Course> getCourses() {
         return courses;
     }
@@ -101,5 +109,9 @@ public class Subject {
 
     public void addCourse(Course course){
         this.courses.add(course);
+    }
+
+    public void removeCourse(Course course){
+        this.courses.remove(course);
     }
 }

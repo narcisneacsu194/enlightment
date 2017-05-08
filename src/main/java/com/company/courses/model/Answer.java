@@ -12,14 +12,15 @@ public class Answer {
 
     private String description;
 
-    @ManyToMany(mappedBy = "answers", cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "answers")
     private List<Question> questions = new ArrayList<>();
 
-    @ManyToMany(mappedBy = "userAnswers", cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "userAnswers")
     private List<Evaluation> userAnswersEvaluations = new ArrayList<>();
 
-    @ManyToMany(mappedBy = "correctAnswers", cascade = CascadeType.ALL)
-    private List<Evaluation> correctAnswersEvaluations = new ArrayList<>();
+    @ManyToOne
+    private Evaluation evaluation;
+//    private List<Evaluation> correctAnswersEvaluations = new ArrayList<>();
 
 //    @ManyToMany( cascade = CascadeType.ALL)
 //    @JoinTable(name = "question_correct_answer",
@@ -27,7 +28,7 @@ public class Answer {
 //            inverseJoinColumns = @JoinColumn(name = "question_id"))
 //    private List<Question> correctAnswersQuestions = new ArrayList<>();
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany
     private List<Question> correctAnswerToQuestions = new ArrayList<>();
 
     public Answer(){}
@@ -72,17 +73,17 @@ public class Answer {
         userAnswersEvaluations.add(evaluation);
     }
 
-    public List<Evaluation> getCorrectAnswersEvaluations() {
-        return correctAnswersEvaluations;
-    }
-
-    public void setCorrectAnswersEvaluations(List<Evaluation> correctAnswersEvaluations) {
-        this.correctAnswersEvaluations = correctAnswersEvaluations;
-    }
-
-    public void addCorrectAnswersEvaluations(Evaluation evaluation){
-        correctAnswersEvaluations.add(evaluation);
-    }
+//    public List<Evaluation> getCorrectAnswersEvaluations() {
+//        return correctAnswersEvaluations;
+//    }
+//
+//    public void setCorrectAnswersEvaluations(List<Evaluation> correctAnswersEvaluations) {
+//        this.correctAnswersEvaluations = correctAnswersEvaluations;
+//    }
+//
+//    public void addCorrectAnswersEvaluations(Evaluation evaluation){
+//        correctAnswersEvaluations.add(evaluation);
+//    }
 
     public List<Question> getCorrectAnswerToQuestions() {
         return correctAnswerToQuestions;
@@ -94,6 +95,14 @@ public class Answer {
 
     public void addCorrectAnswerToQuestion(Question question){
         correctAnswerToQuestions.add(question);
+    }
+
+    public Evaluation getEvaluation() {
+        return evaluation;
+    }
+
+    public void setEvaluation(Evaluation evaluation) {
+        this.evaluation = evaluation;
     }
 
 

@@ -19,7 +19,7 @@
                             <div class="single_blog">
                                 <form th:action="@{/questions/create-question}" method="post" th:object="${question}" enctype="multipart/form-data" class="submitphoto_form" >
 
-                                    <input type="hidden" th:field="*{evaluations}"/>
+                                    <input type="hidden" th:field="*{evaluation}"/>
 
                                     <div class="question-row">
                                         <div>
@@ -31,7 +31,7 @@
 
                                     <h2 class="blog_title2">Answers:</h2>
 
-                                    <div class="answer-row" style="margin-left: 50px;">
+                                    <div class="correctAnswer-row" style="margin-left: 50px;">
                                         <div>
                                             <p>
                                                 <input id="answers1.description" name="answers[1].description" class="wp-form-control wpcf7-text" placeholder="answer..."/>
@@ -39,7 +39,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="answer-row" style="margin-left: 50px;">
+                                    <div class="correctAnswer-row" style="margin-left: 50px;">
                                         <div>
                                             <p>
                                                 <input id="answers2.description" name="answers[2].description" class="wp-form-control wpcf7-text" placeholder="answer..."/>
@@ -47,7 +47,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="answer-row" style="margin-left: 50px;">
+                                    <div class="correctAnswer-row" style="margin-left: 50px;">
                                         <div>
                                             <p>
                                                 <input id="answers3.description" name="answers[3].description" class="wp-form-control wpcf7-text" placeholder="answer..."/>
@@ -55,7 +55,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="answer-row" style="margin-left: 50px;">
+                                    <div class="correctAnswer-row" style="margin-left: 50px;">
                                         <div>
                                             <p>
                                                 <input id="answers4.description" name="answers[4].description" class="wp-form-control wpcf7-text" placeholder="answer..."/>
