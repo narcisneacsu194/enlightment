@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -26,8 +27,8 @@ public class ChapterController {
         Chapter chapter = chapterService.findChapterById(chapterId);
         Course course = chapter.getCourse();
         List<Chapter> chapters = course.getChapters();
-        List<Chapter> previousChapters = chapters.subList(0, (int)(chapter.getId()-1));// 0 1 2
-        List<Chapter> nextChapters = chapters.subList(chapter.getId().intValue(), chapters.size());
+        List<Chapter> previousChapters = chapters.subList(0, chapters.indexOf(chapter));
+        List<Chapter> nextChapters = chapters.subList(chapters.indexOf(chapter)+1, chapters.size());
 
         model.addAttribute("chapter", chapter);
         model.addAttribute("course", course);
@@ -49,6 +50,15 @@ public class ChapterController {
 
     @RequestMapping(value = "/chapters/{chapterId}/edit-chapter", method = RequestMethod.POST)
     public String editChapter(Chapter chapter, @RequestParam MultipartFile file){
+        for(Course course : courseService.findAllCourses()){
+            if(course.getChapters().contains(chapter)){
+                course.getChapters().remove(chapter);
+                break;
+            }
+        }
+
+        chapter.getCourse().addChapter(chapter);
+
         chapterService.save(chapter, file);
 
         return String.format("redirect:/chapters/%s/detail", chapter.getId());
@@ -68,5 +78,21 @@ public class ChapterController {
     @ResponseBody
     public byte[] chapterImage(@PathVariable Long chapterId){
         return chapterService.findChapterById(chapterId).getImage();
+    }
+
+    @RequestMapping("/chapters/chapter-form")
+    public String chapterForm(Model model){
+        model.addAttribute("chapter", new Chapter());
+        model.addAttribute("courses", courseService.findAllCourses());
+
+        return "chapter/create";
+    }
+
+    @RequestMapping(value = "/chapters/create-chapter", method = RequestMethod.POST)
+    public String createChapter(Chapter chapter, @RequestParam MultipartFile file){
+        chapter.getCourse().addChapter(chapter);
+        chapterService.save(chapter, file);
+
+        return String.format("redirect:/chapters/%s/detail", chapter.getId());
     }
 }

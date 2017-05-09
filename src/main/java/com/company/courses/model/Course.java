@@ -23,10 +23,10 @@ public class Course {
 //    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
 //    private List<Achievement> achievements = new ArrayList<>();
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.MERGE)
     private Achievement achievement;
 
-    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "course", cascade = CascadeType.MERGE)
     private List<Chapter> chapters = new ArrayList<>();
 
     @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)

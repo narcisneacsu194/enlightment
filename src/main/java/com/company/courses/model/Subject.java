@@ -26,13 +26,13 @@ public class Subject {
 
     }
 
-    @OneToMany(mappedBy = "subject", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "subject")
     private List<Achievement> achievements = new ArrayList<>();
 
-    @OneToMany(mappedBy = "subject", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "subject")
     private List<Degree> degrees = new ArrayList<>();
 
-    @OneToMany(mappedBy = "subject", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "subject", cascade = CascadeType.PERSIST)
     private List<Course> courses = new ArrayList<>();
 
     public Long getId() {

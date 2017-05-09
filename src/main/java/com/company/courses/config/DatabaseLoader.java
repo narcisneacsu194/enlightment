@@ -164,6 +164,9 @@ public class DatabaseLoader implements ApplicationRunner{
         subject.addCourse(course1);
         course1.setSubject(subject);
 
+//        subjectDao.save(subject);
+//        courseDao.save(course1);
+
         Course course2 = new Course();
         course2.setName("Polymorphism");
         course2.setDescription("Polymorphism is the ability of an object to take on many forms. The most common use of polymorphism in OOP occurs when a parent class reference is used to refer to a child class object.\n" +
@@ -182,6 +185,9 @@ public class DatabaseLoader implements ApplicationRunner{
 
         subject.addCourse(course2);
         course2.setSubject(subject);
+
+//        subjectDao.save(subject);
+//        courseDao.save(course2);
 
 
         Course course3 = new Course();
@@ -202,6 +208,9 @@ public class DatabaseLoader implements ApplicationRunner{
         subject.addCourse(course3);
         course3.setSubject(subject);
 
+//        subjectDao.save(subject);
+//        courseDao.save(course3);
+
 
         Course course4 = new Course();
         course4.setName("Abstraction");
@@ -212,6 +221,9 @@ public class DatabaseLoader implements ApplicationRunner{
 
         subject.addCourse(course4);
         course4.setSubject(subject);
+
+//        subjectDao.save(subject);
+//        courseDao.save(course4);
 
 
         Course course5 = new Course();
@@ -228,6 +240,9 @@ public class DatabaseLoader implements ApplicationRunner{
         subject.addCourse(course5);
         course5.setSubject(subject);
 
+//        subjectDao.save(subject);
+//        courseDao.save(course5);
+
 
         Course course6 = new Course();
         course6.setName("Object");
@@ -242,6 +257,9 @@ public class DatabaseLoader implements ApplicationRunner{
 
         subject.addCourse(course6);
         course6.setSubject(subject);
+
+//        subjectDao.save(subject);
+//        courseDao.save(course6);
 //////////////////////////////////////////////////////////////////
 
         Chapter chapter = new Chapter();
@@ -1245,8 +1263,13 @@ public class DatabaseLoader implements ApplicationRunner{
         subject.addAchievement(achievement);
         achievement.setSubject(subject);
 
+        subjectDao.save(subject);
+        achievementDao.save(achievement);
+
         course6.setAchievement(achievement);
         achievement.setCourse(course6);
+
+        courseDao.save(course6);
 
         achievement = new Achievement();
         achievement.setName("Polymorphism apprentice");
@@ -1257,8 +1280,15 @@ public class DatabaseLoader implements ApplicationRunner{
 
         subject.addAchievement(achievement);
         achievement.setSubject(subject);
+
+        subjectDao.save(subject);
+        achievementDao.save(achievement);
+
         course5.setAchievement(achievement);
         achievement.setCourse(course5);
+
+        courseDao.save(course5);
+
 
         achievement = new Achievement();
         achievement.setName("Abstraction apprentice");
@@ -1269,8 +1299,15 @@ public class DatabaseLoader implements ApplicationRunner{
 
         subject.addAchievement(achievement);
         achievement.setSubject(subject);
+
+        subjectDao.save(subject);
+        achievementDao.save(achievement);
+
         course4.setAchievement(achievement);
         achievement.setCourse(course4);
+
+        courseDao.save(course4);
+
 
         achievement = new Achievement();
         achievement.setName("Encapsulation apprentice");
@@ -1281,8 +1318,14 @@ public class DatabaseLoader implements ApplicationRunner{
 
         subject.addAchievement(achievement);
         achievement.setSubject(subject);
+
+        subjectDao.save(subject);
+        achievementDao.save(achievement);
+
         course3.setAchievement(achievement);
         achievement.setCourse(course3);
+
+        courseDao.save(course3);
 
         achievement = new Achievement();
         achievement.setName("Objects apprentice");
@@ -1293,8 +1336,14 @@ public class DatabaseLoader implements ApplicationRunner{
 
         subject.addAchievement(achievement);
         achievement.setSubject(subject);
+
+        subjectDao.save(subject);
+        achievementDao.save(achievement);
+
         course2.setAchievement(achievement);
         achievement.setCourse(course2);
+
+        courseDao.save(course2);
 
         achievement = new Achievement();
         achievement.setName("Classes apprentice");
@@ -1305,58 +1354,14 @@ public class DatabaseLoader implements ApplicationRunner{
 
         subject.addAchievement(achievement);
         achievement.setSubject(subject);
+
+        subjectDao.save(subject);
+        achievementDao.save(achievement);
+
         course1.setAchievement(achievement);
         achievement.setCourse(course1);
 
-        achievement = new Achievement();
-        achievement.setName("Polymorphism apprentice");
-        achievement.setDescription("By earning this badge, you started the journey of learning about polymorphism.");
-        achievement.setPoints(350);
-        bytes = extractBytes("src/main/resources/static/img/badges/polymorphism.png");
-        achievement.setBadge(bytes);
-
-        subject.addAchievement(achievement);
-        achievement.setSubject(subject);
-
-        achievement = new Achievement();
-        achievement.setName("Polymorphism apprentice");
-        achievement.setDescription("By earning this badge, you started the journey of learning about polymorphism.");
-        achievement.setPoints(350);
-        bytes = extractBytes("src/main/resources/static/img/badges/polymorphism.png");
-        achievement.setBadge(bytes);
-
-        subject.addAchievement(achievement);
-        achievement.setSubject(subject);
-
-        achievement = new Achievement();
-        achievement.setName("Polymorphism apprentice");
-        achievement.setDescription("By earning this badge, you started the journey of learning about polymorphism.");
-        achievement.setPoints(350);
-        bytes = extractBytes("src/main/resources/static/img/badges/polymorphism.png");
-        achievement.setBadge(bytes);
-
-        subject.addAchievement(achievement);
-        achievement.setSubject(subject);
-
-        achievement = new Achievement();
-        achievement.setName("Polymorphism apprentice");
-        achievement.setDescription("By earning this badge, you started the journey of learning about polymorphism.");
-        achievement.setPoints(350);
-        bytes = extractBytes("src/main/resources/static/img/badges/polymorphism.png");
-        achievement.setBadge(bytes);
-
-        subject.addAchievement(achievement);
-        achievement.setSubject(subject);
-
-        achievement = new Achievement();
-        achievement.setName("Polymorphism apprentice");
-        achievement.setDescription("By earning this badge, you started the journey of learning about polymorphism.");
-        achievement.setPoints(350);
-        bytes = extractBytes("src/main/resources/static/img/badges/polymorphism.png");
-        achievement.setBadge(bytes);
-
-        subject.addAchievement(achievement);
-        achievement.setSubject(subject);
+        courseDao.save(course1);
 
         Degree degree = new Degree();
         degree.setName("Object oriented programming master");
@@ -1367,78 +1372,9 @@ public class DatabaseLoader implements ApplicationRunner{
         subject.addDegree(degree);
         degree.setSubject(subject);
 
+        subjectDao.save(subject);
+        degreeDao.save(degree);
 
-        degree = new Degree();
-        degree.setName("Java Web Development");
-        degree.setDescription("This is a degree in Java Web Development.");
-        bytes = extractBytes("src/main/resources/static/img/degrees/certificate.png");
-        degree.setDiploma(bytes);
-
-        subject.addDegree(degree);
-        degree.setSubject(subject);
-
-        degree = new Degree();
-        degree.setName("Java Web Development");
-        degree.setDescription("This is a degree in Java Web Development.");
-        bytes = extractBytes("src/main/resources/static/img/degrees/certificate.png");
-        degree.setDiploma(bytes);
-
-        subject.addDegree(degree);
-        degree.setSubject(subject);
-
-        degree = new Degree();
-        degree.setName("Java Web Development");
-        degree.setDescription("This is a degree in Java Web Development.");
-        bytes = extractBytes("src/main/resources/static/img/degrees/certificate.png");
-        degree.setDiploma(bytes);
-
-        subject.addDegree(degree);
-        degree.setSubject(subject);
-
-        degree = new Degree();
-        degree.setName("Java Web Development");
-        degree.setDescription("This is a degree in Java Web Development.");
-        bytes = extractBytes("src/main/resources/static/img/degrees/certificate.png");
-        degree.setDiploma(bytes);
-
-        subject.addDegree(degree);
-        degree.setSubject(subject);
-
-        degree = new Degree();
-        degree.setName("Java Web Development");
-        degree.setDescription("This is a degree in Java Web Development.");
-        bytes = extractBytes("src/main/resources/static/img/degrees/certificate.png");
-        degree.setDiploma(bytes);
-
-        subject.addDegree(degree);
-        degree.setSubject(subject);
-
-        degree = new Degree();
-        degree.setName("Java Web Development");
-        degree.setDescription("This is a degree in Java Web Development.");
-        bytes = extractBytes("src/main/resources/static/img/degrees/certificate.png");
-        degree.setDiploma(bytes);
-
-        subject.addDegree(degree);
-        degree.setSubject(subject);
-
-        degree = new Degree();
-        degree.setName("Java Web Development");
-        degree.setDescription("This is a degree in Java Web Development.");
-        bytes = extractBytes("src/main/resources/static/img/degrees/certificate.png");
-        degree.setDiploma(bytes);
-
-        subject.addDegree(degree);
-        degree.setSubject(subject);
-
-        degree = new Degree();
-        degree.setName("Java Web Development");
-        degree.setDescription("This is a degree in Java Web Development.");
-        bytes = extractBytes("src/main/resources/static/img/degrees/certificate.png");
-        degree.setDiploma(bytes);
-
-        subject.addDegree(degree);
-        degree.setSubject(subject);
 
         degree = new Degree();
         degree.setName("Java Web Development");
@@ -1450,6 +1386,105 @@ public class DatabaseLoader implements ApplicationRunner{
         degree.setSubject(subject);
 
         subjectDao.save(subject);
+        degreeDao.save(degree);
+
+        degree = new Degree();
+        degree.setName("Java Web Development");
+        degree.setDescription("This is a degree in Java Web Development.");
+        bytes = extractBytes("src/main/resources/static/img/degrees/certificate.png");
+        degree.setDiploma(bytes);
+
+        subject.addDegree(degree);
+        degree.setSubject(subject);
+
+        subjectDao.save(subject);
+        degreeDao.save(degree);
+
+        degree = new Degree();
+        degree.setName("Java Web Development");
+        degree.setDescription("This is a degree in Java Web Development.");
+        bytes = extractBytes("src/main/resources/static/img/degrees/certificate.png");
+        degree.setDiploma(bytes);
+
+        subject.addDegree(degree);
+        degree.setSubject(subject);
+
+        subjectDao.save(subject);
+        degreeDao.save(degree);
+
+        degree = new Degree();
+        degree.setName("Java Web Development");
+        degree.setDescription("This is a degree in Java Web Development.");
+        bytes = extractBytes("src/main/resources/static/img/degrees/certificate.png");
+        degree.setDiploma(bytes);
+
+        subject.addDegree(degree);
+        degree.setSubject(subject);
+
+        subjectDao.save(subject);
+        degreeDao.save(degree);
+
+        degree = new Degree();
+        degree.setName("Java Web Development");
+        degree.setDescription("This is a degree in Java Web Development.");
+        bytes = extractBytes("src/main/resources/static/img/degrees/certificate.png");
+        degree.setDiploma(bytes);
+
+        subject.addDegree(degree);
+        degree.setSubject(subject);
+
+        subjectDao.save(subject);
+        degreeDao.save(degree);
+
+        degree = new Degree();
+        degree.setName("Java Web Development");
+        degree.setDescription("This is a degree in Java Web Development.");
+        bytes = extractBytes("src/main/resources/static/img/degrees/certificate.png");
+        degree.setDiploma(bytes);
+
+        subject.addDegree(degree);
+        degree.setSubject(subject);
+
+        subjectDao.save(subject);
+        degreeDao.save(degree);
+
+        degree = new Degree();
+        degree.setName("Java Web Development");
+        degree.setDescription("This is a degree in Java Web Development.");
+        bytes = extractBytes("src/main/resources/static/img/degrees/certificate.png");
+        degree.setDiploma(bytes);
+
+        subject.addDegree(degree);
+        degree.setSubject(subject);
+
+        subjectDao.save(subject);
+        degreeDao.save(degree);
+
+        degree = new Degree();
+        degree.setName("Java Web Development");
+        degree.setDescription("This is a degree in Java Web Development.");
+        bytes = extractBytes("src/main/resources/static/img/degrees/certificate.png");
+        degree.setDiploma(bytes);
+
+        subject.addDegree(degree);
+        degree.setSubject(subject);
+
+        subjectDao.save(subject);
+        degreeDao.save(degree);
+
+        degree = new Degree();
+        degree.setName("Java Web Development");
+        degree.setDescription("This is a degree in Java Web Development.");
+        bytes = extractBytes("src/main/resources/static/img/degrees/certificate.png");
+        degree.setDiploma(bytes);
+
+        subject.addDegree(degree);
+        degree.setSubject(subject);
+
+        subjectDao.save(subject);
+        degreeDao.save(degree);
+
+//        subjectDao.save(subject);
 
     }
 

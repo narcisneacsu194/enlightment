@@ -62,6 +62,17 @@ public class AchievementController {
 
     @RequestMapping(value = "/achievements/create-achievement", method = RequestMethod.POST)
     public String createAchievement(Achievement achievement, @RequestParam MultipartFile file){
+//        for(Course course : courseService.findAllCourses()){
+//            if(course.getAchievement() != null &&
+//                    course.getAchievement().getId().equals(achievement.getId())){
+//                course.setAchievement(null);
+//            }
+//        }
+        if(achievement.getCourse().getAchievement() != null){
+            achievement.getCourse().getAchievement().setCourse(null);
+        }
+
+        achievement.getCourse().setAchievement(achievement);
         achievementService.save(achievement, file);
 
         return String.format("redirect:/achievements/%s/detail", achievement.getId());
@@ -70,6 +81,9 @@ public class AchievementController {
     @RequestMapping(value = "/achievements/{achievementId}/delete-achievement", method = RequestMethod.POST)
     public String deleteAchievement(@PathVariable Long achievementId){
         Achievement achievement = achievementService.findAchievementById(achievementId);
+        if(achievement.getCourse() != null){
+            achievement.getCourse().setAchievement(null);
+        }
 
         achievementService.delete(achievement);
 
@@ -91,7 +105,19 @@ public class AchievementController {
 
     @RequestMapping(value = "/achievements/{achievementId}/edit-achievement", method = RequestMethod.POST)
     public String editAchievement(Achievement achievement, @RequestParam MultipartFile file){
+        Achievement achievement1 = achievement.getCourse().getAchievement();
+        if(achievement1 != null){
+            achievement1.setCourse(null);
+        }
 
+        for(Course course : courseService.findAllCourses()){
+            if(course.getAchievement() != null && course.getAchievement().getId().equals(achievement.getId())){
+                course.setAchievement(null);
+            }
+        }
+
+        Course course = achievement.getCourse(); // course = encapsulation
+        course.setAchievement(achievement);
         achievementService.save(achievement, file);
 
         return String.format("redirect:/achievements/%s/detail", achievement.getId());

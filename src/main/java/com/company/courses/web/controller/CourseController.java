@@ -65,13 +65,12 @@ public class CourseController {
 
     @RequestMapping(value = "/courses/create-course", method = RequestMethod.POST)
     public String createCourse(Course course, @RequestParam MultipartFile file){
-//        List<Achievement> achievements = course.getAchievements();
         Achievement achievement = course.getAchievement();
+        Course course2 = achievement.getCourse();
+        if(course2 != null){
+            course2.setAchievement(null);
+        }
         achievement.setCourse(course);
-
-//        for(Achievement achievement : achievements){
-//            achievement.setCourse(course);
-//        }
 
         Evaluation evaluation = new Evaluation();
         evaluation.setCourse(course);
@@ -85,6 +84,10 @@ public class CourseController {
     @RequestMapping(value = "/courses/{courseId}/delete-course", method = RequestMethod.POST)
     public String deleteCourse(@PathVariable Long courseId){
         Course course = courseService.findCourseById(courseId);
+        Achievement achievement = course.getAchievement();
+        if(achievement != null){
+            achievement.setCourse(null);
+        }
         courseService.delete(course);
 
         return "redirect:/courses";
@@ -105,13 +108,21 @@ public class CourseController {
 
     @RequestMapping(value = "/courses/{coursesId}/edit-course", method = RequestMethod.POST)
     public String editCourse(Course course, @RequestParam MultipartFile file){
-//        List<Achievement> achievements = course.getAchievements();
+        // Course Inherintence -> Initially Classes (achievement), after that Inheritence
         Achievement achievement = course.getAchievement();
-        achievement.setCourse(course);
+        // Achievement Inheritence -> Initially Object (course), after that Inheritence
+        Course course2 = achievement.getCourse();
+        if(course2 != null){
+            course2.setAchievement(null);
+        }
 
-//        for(Achievement achievement : achievements){
-//            achievement.setCourse(course);
-//        }
+        for(Achievement achievement1 : achievementService.findAllAchievements()){
+            if(achievement1.getCourse() != null && achievement1.getCourse().getId().equals(course.getId())){
+                achievement1.setCourse(null);
+            }
+        }
+
+        achievement.setCourse(course);
 
         courseService.save(course, file);
 

@@ -13,25 +13,15 @@
                     <!-- start blog archive  -->
                     <div class="row">
                         <h2 class="blog_title2" style="margin-top: 50px;
-                            margin-bottom: 50px;">Edit Achievement:</h2>
+                            margin-bottom: 50px;">Create Chapter:</h2>
                         <!-- start single blog -->
                         <div class="col-lg-12 col-12 col-sm-12">
                             <div class="single_blog">
-                                <form th:action="@{|/achievements/${achievement.id}/edit-achievement|}" method="post" th:object="${achievement}" enctype="multipart/form-data" class="submitphoto_form" >
-                                    <input type="hidden" th:field="*{id}"/>
-                                    <input type="text" class="wp-form-control wpcf7-text" th:field="*{name}" placeholder="Name"/>
-                                    <textarea class="wp-form-control wpcf7-textarea" th:field="*{description}" cols="30" rows="10" placeholder="Description"></textarea>
-                                    <input type="text" class="wp-form-control wpcf7-text" th:field="*{points}" placeholder="Points"/>
-                                    <label>Achievement badge: </label><br/>
+                                <form th:action="@{/chapters/create-chapter}" method="post" th:object="${chapter}" enctype="multipart/form-data" class="submitphoto_form" >
+                                    <input type="text" class="wp-form-control wpcf7-text" th:field="*{title}" placeholder="Name"/>
+                                    <textarea class="wp-form-control wpcf7-textarea" th:field="*{content}" cols="30" rows="10" placeholder="Content"></textarea><br/>
+                                    <label>Chapter Image: </label><br/>
                                     <input type="file" name="file"/><br/><br/>
-
-                                    <label>Available subjects: </label><br/>
-                                    <ul>
-                                        <li th:each="subject : ${subjects}">
-                                            <input type="radio" th:field="*{subject}" th:value="${subject.id}"/>
-                                            <span th:text="${subject.name}"></span>
-                                        </li>
-                                    </ul><br/>
 
                                     <label>Available courses: </label><br/>
                                     <ul>
@@ -41,7 +31,6 @@
                                         </li>
                                     </ul><br/>
 
-                                    <!--<input type="mail" class="wp-form-control wpcf7-email" placeholder="Email address"/>-->
                                     <input type="submit" value="Submit" class="wpcf7-submit"/>
                                 </form>
                             </div>

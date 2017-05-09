@@ -23,8 +23,8 @@
                                 <div class="blog_commentbox">
                                     <p><i class="fa fa-user"></i>Richard Remus</p>
                                 </div>
-                                <strong>Subject: </strong><span th:text="${subject.name}"></span><br/>
-                                <strong>Course: </strong><span th:text="${course.name}"></span><br/>
+                                <strong>Subject: </strong><span th:text="${subject.name}" th:if="${subject != null}"></span><br/>
+                                <strong>Course: </strong><span th:text="${course.name}" th:if="${course != null}"></span><br/>
                                 <strong>Points: </strong><span th:text="${achievement.points}"></span><br/>
                                 <p th:text="${achievement.description}" style="word-wrap: break-word;"></p><br/>
                                 <a th:href="@{|/achievements/${achievement.id}/achievement-edit-form|}" class="wpcf7-submit">Edit Achievement</a><br/><br/>

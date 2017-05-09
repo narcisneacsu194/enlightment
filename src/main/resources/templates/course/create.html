@@ -40,7 +40,7 @@
                                     <label>Available achievements: </label><br/>
                                     <ul>
                                         <li th:each="achievement : ${achievements}">
-                                            <input type="checkbox" th:field="*{achievements}" th:value="${achievement.id}"/>
+                                            <input type="radio" th:field="*{achievement}" th:value="${achievement.id}"/>
                                             <span th:text="${achievement.name}"></span>
                                         </li>
                                     </ul><br/>

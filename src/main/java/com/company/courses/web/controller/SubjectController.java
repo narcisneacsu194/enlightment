@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -93,6 +94,21 @@ public class SubjectController {
     @RequestMapping(value = "/subjects/{subjectId}/delete-subject", method = RequestMethod.POST)
     public String deleteSubject(@PathVariable Long subjectId){
         Subject subject = subjectService.findSubjectById(subjectId);
+        List<Degree> degrees = subject.getDegrees();
+        List<Course> courses = subject.getCourses();
+        List<Achievement> achievements = subject.getAchievements();
+
+        for(Degree degree : degrees){
+            degree.setSubject(null);
+        }
+
+        for(Course course : courses){
+            course.setSubject(null);
+        }
+
+        for(Achievement achievement : achievements){
+            achievement.setSubject(null);
+        }
 
         subjectService.delete(subject);
 
@@ -116,37 +132,43 @@ public class SubjectController {
 
     @RequestMapping(value = "/subjects/{subjectId}/edit-subject", method = RequestMethod.POST)
     public String editSubject(Subject subject, @RequestParam MultipartFile file){
-        List<Course> allCourses = courseService.findAllCourses();
-        List<Course> courses = subject.getCourses();
+        List<Degree> allDegrees = degreeService.findAllDegrees();
+        List<Degree> subjectDegrees = subject.getDegrees();
 
-        for(Course course : courses){
-            for(Course course2 : allCourses){
-                if(!course.getId().equals(course2.getId())){
-                    course2.setSubject(null);
-                }
+        for(Degree degree : allDegrees){
+            if(!subjectDegrees.contains(degree)){
+                degree.setSubject(null);
             }
+        }
+
+        for(Degree degree : subjectDegrees){
+            degree.setSubject(subject);
         }
 
         List<Achievement> allAchievements = achievementService.findAllAchievements();
-        List<Achievement> achievements = subject.getAchievements();
+        List<Achievement> subjectAchievements = subject.getAchievements();
 
-        for(Achievement achievement : achievements){
-            for(Achievement achievement2 : allAchievements){
-                if(!achievement.getId().equals(achievement2.getId())){
-                    achievement2.setSubject(null);
-                }
+        for(Achievement achievement : allAchievements){
+            if(!subjectAchievements.contains(achievement)){
+                achievement.setSubject(null);
             }
         }
 
-        List<Degree> allDegrees = degreeService.findAllDegrees();
-        List<Degree> degrees = subject.getDegrees();
+        for(Achievement achievement : subjectAchievements){
+            achievement.setSubject(subject);
+        }
 
-        for(Degree degree : degrees){
-            for(Degree degree2 : allDegrees){
-                if(!degree.getId().equals(degree2.getId())){
-                    degree2.setSubject(null);
-                }
+        List<Course> allCourses = courseService.findAllCourses();
+        List<Course> subjectCourses = subject.getCourses();
+
+        for(Course course : allCourses){
+            if(!subjectCourses.contains(course)){
+                course.setSubject(null);
             }
+        }
+
+        for(Course course : subjectCourses){
+            course.setSubject(subject);
         }
 
         subjectService.save(subject, file);

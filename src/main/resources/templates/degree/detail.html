@@ -23,7 +23,7 @@
                                 <div class="blog_commentbox">
                                     <p><i class="fa fa-user"></i>Richard Remus</p>
                                 </div>
-                                <strong>Subject: </strong><span th:text="${subject.name}"></span>
+                                <strong>Subject: </strong><span th:text="${subject.name}" th:if="${subject != null}"></span>
                                 <p th:text="${degree.description}" style="word-wrap: break-word;"></p><br/>
                                 <a th:href="@{|/degrees/${degree.id}/degree-edit-form|}" class="wpcf7-submit">Edit Degree</a><br/><br/>
                                 <form th:action="@{|/degrees/${degree.id}/delete-degree|}" method="post">
