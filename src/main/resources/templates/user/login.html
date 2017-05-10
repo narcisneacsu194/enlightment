@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="layout :: head"></head>
+<body>
+<header th:replace="layout :: header"></header>
+<section th:replace="layout :: banner"></section>
+<section id="courseArchive">
+    <div class="container">
+        <div class="row">
+            <!-- start course content -->
+            <div class="col-lg-8 col-md-8 col-sm-8">
+                <div class="courseArchive_content">
+                    <!-- start blog archive  -->
+                    <div class="row">
+                        <h2 class="blog_title2" style="margin-top: 50px;
+                            margin-bottom: 50px;">Log in:</h2>
+                        <!-- start single blog -->
+                        <div class="col-lg-8 col-8 col-sm-8">
+                            <div class="single_blog">
+                                <form th:action="@{/login}" method="post" th:object="${user}" class="submitphoto_form" >
+                                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+                                    <input type="text" class="wp-form-control wpcf7-text" th:field="*{username}" placeholder="Username"/>
+                                    <input type="password" class="wp-form-control wpcf7-text" th:field="*{password}" placeholder="Password"/>
+
+                                    <input type="submit" value="Log in" class="wpcf7-submit"/>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- End single blog -->
+                    </div>
+
+                    <!-- end blog archive  -->
+                </div>
+            </div>
+            <!-- End course content -->
+        </div>
+    </div>
+    <!-- start course archive sidebar -->
+</section>
+
+<footer th:replace="layout :: footer"></footer>
+<div th:replace="layout :: javascript-files"></div>
+</body>
+</html>
+

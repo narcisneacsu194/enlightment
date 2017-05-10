@@ -24,11 +24,15 @@ public class DatabaseLoader implements ApplicationRunner{
     private QuestionDao questionDao;
     private SubjectDao subjectDao;
     private EvaluationDao evaluationDao;
+    private UserDao userDao;
+    private RoleDao roleDao;
 
     @Autowired
-    public DatabaseLoader(AchievementDao achievementDao, AnswerDao answerDao, ChapterDao chapterDao,
+    public DatabaseLoader(UserDao userDao, RoleDao roleDao, AchievementDao achievementDao, AnswerDao answerDao, ChapterDao chapterDao,
                           CourseDao courseDao, DegreeDao degreeDao, QuestionDao questionDao,
                           SubjectDao subjectDao, EvaluationDao evaluationDao){
+        this.userDao = userDao;
+        this.roleDao = roleDao;
         this.achievementDao = achievementDao;
         this.answerDao = answerDao;
         this.chapterDao = chapterDao;
@@ -41,6 +45,18 @@ public class DatabaseLoader implements ApplicationRunner{
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
+
+        User user = new User();
+        user.setUsername("user");
+        user.setPassword("password");
+        user.setEnabled(true);
+
+        Role role = new Role();
+        role.setName("ROLE_USER");
+        roleDao.save(role);
+        user.setRole(role);
+        userDao.save(user);
+
 
         Subject subject = new Subject();
         subject.setName("Java");
