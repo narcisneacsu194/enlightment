@@ -9,7 +9,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @Component
@@ -47,8 +49,13 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public void save(User user) {
-        userDao.save(user);
+    public void save(User user, MultipartFile file) {
+        try {
+            user.setAvatar(file.getBytes());
+            userDao.save(user);
+        }catch(IOException ioe){
+            ioe.printStackTrace();
+        }
     }
 
     @Override

@@ -49,6 +49,7 @@ public class DatabaseLoader implements ApplicationRunner{
         User user = new User();
         user.setUsername("user");
         user.setPassword("password");
+        user.encodePassword();
         user.setEnabled(true);
 
         Role role = new Role();

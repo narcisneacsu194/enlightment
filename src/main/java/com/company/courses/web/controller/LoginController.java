@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 public class LoginController {
@@ -21,5 +24,28 @@ public class LoginController {
         model.addAttribute(new User());
 
         return "user/login";
+    }
+
+    @RequestMapping("/register")
+    public String registerForm(Model model){
+        model.addAttribute("user", new User());
+
+        return "user/register";
+    }
+
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    public String registerUser(User user, @RequestParam MultipartFile file){
+
+        if(!user.getPassword().equals(user.getMatchingPassword())){
+            return "redirect:/login";
+        }
+
+        user.encodePasswords();
+        user.setRole(roleService.findOne(1L));
+        user.setEnabled(true);
+
+        userService.save(user, file);
+
+        return "redirect:/login";
     }
 }

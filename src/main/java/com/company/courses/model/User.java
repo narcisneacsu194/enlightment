@@ -8,6 +8,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.*;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -27,6 +28,29 @@ public class User implements UserDetails{
     @Column(length = 100)
     @JsonIgnore
     private String password;
+
+    @Column(length = 100)
+    @JsonIgnore
+    private String matchingPassword;
+
+    private String firstName; // mandatory
+
+    private String lastName; // mandatory
+
+    private String description; // not mandatory
+
+    private String location; // not mandatory
+
+    private Instant dateOfRegistration; // not mandatory
+
+    private String email; // mandatory
+
+    private String githubUrl; // not mandatory
+
+    private String linkedinUrl; // not mandatory
+
+    @Lob
+    private byte[] avatar; // not mandatory
 
     @Column(nullable = false)
     private boolean enabled;
@@ -91,7 +115,7 @@ public class User implements UserDetails{
     }
 
     public void setPassword(String password) {
-        this.password = PASSWORD_ENCODER.encode(password);
+        this.password = password;
     }
 
     public Long getId() {
@@ -112,5 +136,98 @@ public class User implements UserDetails{
 
     public Role getRole(){
         return role;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public Instant getDateOfRegistration() {
+        return dateOfRegistration;
+    }
+
+    public void setDateOfRegistration(Instant dateOfRegistration) {
+        this.dateOfRegistration = dateOfRegistration;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getGithubUrl() {
+        return githubUrl;
+    }
+
+    public void setGithubUrl(String githubUrl) {
+        this.githubUrl = githubUrl;
+    }
+
+    public String getLinkedinUrl() {
+        return linkedinUrl;
+    }
+
+    public void setLinkedinUrl(String linkedinUrl) {
+        this.linkedinUrl = linkedinUrl;
+    }
+
+    public byte[] getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(byte[] avatar) {
+        this.avatar = avatar;
+    }
+
+    public String getMatchingPassword() {
+        return matchingPassword;
+    }
+
+    public void setMatchingPassword(String matchingPassword) {
+        this.matchingPassword = matchingPassword;
+    }
+
+    public void encodePasswords(){
+        password = PASSWORD_ENCODER.encode(password);
+        matchingPassword = PASSWORD_ENCODER.encode(matchingPassword);
+    }
+
+    public void encodePassword(){
+        password = PASSWORD_ENCODER.encode(password);
+    }
+
+    public void encodeMatchingPassword(){
+        matchingPassword = PASSWORD_ENCODER.encode(matchingPassword);
     }
 }

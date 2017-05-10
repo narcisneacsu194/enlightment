@@ -77,7 +77,11 @@
                         <li th:classappend="${#httpServletRequest.servletPath.equals('/achievements') ? 'active' : ''}"><a th:href="@{/achievements}">Achievements</a></li>
                         <li th:classappend="${#httpServletRequest.servletPath.equals('/degrees') ? 'active' : ''}"><a th:href="@{/degrees}">Degrees</a></li>
                         <li th:classappend="${#httpServletRequest.servletPath.equals('/contact') ? 'active' : ''}"><a th:href="@{/contact}">Contact</a></li>
+                        <li><a href="javascript:;" onclick="document.getElementById('logoutForm').submit()"
+                            style="padding-left:100px;">Log out</a></li>
+                        <li><a>Username</a></li>
                     </ul>
+                    <form th:action="@{/logout}" method="post" id="logoutForm"></form>
                 </div><!--/.nav-collapse -->
             </div>
         </nav>

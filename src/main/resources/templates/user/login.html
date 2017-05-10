@@ -2,7 +2,28 @@
 <html lang="en">
 <head th:replace="layout :: head"></head>
 <body>
-<header th:replace="layout :: header"></header>
+<!--<header th:replace="layout :: header"></header>-->
+
+<header id="header" th:fragment="header">
+    <!-- BEGIN MENU -->
+    <div class="menu_area">
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" th:href="@{/login}">Enlight<span>ment</span></a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul id="top-menu" class="nav navbar-nav navbar-right main-nav">
+                        <li><a th:href="@{/register}">Register</a></li>
+                        <li><a th:href="@{/login}">Login</a></li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div>
+        </nav>
+    </div>
+    <!-- END MENU -->
+</header>
+
 <section th:replace="layout :: banner"></section>
 <section id="courseArchive">
     <div class="container">
