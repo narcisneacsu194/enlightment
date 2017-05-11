@@ -1358,7 +1358,7 @@ public class DatabaseLoader implements ApplicationRunner{
         achievement.setName("Encapsulation apprentice");
         achievement.setDescription("By earning this badge, you started the journey of learning about encapsulation.");
         achievement.setPoints(350);
-        bytes = extractBytes("src/main/resources/static/img/badges/encapsulation.png");
+        bytes = extractBytes("src/main/resources/static/img/badges/Encapsulation.png");
         achievement.setBadge(bytes);
 
         subject.addAchievement(achievement);
