@@ -19,6 +19,7 @@
                             <div class="single_blog">
                                 <form th:action="@{|/achievements/${achievement.id}/edit-achievement|}" method="post" th:object="${achievement}" enctype="multipart/form-data" class="submitphoto_form" >
                                     <input type="hidden" th:field="*{id}"/>
+                                    <input type="hidden" th:field="*{users}"/>
                                     <input type="text" class="wp-form-control wpcf7-text" th:field="*{name}" placeholder="Name"/>
                                     <textarea class="wp-form-control wpcf7-textarea" th:field="*{description}" cols="30" rows="10" placeholder="Description"></textarea>
                                     <input type="text" class="wp-form-control wpcf7-text" th:field="*{points}" placeholder="Points"/>

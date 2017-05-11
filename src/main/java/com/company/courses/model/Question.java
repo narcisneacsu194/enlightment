@@ -18,12 +18,6 @@ public class Question {
     inverseJoinColumns = @JoinColumn(name = "answer_id"))
     private List<Answer> answers = new ArrayList<>();
 
-//    @ManyToMany(cascade = CascadeType.ALL)
-//    @JoinTable(name = "question_correct_answer",
-//            joinColumns = @JoinColumn(name = "question_id"),
-//            inverseJoinColumns = @JoinColumn(name = "answer_id"))
-//    private List<Answer> correctQuestionAnswers = new ArrayList<>();
-
     @ManyToOne
     private Answer correctAnswer;
 

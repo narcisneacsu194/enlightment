@@ -11,6 +11,7 @@ import java.util.List;
 public interface UserService extends UserDetailsService{
     UserDetails loadUserByUsername(String username);
     User findByUsername(String username);
+    User findUsernameById(Long userId);
     User registerNewUser(String username, boolean enabled, String password);
     void save(User user, MultipartFile file);
     List<User> findAll();

@@ -2,6 +2,7 @@ package com.company.courses.web.controller;
 
 import com.company.courses.model.Degree;
 import com.company.courses.model.Subject;
+import com.company.courses.model.User;
 import com.company.courses.services.DegreeService;
 import com.company.courses.services.SubjectService;
 import com.sun.org.apache.xpath.internal.operations.Mult;
@@ -65,6 +66,12 @@ public class DegreeController {
     @RequestMapping(value = "/degrees/{degreeId}/delete-degree", method = RequestMethod.POST)
     public String deleteDegree(@PathVariable Long degreeId){
         Degree degree = degreeService.findDegreeById(degreeId);
+
+        if(degree.getUsers() != null){
+            for(User user : degree.getUsers()){
+                user.removeDegree(degree);
+            }
+        }
 
         degreeService.delete(degree);
 

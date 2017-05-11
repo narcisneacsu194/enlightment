@@ -1,6 +1,8 @@
 package com.company.courses.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Degree {
@@ -16,10 +18,11 @@ public class Degree {
     @Lob
     private byte[] diploma;
 
-//    private boolean is_obtained;
-//    private List<User> users = new ArrayList<>();
     @ManyToOne(targetEntity = Subject.class)
     private Subject subject;
+
+    @ManyToMany
+    private List<User> users = new ArrayList<>();
 
     public Degree(){}
 
@@ -61,5 +64,21 @@ public class Degree {
 
     public void setSubject(Subject subject) {
         this.subject = subject;
+    }
+
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
+
+    public void addUser(User user){
+        users.add(user);
+    }
+
+    public void removeUser(User user){
+        users.remove(user);
     }
 }

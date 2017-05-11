@@ -3,6 +3,7 @@ package com.company.courses.web.controller;
 import com.company.courses.model.Achievement;
 import com.company.courses.model.Course;
 import com.company.courses.model.Subject;
+import com.company.courses.model.User;
 import com.company.courses.services.AchievementService;
 import com.company.courses.services.CourseService;
 import com.company.courses.services.SubjectService;
@@ -62,12 +63,6 @@ public class AchievementController {
 
     @RequestMapping(value = "/achievements/create-achievement", method = RequestMethod.POST)
     public String createAchievement(Achievement achievement, @RequestParam MultipartFile file){
-//        for(Course course : courseService.findAllCourses()){
-//            if(course.getAchievement() != null &&
-//                    course.getAchievement().getId().equals(achievement.getId())){
-//                course.setAchievement(null);
-//            }
-//        }
         if(achievement.getCourse().getAchievement() != null){
             achievement.getCourse().getAchievement().setCourse(null);
         }
@@ -83,6 +78,12 @@ public class AchievementController {
         Achievement achievement = achievementService.findAchievementById(achievementId);
         if(achievement.getCourse() != null){
             achievement.getCourse().setAchievement(null);
+        }
+
+        if(achievement.getUsers() != null){
+            for(User user : achievement.getUsers()){
+                user.removeAchievement(achievement);
+            }
         }
 
         achievementService.delete(achievement);

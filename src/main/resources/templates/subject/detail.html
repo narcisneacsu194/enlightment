@@ -21,7 +21,7 @@
                                 </div>
                                 <h2 class="blog_title" th:text="${subject.name}">Curabitur ac dictum nisl eu hendrerit ante</h2>
                                 <div class="blog_commentbox">
-                                    <p><i class="fa fa-user"></i>Richard Remus</p>
+                                    <strong>Created by: </strong><a th:text="|${teacher.firstName} ${teacher.lastName}|" th:href="@{|/users/${teacher.id}/detail|}"></a><br/><br/>
                                 </div>
                                 <p th:text="${subject.description}" style="word-wrap:break-word;"></p><br/>
                                 <a th:href="@{|/subjects/${subject.id}/subject-edit-form|}" class="wpcf7-submit" sec:authorize="hasRole('ROLE_ADMIN')">Edit Subject</a><br/><br/>

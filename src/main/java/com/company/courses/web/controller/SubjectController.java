@@ -1,19 +1,15 @@
 package com.company.courses.web.controller;
 
-import com.company.courses.model.Achievement;
-import com.company.courses.model.Course;
-import com.company.courses.model.Degree;
-import com.company.courses.model.Subject;
-import com.company.courses.services.AchievementService;
-import com.company.courses.services.CourseService;
-import com.company.courses.services.DegreeService;
-import com.company.courses.services.SubjectService;
+import com.company.courses.model.*;
+import com.company.courses.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,6 +26,9 @@ public class SubjectController {
 
     @Autowired
     private DegreeService degreeService;
+
+    @Autowired
+    private UserService userService;
 
     @RequestMapping("/subjects")
     public String listSubjects(Model model){
@@ -49,6 +48,7 @@ public class SubjectController {
         model.addAttribute("courses", courses);
         model.addAttribute("achievements", achievements);
         model.addAttribute("degrees", degrees);
+        model.addAttribute("teacher", subject.getTeacher());
 
         return "subject/detail";
     }
@@ -69,7 +69,7 @@ public class SubjectController {
     }
 
     @RequestMapping(value = "/subjects/create-subject", method = RequestMethod.POST)
-    public String createSubject(Subject subject, @RequestParam MultipartFile file){
+    public String createSubject(Subject subject, @RequestParam MultipartFile file, Principal principal){
         List<Course> courses = subject.getCourses();
         List<Achievement> achievements = subject.getAchievements();
         List<Degree> degrees = subject.getDegrees();
@@ -85,6 +85,12 @@ public class SubjectController {
         for(Degree degree : degrees){
             degree.setSubject(subject);
         }
+
+        User user = (User)((UsernamePasswordAuthenticationToken)principal).getPrincipal();
+        User actualUser = userService.findByUsername(user.getUsername());
+
+        subject.setTeacher(actualUser);
+        actualUser.addCreatedSubject(subject);
 
         subjectService.save(subject, file);
 

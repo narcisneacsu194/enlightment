@@ -20,9 +20,6 @@ public class Course {
 
     private String difficulty;
 
-//    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
-//    private List<Achievement> achievements = new ArrayList<>();
-
     @OneToOne(cascade = CascadeType.MERGE)
     private Achievement achievement;
 
@@ -68,18 +65,6 @@ public class Course {
     public void setImage(byte[] image) {
         this.image = image;
     }
-
-//    public List<Achievement> getAchievements() {
-//        return achievements;
-//    }
-//
-//    public void setAchievements(List<Achievement> achievements) {
-//        this.achievements = achievements;
-//    }
-//
-//    public void addAchievement(Achievement achievement){
-//        this.achievements.add(achievement);
-//    }
 
     public List<Chapter> getChapters() {
         return chapters;

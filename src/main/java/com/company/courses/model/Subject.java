@@ -14,6 +14,9 @@ public class Subject {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @ManyToOne
+    private User teacher;
+
     private String name;
 
     @Column(length = 10000)
@@ -113,5 +116,13 @@ public class Subject {
 
     public void removeCourse(Course course){
         this.courses.remove(course);
+    }
+
+    public User getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(User teacher) {
+        this.teacher = teacher;
     }
 }

@@ -1,6 +1,8 @@
 package com.company.courses.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Achievement {
@@ -18,16 +20,14 @@ public class Achievement {
 
     private Integer points;
 
-//    private boolean is_unlocked;
-//    private List<User> = new ArrayList<>();
     @ManyToOne
     private Subject subject;
 
-//    @ManyToOne
-//    private Course course;
-
     @OneToOne
     private Course course;
+
+    @ManyToMany
+    private List<User> users = new ArrayList<>();
 
     public Achievement(){}
 
@@ -85,5 +85,21 @@ public class Achievement {
 
     public void setCourse(Course course) {
         this.course = course;
+    }
+
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
+
+    public void addUser(User user){
+        users.add(user);
+    }
+
+    public void removeUser(User user){
+        users.remove(user);
     }
 }

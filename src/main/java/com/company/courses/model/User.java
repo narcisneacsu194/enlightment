@@ -62,6 +62,19 @@ public class User implements UserDetails{
     @JsonIgnore
     private Role role;
 
+    @ManyToMany
+    @JoinTable(name = "user_achievement", joinColumns = @JoinColumn(name = "user_id"),
+    inverseJoinColumns = @JoinColumn(name = "achievement_id"))
+    private List<Achievement> achievements = new ArrayList<>();
+
+    @ManyToMany
+    @JoinTable(name = "user_degree", joinColumns = @JoinColumn(name = "user_id"),
+    inverseJoinColumns = @JoinColumn(name = "degree_id"))
+    private List<Degree> degrees = new ArrayList<>();
+
+    @OneToMany(mappedBy = "teacher", cascade = CascadeType.ALL)
+    private List<Subject> createdSubjects = new ArrayList<>();
+
     public User(){
         id = null;
         username = null;
@@ -239,5 +252,53 @@ public class User implements UserDetails{
 
     public void setAdmin(boolean admin) {
         this.admin = admin;
+    }
+
+    public List<Achievement> getAchievements() {
+        return achievements;
+    }
+
+    public void setAchievements(List<Achievement> achievements) {
+        this.achievements = achievements;
+    }
+
+    public void addAchievement(Achievement achievement){
+        achievements.add(achievement);
+    }
+
+    public void removeAchievement(Achievement achievement){
+        achievements.remove(achievement);
+    }
+
+    public List<Degree> getDegrees() {
+        return degrees;
+    }
+
+    public void setDegrees(List<Degree> degrees) {
+        this.degrees = degrees;
+    }
+
+    public void addDegree(Degree degree){
+        degrees.add(degree);
+    }
+
+    public void removeDegree(Degree degree){
+        degrees.remove(degree);
+    }
+
+    public List<Subject> getCreatedSubjects() {
+        return createdSubjects;
+    }
+
+    public void setCreatedSubjects(List<Subject> createdSubjects) {
+        this.createdSubjects = createdSubjects;
+    }
+
+    public void addCreatedSubject(Subject subject){
+        createdSubjects.add(subject);
+    }
+
+    public void removeCreatedSubject(Subject subject){
+        createdSubjects.remove(subject);
     }
 }
