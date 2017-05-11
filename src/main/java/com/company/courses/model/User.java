@@ -230,4 +230,5 @@ public class User implements UserDetails{
     public void encodeMatchingPassword(){
         matchingPassword = PASSWORD_ENCODER.encode(matchingPassword);
     }
+
 }

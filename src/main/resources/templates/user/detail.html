@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="layout :: head"></head>
+<body>
+<header th:replace="layout :: header"></header>
+<!--<section th:replace="layout :: banner"></section>-->
+<!--=========== BEGIN COURSE BANNER SECTION ================-->
+<section id="courseArchive">
+    <div class="container">
+        <div class="row">
+            <!-- start course content -->
+            <div class="col-lg-8 col-md-8 col-sm-8">
+                <div class="courseArchive_content">
+                    <!-- start blog archive  -->
+                    <div class="row">
+                        <!-- start single blog -->
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="single_blog">
+                                <div class="blogimg_container">
+                                    <img alt="img" th:src="@{/user.jpg}" class="blog_img"/>
+                                </div>
+                                <h2 class="blog_title" th:text="${user.username}">Curabitur ac dictum nisl eu hendrerit ante</h2>
+                                <p th:text="${user.description}" style="word-wrap:break-word;"></p><br/>
+                                <strong>Full Name: </strong><span th:text="|${user.firstName} ${user.lastName}|"></span><br/>
+                                <strong>Email Address: </strong><span th:text="${user.email}"></span><br/>
+                                <strong>Location: </strong><span th:text="${user.location}" th:if="${user.location != null}"></span><br/>
+                                <strong>Github URL: </strong><span th:text="${user.githubUrl}" th:if="${user.githubUrl != null}"></span><br/>
+                                <strong>LinkedIn URL: </strong><span th:text="${user.linkedinUrl}" th:if="${user.linkedinUrl != null}"></span><br/>
+                                <strong>Date of Registration: </strong><time th:text="${#dates.format(user.dateOfRegistration, 'dd MMM yyyy')}"></time><br/><br/><br/>
+                                <a th:href="@{/user/user-edit-form}" class="wpcf7-submit">Edit User</a>
+                            </div>
+
+                        </div>
+                        <!-- End single blog -->
+                    </div>
+                </div>
+            </div>
+            <!-- End course content -->
+        </div>
+    </div>
+    <!-- start course archive sidebar -->
+</section>
+<!--=========== END COURSE BANNER SECTION ================-->
+
+<div th:replace="layout :: footer"></div>
+<div th:replace="layout :: javascript-files"></div>
+</body>
+</html>

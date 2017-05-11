@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="layout :: head"></head>
+<body>
+<header th:replace="layout :: header"></header>
+<section th:replace="layout :: banner"></section>
+<section id="courseArchive">
+    <div class="container">
+        <div class="row">
+            <!-- start course content -->
+            <div class="col-lg-8 col-md-8 col-sm-8">
+                <div class="courseArchive_content">
+                    <!-- start blog archive  -->
+                    <div class="row">
+                        <h2 class="blog_title2" style="margin-top: 50px;
+                            margin-bottom: 50px;">Edit profile:</h2>
+                        <!-- start single blog -->
+                        <div class="col-lg-8 col-8 col-sm-8">
+                            <div class="single_blog">
+                                <form th:action="@{/user/edit-user}" method="post" th:object="${user}" enctype="multipart/form-data" class="submitphoto_form" >
+
+                                    <input type="hidden" th:field="*{id}"/>
+                                    <input type="hidden" th:field="*{password}"/>
+                                    <input type="hidden" th:field="*{dateOfRegistration}"/>
+                                    <input type="hidden" th:field="*{enabled}"/>
+                                    <!--<input type="hidden" th:field="*{role}"/>-->
+
+                                    <label>Avatar: </label><br/>
+                                    <input type="file" name="file"/><br/>
+
+                                    <label>Username:</label><br/>
+                                    <input type="text" class="wp-form-control wpcf7-text" th:field="*{username}" placeholder="Username"/><br/>
+                                    <label>First Name: </label><br/>
+                                    <input type="text" class="wp-form-control wpcf7-text" th:field="*{firstName}" placeholder="First Name"/><br/>
+                                    <label>Last Name: </label><br/>
+                                    <input type="text" class="wp-form-control wpcf7-text" th:field="*{lastName}" placeholder="Last Name"/><br/>
+                                    <label>Description: </label><br/>
+                                    <textarea class="wp-form-control wpcf7-textarea" th:field="*{description}" cols="30" rows="10" placeholder="Description"></textarea><br/>
+                                    <label>Location:</label><br/>
+                                    <input type="text" class="wp-form-control wpcf7-text" th:field="*{location}" placeholder="Location"/><br/>
+                                    <label>Email Address</label><br/>
+                                    <input type="email" class="wp-form-control wpcf7-text" th:field="*{email}" placeholder="Email Address"/><br/>
+                                    <label>Github URL:</label><br/>
+                                    <input type="text" class="wp-form-control wpcf7-text" th:field="*{githubUrl}" placeholder="Github URL"/><br/>
+                                    <label>LinkedIn URL:</label><br/>
+                                    <input type="text" class="wp-form-control wpcf7-text" th:field="*{linkedinUrl}" placeholder="LinkedIn URL"/><br/><br/>
+
+                                    <input type="submit" value="Edit Profile" class="wpcf7-submit"/>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- End single blog -->
+                    </div>
+
+                    <!-- end blog archive  -->
+                </div>
+            </div>
+            <!-- End course content -->
+        </div>
+    </div>
+    <!-- start course archive sidebar -->
+</section>
+
+<footer th:replace="layout :: footer"></footer>
+<div th:replace="layout :: javascript-files"></div>
+</body>
+</html>
+
