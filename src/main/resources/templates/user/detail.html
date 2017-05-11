@@ -22,6 +22,7 @@
                                 <h2 class="blog_title" th:text="${user.username}">Curabitur ac dictum nisl eu hendrerit ante</h2>
                                 <p th:text="${user.description}" style="word-wrap:break-word;"></p><br/>
                                 <strong>Full Name: </strong><span th:text="|${user.firstName} ${user.lastName}|"></span><br/>
+                                <strong>Member Type: </strong><span th:if="${user.admin}">Teacher</span><span th:if="${user.admin == false}">Student</span><br/>
                                 <strong>Email Address: </strong><span th:text="${user.email}"></span><br/>
                                 <strong>Location: </strong><span th:text="${user.location}" th:if="${user.location != null}"></span><br/>
                                 <strong>Github URL: </strong><span th:text="${user.githubUrl}" th:if="${user.githubUrl != null}"></span><br/>

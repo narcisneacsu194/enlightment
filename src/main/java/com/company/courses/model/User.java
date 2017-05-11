@@ -55,6 +55,8 @@ public class User implements UserDetails{
     @Column(nullable = false)
     private boolean enabled;
 
+    private boolean admin;
+
     @OneToOne
     @JoinColumn(name = "role_id")
     @JsonIgnore
@@ -231,4 +233,11 @@ public class User implements UserDetails{
         matchingPassword = PASSWORD_ENCODER.encode(matchingPassword);
     }
 
+    public boolean isAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
+    }
 }

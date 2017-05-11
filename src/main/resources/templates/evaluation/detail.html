@@ -33,7 +33,7 @@
                                                 <span th:text="${correctAnswer.description}"></span>
                                             </li>
                                         </ol><br/>
-                                        <a th:href="@{|/questions/${question.id}/question-edit-form|}" class="wpcf7-submit">Edit Question</a>
+                                        <a th:href="@{|/questions/${question.id}/question-edit-form|}" class="wpcf7-submit" sec:authorize="hasRole('ROLE_ADMIN')">Edit Question</a>
                                     </li>
                                 </ol><br/>
 

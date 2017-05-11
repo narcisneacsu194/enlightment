@@ -25,8 +25,8 @@
                                 </div>
                                 <strong>Subject: </strong><span th:text="${subject.name}" th:if="${subject != null}"></span>
                                 <p th:text="${degree.description}" style="word-wrap: break-word;"></p><br/>
-                                <a th:href="@{|/degrees/${degree.id}/degree-edit-form|}" class="wpcf7-submit">Edit Degree</a><br/><br/>
-                                <form th:action="@{|/degrees/${degree.id}/delete-degree|}" method="post">
+                                <a th:href="@{|/degrees/${degree.id}/degree-edit-form|}" class="wpcf7-submit" sec:authorize="hasRole('ROLE_ADMIN')">Edit Degree</a><br/><br/>
+                                <form th:action="@{|/degrees/${degree.id}/delete-degree|}" method="post" sec:authorize="hasRole('ROLE_ADMIN')">
                                     <input type="submit" value="Delete" class="wpcf7-submit"/>
                                 </form>
                             </div>

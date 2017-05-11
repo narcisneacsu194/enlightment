@@ -27,8 +27,8 @@
                                 <strong>Course: </strong><span th:text="${course.name}" th:if="${course != null}"></span><br/>
                                 <strong>Points: </strong><span th:text="${achievement.points}"></span><br/>
                                 <p th:text="${achievement.description}" style="word-wrap: break-word;"></p><br/>
-                                <a th:href="@{|/achievements/${achievement.id}/achievement-edit-form|}" class="wpcf7-submit">Edit Achievement</a><br/><br/>
-                                <form th:action="@{|/achievements/${achievement.id}/delete-achievement|}" method="post">
+                                <a th:href="@{|/achievements/${achievement.id}/achievement-edit-form|}" class="wpcf7-submit" sec:authorize="hasRole('ROLE_ADMIN')">Edit Achievement</a><br/><br/>
+                                <form th:action="@{|/achievements/${achievement.id}/delete-achievement|}" method="post" sec:authorize="hasRole('ROLE_ADMIN')">
                                     <input type="submit" value="Delete" class="wpcf7-submit"/>
                                 </form>
                             </div>

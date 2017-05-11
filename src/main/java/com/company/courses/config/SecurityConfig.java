@@ -44,22 +44,35 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+//        http.authorizeRequests()
+//                .antMatchers("/register").permitAll()
+//                .anyRequest()
+//                .hasRole("ADMIN")
+//                .and()
+//                .formLogin()
+//                .loginPage("/login")
+//                .permitAll()
+//                .successHandler(loginSuccessHandler())
+//                .failureHandler(loginFailureHandler())
+//                .and()
+//                .logout()
+//                .permitAll()
+//                .logoutSuccessUrl("/login")
+//                .and()
+//                .csrf();
+
         http.authorizeRequests()
-                .antMatchers("/register").permitAll()
-                .anyRequest()
-                .hasRole("USER")
+                .antMatchers("/").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+//                .antMatchers("/userPage").access("hasRole('ROLE_USER')")
+//                .antMatchers("/adminPage").access("hasRole('ROLE_ADMIN')")
                 .and()
-                .formLogin()
-                .loginPage("/login")
-                .permitAll()
-                .successHandler(loginSuccessHandler())
-                .failureHandler(loginFailureHandler())
+                .formLogin().loginPage("/login")
+                .defaultSuccessUrl("/")
+                .failureUrl("/login")
+                .usernameParameter("username").passwordParameter("password")
                 .and()
-                .logout()
-                .permitAll()
-                .logoutSuccessUrl("/login")
-                .and()
-                .csrf();
+                .logout().logoutSuccessUrl("/login");
+
     }
 
     public AuthenticationSuccessHandler loginSuccessHandler(){

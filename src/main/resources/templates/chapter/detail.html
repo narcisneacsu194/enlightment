@@ -25,8 +25,8 @@
                                 </div>
                                 <strong>Course: </strong><span th:text="${course.name}"></span>
                                 <p th:text="${chapter.content}" style="word-wrap: break-word;"></p><br/>
-                                <a th:href="@{|/chapters/${chapter.id}/chapter-edit-form|}" class="wpcf7-submit">Edit Chapter</a><br/><br/>
-                                <form th:action="@{|/chapters/${chapter.id}/delete-chapter|}" method="post">
+                                <a th:href="@{|/chapters/${chapter.id}/chapter-edit-form|}" class="wpcf7-submit" sec:authorize="hasRole('ROLE_ADMIN')">Edit Chapter</a><br/><br/>
+                                <form th:action="@{|/chapters/${chapter.id}/delete-chapter|}" method="post" sec:authorize="hasRole('ROLE_ADMIN')">
                                     <input type="submit" value="Delete" class="wpcf7-submit"/>
                                 </form>
                             </div>

@@ -24,8 +24,8 @@
                                     <p><i class="fa fa-user"></i>Richard Remus</p>
                                 </div>
                                 <p th:text="${subject.description}" style="word-wrap:break-word;"></p><br/>
-                                <a th:href="@{|/subjects/${subject.id}/subject-edit-form|}" class="wpcf7-submit">Edit Subject</a><br/><br/>
-                                <form th:action="@{|/subjects/${subject.id}/delete-subject|}" method="post">
+                                <a th:href="@{|/subjects/${subject.id}/subject-edit-form|}" class="wpcf7-submit" sec:authorize="hasRole('ROLE_ADMIN')">Edit Subject</a><br/><br/>
+                                <form th:action="@{|/subjects/${subject.id}/delete-subject|}" method="post" sec:authorize="hasRole('ROLE_ADMIN')">
                                     <input type="submit" value="Delete" class="wpcf7-submit"/>
                                 </form>
                             </div>

@@ -55,9 +55,14 @@ public class DatabaseLoader implements ApplicationRunner{
         user.setDateOfRegistration(Instant.now());
 
         Role role = new Role();
-        role.setName("ROLE_USER");
+        role.setName("ROLE_ADMIN");
+        Role role2 = new Role();
+        role2.setName("ROLE_USER");
         roleDao.save(role);
+        roleDao.save(role2);
+
         user.setRole(role);
+        user.setAdmin(true);
         userDao.save(user);
 
 
@@ -70,7 +75,8 @@ public class DatabaseLoader implements ApplicationRunner{
         user2.setFirstName("Narcis");
         user2.setLastName("Neacsu");
         user2.setEmail("narcisneacsu194@gmail.com");
-        user2.setRole(role);
+        user2.setRole(role2);
+        user2.setAdmin(false);
         user2.setLocation("Bucharest, Romania");
         user2.setGithubUrl("http://github.com/narcisneacsu194");
         user2.setLinkedinUrl("http://linkedin.com/narcisneacsu194");

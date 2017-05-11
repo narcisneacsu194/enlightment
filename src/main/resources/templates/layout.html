@@ -94,13 +94,12 @@
 <!--<section id="imgBanner" th:fragment="banner">-->
 <!--</section>-->
 
-<div class="col-lg-12 col-md-12 col-sm-12" th:fragment="create-links">
+<div class="col-lg-12 col-md-12 col-sm-12" th:fragment="create-links" sec:authorize="hasRole('ROLE_ADMIN')">
     <a th:href="@{/subjects/subject-form}" class="wpcf7-submit">Create Subject</a>
     <a th:href="@{/courses/course-form}" class="wpcf7-submit">Create Course</a>
     <a th:href="@{/achievements/achievement-form}" class="wpcf7-submit">Create Achievement</a>
     <a th:href="@{/degrees/degree-form}" class="wpcf7-submit">Create Degree</a><br/><br/><br/>
     <a th:href="@{/chapters/chapter-form}" class="wpcf7-submit">Create Chapter</a>
-    <!--<a th:href="@{/evaluations/evaluation-form}" class="wpcf7-submit">Create Evaluation</a><br/><br/>-->
     <hr style="border-color:black;"/><br/>
 </div>
 

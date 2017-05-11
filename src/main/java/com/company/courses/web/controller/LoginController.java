@@ -43,7 +43,7 @@ public class LoginController {
         }
 
         user.encodePasswords();
-        user.setRole(roleService.findOne(1L));
+        user.setRole(roleService.findOne(2L));
         user.setEnabled(true);
         user.setDateOfRegistration(Instant.now());
 

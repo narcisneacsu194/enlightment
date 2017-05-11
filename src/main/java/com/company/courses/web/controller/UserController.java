@@ -53,7 +53,11 @@ public class UserController {
 
     @RequestMapping(value = "/user/edit-user", method = RequestMethod.POST)
     public String editUser(User user, @RequestParam MultipartFile file){
-        user.setRole(roleService.findOne(1L));
+        if(user.isAdmin()){
+            user.setRole(roleService.findOne(1L));
+        }else{
+            user.setRole(roleService.findOne(2L));
+        }
         userService.save(user, file);
 
         return "redirect:/login";
