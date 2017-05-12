@@ -200,8 +200,8 @@
                                     <p th:text="${course.description}" style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>
                                 </div>
                                 <div class="singCourse_author">
-                                    <img th:src="@{img/12494844.png}" alt="img"/>
-                                    <p>Richard Remus, Teacher</p>
+                                    <img th:src="@{|/users/${course.teacher.id}.jpg|}" alt="img"/>
+                                    <p th:text="|${course.teacher.firstName} ${course.teacher.lastName}|">Richard Remus, Teacher</p>
                                 </div>
                             </div>
                         </li>
