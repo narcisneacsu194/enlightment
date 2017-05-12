@@ -234,7 +234,7 @@ public class DatabaseLoader implements ApplicationRunner{
             courseDao.save(course);
         }
 
-        IntStream.range(6, 11).forEach(value ->{
+        IntStream.range(6, 12).forEach(value ->{
             User user = new User();
             user.setAdmin(false);
             user.setEmail("randomuser" + value + "@enlightment.com");
@@ -251,6 +251,17 @@ public class DatabaseLoader implements ApplicationRunner{
             user.setLinkedinUrl("http://linkedin.com/randomuser" + value);
             user.setDateOfRegistration(Instant.now());
             user.setAvatar(bytes);
+
+            Achievement achievement1 = achievements.get(value);
+            Achievement achievement2 = achievements.get(value+1);
+            Achievement achievement3 = achievements.get(value+2);
+
+            Degree degree = degrees.get(value-6);
+
+            user.addAchievement(achievement1);achievement1.addUser(user);
+            user.addAchievement(achievement2);achievement2.addUser(user);
+            user.addAchievement(achievement3);achievement3.addUser(user);
+            user.addDegree(degree);degree.addUser(user);
 
             userDao.save(user);
         });
