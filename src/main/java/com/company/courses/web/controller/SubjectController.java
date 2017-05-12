@@ -42,12 +42,13 @@ public class SubjectController {
         Subject subject = subjectService.findSubjectById(subjectId);
         List<Course> courses = subject.getCourses();
         List<Achievement> achievements = subject.getAchievements();
-        List<Degree> degrees = subject.getDegrees();
+//        List<Degree> degrees = subject.getDegrees();
+        Degree degree = subject.getDegree();
 
         model.addAttribute("subject", subject);
         model.addAttribute("courses", courses);
         model.addAttribute("achievements", achievements);
-        model.addAttribute("degrees", degrees);
+        model.addAttribute("degree", degree);
         model.addAttribute("teacher", subject.getTeacher());
 
         return "subject/detail";
@@ -72,7 +73,7 @@ public class SubjectController {
     public String createSubject(Subject subject, @RequestParam MultipartFile file, Principal principal){
         List<Course> courses = subject.getCourses();
         List<Achievement> achievements = subject.getAchievements();
-        List<Degree> degrees = subject.getDegrees();
+        Degree degree = subject.getDegree();
 
         for(Course course : courses){
             course.setSubject(subject);
@@ -82,9 +83,7 @@ public class SubjectController {
             achievement.setSubject(subject);
         }
 
-        for(Degree degree : degrees){
-            degree.setSubject(subject);
-        }
+        degree.setSubject(subject);
 
         User user = (User)((UsernamePasswordAuthenticationToken)principal).getPrincipal();
         User actualUser = userService.findByUsername(user.getUsername());
@@ -100,13 +99,13 @@ public class SubjectController {
     @RequestMapping(value = "/subjects/{subjectId}/delete-subject", method = RequestMethod.POST)
     public String deleteSubject(@PathVariable Long subjectId){
         Subject subject = subjectService.findSubjectById(subjectId);
-        List<Degree> degrees = subject.getDegrees();
+        Degree degree = subject.getDegree();
         List<Course> courses = subject.getCourses();
         List<Achievement> achievements = subject.getAchievements();
+        User user = subject.getTeacher();
+        user.removeCreatedSubject(subject);
 
-        for(Degree degree : degrees){
-            degree.setSubject(null);
-        }
+        degree.setSubject(null);
 
         for(Course course : courses){
             course.setSubject(null);
@@ -139,41 +138,46 @@ public class SubjectController {
     @RequestMapping(value = "/subjects/{subjectId}/edit-subject", method = RequestMethod.POST)
     public String editSubject(Subject subject, @RequestParam MultipartFile file){
         List<Degree> allDegrees = degreeService.findAllDegrees();
-        List<Degree> subjectDegrees = subject.getDegrees();
-
         for(Degree degree : allDegrees){
-            if(!subjectDegrees.contains(degree)){
+            if(degree.getSubject() != null && degree.getSubject()
+                    .getId().equals(subject.getId())){
                 degree.setSubject(null);
+                break;
             }
         }
-
-        for(Degree degree : subjectDegrees){
-            degree.setSubject(subject);
-        }
+        Degree degree = subject.getDegree();
+        degree.setSubject(subject);
 
         List<Achievement> allAchievements = achievementService.findAllAchievements();
-        List<Achievement> subjectAchievements = subject.getAchievements();
 
         for(Achievement achievement : allAchievements){
-            if(!subjectAchievements.contains(achievement)){
+            if(achievement.getSubject() != null && achievement.getSubject().getId().equals(subject.getId())){
                 achievement.setSubject(null);
             }
         }
 
+
+        List<Achievement> subjectAchievements = subject.getAchievements();
+
         for(Achievement achievement : subjectAchievements){
+            achievement.getSubject().removeAchievement(achievement);
             achievement.setSubject(subject);
         }
 
+
         List<Course> allCourses = courseService.findAllCourses();
-        List<Course> subjectCourses = subject.getCourses();
 
         for(Course course : allCourses){
-            if(!subjectCourses.contains(course)){
+            if(course.getSubject() != null && course.getSubject().getId().equals(subject.getId())){
                 course.setSubject(null);
             }
         }
 
+
+        List<Course> subjectCourses = subject.getCourses();
+
         for(Course course : subjectCourses){
+            course.getSubject().removeCourse(course);
             course.setSubject(subject);
         }
 

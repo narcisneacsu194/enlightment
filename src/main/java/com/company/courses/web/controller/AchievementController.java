@@ -7,12 +7,15 @@ import com.company.courses.model.User;
 import com.company.courses.services.AchievementService;
 import com.company.courses.services.CourseService;
 import com.company.courses.services.SubjectService;
+import com.company.courses.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.security.Principal;
 import java.util.List;
 
 @Controller
@@ -25,6 +28,9 @@ public class AchievementController {
 
     @Autowired
     private CourseService courseService;
+
+    @Autowired
+    private UserService userService;
 
     @RequestMapping("/achievements")
     public String listAchievements(Model model){
@@ -42,6 +48,7 @@ public class AchievementController {
         model.addAttribute("achievement", achievement);
         model.addAttribute("subject", achievement.getSubject());
         model.addAttribute("course", achievement.getCourse());
+        model.addAttribute("teacher", achievement.getTeacher());
 
         return "achievement/detail";
     }
@@ -62,12 +69,17 @@ public class AchievementController {
     }
 
     @RequestMapping(value = "/achievements/create-achievement", method = RequestMethod.POST)
-    public String createAchievement(Achievement achievement, @RequestParam MultipartFile file){
+    public String createAchievement(Achievement achievement, @RequestParam MultipartFile file, Principal principal){
+        User user = (User)((UsernamePasswordAuthenticationToken)principal).getPrincipal();
+        User actualUser = userService.findByUsername(user.getUsername());
         if(achievement.getCourse().getAchievement() != null){
             achievement.getCourse().getAchievement().setCourse(null);
         }
 
         achievement.getCourse().setAchievement(achievement);
+        achievement.setTeacher(actualUser);
+        actualUser.addCreatedAchievement(achievement);
+
         achievementService.save(achievement, file);
 
         return String.format("redirect:/achievements/%s/detail", achievement.getId());
@@ -80,11 +92,17 @@ public class AchievementController {
             achievement.getCourse().setAchievement(null);
         }
 
+        if(achievement.getSubject() != null){
+            achievement.getSubject().removeAchievement(achievement);
+        }
+
         if(achievement.getUsers() != null){
             for(User user : achievement.getUsers()){
                 user.removeAchievement(achievement);
             }
         }
+
+        achievement.getTeacher().removeCreatedAchievement(achievement);
 
         achievementService.delete(achievement);
 

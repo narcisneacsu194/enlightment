@@ -18,11 +18,17 @@ public class Degree {
     @Lob
     private byte[] diploma;
 
-    @ManyToOne(targetEntity = Subject.class)
+//    @ManyToOne(targetEntity = Subject.class)
+//    private Subject subject;
+
+    @OneToOne
     private Subject subject;
 
     @ManyToMany
     private List<User> users = new ArrayList<>();
+
+    @ManyToOne
+    private User teacher;
 
     public Degree(){}
 
@@ -80,5 +86,13 @@ public class Degree {
 
     public void removeUser(User user){
         users.remove(user);
+    }
+
+    public User getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(User teacher) {
+        this.teacher = teacher;
     }
 }

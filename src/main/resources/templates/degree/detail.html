@@ -21,7 +21,7 @@
                                 </div>
                                 <h2 class="blog_title" th:text="${degree.name}">Curabitur ac dictum nisl eu hendrerit ante</h2>
                                 <div class="blog_commentbox">
-                                    <p><i class="fa fa-user"></i>Richard Remus</p>
+                                    <strong>Created by: </strong><a th:text="|${teacher.firstName} ${teacher.lastName}|" th:href="@{|/users/${teacher.id}/detail|}"></a><br/><br/>
                                 </div>
                                 <strong>Subject: </strong><span th:text="${subject.name}" th:if="${subject != null}"></span>
                                 <p th:text="${degree.description}" style="word-wrap: break-word;"></p><br/>

@@ -21,14 +21,14 @@
                                 </div>
                                 <h2 class="blog_title" th:text="${course.name}">Curabitur ac dictum nisl eu hendrerit ante</h2>
                                 <div class="blog_commentbox">
-                                <p><i class="fa fa-user"></i>Richard Remus</p>
+                                    <strong>Created by: </strong><a th:text="|${teacher.firstName} ${teacher.lastName}|" th:href="@{|/users/${teacher.id}/detail|}"></a><br/><br/>
                                 </div>
                                 <strong>Difficulty: </strong><span th:text="${course.difficulty}"></span><br/>
                                 <strong>Subject: </strong><span th:text="${subject.name}" th:if="${subject != null}"></span>
                                 <p th:text="${course.description}" style="word-wrap:break-word;"></p><br/>
                                 <a th:href="@{|/courses/${course.id}/course-edit-form|}" class="wpcf7-submit" sec:authorize="hasRole('ROLE_ADMIN')">Edit Course</a>
                                 <a th:href="@{|/evaluations/${evaluationId}/evaluation-page|}" class="wpcf7-submit">Take Course Evaluation</a>
-                                <a th:href="@{|/evaluations/${evaluationId}/evaluation-result-page|}" class="wpcf7-submit">View Evaluation Results</a><br/><br/><br/>
+                                <a th:href="@{|/evaluations/${evaluationId}/evaluation-result-page|}" class="wpcf7-submit" sec:authorize="hasRole('ROLE_USER')">View Evaluation Results</a><br/><br/><br/>
                                 <a th:href="@{|/questions/${evaluationId}/question-form|}" class="wpcf7-submit" sec:authorize="hasRole('ROLE_ADMIN')">Create Question</a><br/><br/>
                                 <form th:action="@{|/courses/${course.id}/delete-course|}" method="post" sec:authorize="hasRole('ROLE_ADMIN')">
                                     <input type="submit" value="Delete Course" class="wpcf7-submit"/>
@@ -55,8 +55,8 @@
                                     <h3 class="singCourse_title"><a th:href="@{|/chapters/${chapter.id}/detail|}" th:text="${chapter.title}">Introduction To Matrix</a></h3>
                                     <p th:text="${chapter.content}" style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>
                                 </div>
-                                <div class="singCourse_author">
-                                    <p>Richard Remus, Teacher</p>
+                                <div class="blog_commentbox">
+                                    <a th:text="|${teacher.firstName} ${teacher.lastName}|" th:href="@{|/users/${teacher.id}/detail|}"></a><br/><br/>
                                 </div>
                             </div>
                         </div>
@@ -67,19 +67,21 @@
                         <h2 class="blog_title2" style="margin-top: 50px;
                             margin-bottom: 50px;">Achievement:</h2>
                         <!-- start single course -->
-                        <div class="col-lg-4 col-md-4 col-sm-4" th:if="${achievement != null}">
-                            <div class="singCourse_imgarea">
-                                <img th:src="@{|/achievements/${achievement.id}.png|}" width="500" height="150"/>
-                                <div class="mask">
-                                    <a th:href="@{|/achievements/${achievement.id}/detail|}" class="course_more">View Achievement</a>
+                        <div class="col-lg-4 col-md-4 col-sm-4">
+                            <div class="single_course wow fadeInUp">
+                                <div class="singCourse_imgarea">
+                                    <img th:src="@{|/achievements/${achievement.id}.png|}" width="500" height="150"/>
+                                    <div class="mask">
+                                        <a th:href="@{|/achievements/${achievement.id}/detail|}" class="course_more">View Achievement</a>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="singCourse_content">
-                                <h3 class="singCourse_title"><a th:href="@{|/achievements/${achievement.id}/detail|}" th:text="${achievement.name}">Introduction To Matrix</a></h3>
-                                <p th:text="${achievement.description}" style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>
-                            </div>
-                            <div class="singCourse_author">
-                                <p>Richard Remus, Teacher</p>
+                                <div class="singCourse_content">
+                                    <h3 class="singCourse_title"><a th:href="@{|/achievements/${achievement.id}/detail|}" th:text="${achievement.name}">Introduction To Matrix</a></h3>
+                                    <p th:text="${achievement.description}" style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>
+                                </div>
+                                <div class="singCourse_author">
+                                    <p th:text="|${achievement.teacher.firstName} ${achievement.teacher.lastName}|">Richard Remus, Teacher</p>
+                                </div>
                             </div>
                         </div>
                         <!-- End single course -->

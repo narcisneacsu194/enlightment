@@ -20,6 +20,7 @@
                                 <form th:action="@{|/degrees/${degree.id}/edit-degree|}" method="post" th:object="${degree}" enctype="multipart/form-data" class="submitphoto_form" >
                                     <input type="hidden" th:field="*{id}"/>
                                     <input type="hidden" th:field="*{users}"/>
+                                    <input type="hidden" th:field="*{teacher}"/>
                                     <input type="text" class="wp-form-control wpcf7-text" th:field="*{name}" placeholder="Name"/>
                                     <textarea class="wp-form-control wpcf7-textarea" th:field="*{description}" cols="30" rows="10" placeholder="Description"></textarea>
                                     <label>Degree diploma: </label><br/>

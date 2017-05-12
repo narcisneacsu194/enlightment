@@ -32,8 +32,11 @@ public class Subject {
     @OneToMany(mappedBy = "subject")
     private List<Achievement> achievements = new ArrayList<>();
 
-    @OneToMany(mappedBy = "subject")
-    private List<Degree> degrees = new ArrayList<>();
+//    @OneToMany(mappedBy = "subject")
+//    private List<Degree> degrees = new ArrayList<>();
+//
+    @OneToOne(mappedBy = "subject")
+    private Degree degree;
 
     @OneToMany(mappedBy = "subject", cascade = CascadeType.PERSIST)
     private List<Course> courses = new ArrayList<>();
@@ -86,21 +89,21 @@ public class Subject {
         achievements.remove(achievement);
     }
 
-    public List<Degree> getDegrees() {
-        return degrees;
-    }
-
-    public void setDegrees(List<Degree> degrees) {
-        this.degrees = degrees;
-    }
-
-    public void addDegree(Degree degree){
-        this.degrees.add(degree);
-    }
-
-    public void removeDegree(Degree degree){
-        degrees.remove(degree);
-    }
+//    public List<Degree> getDegrees() {
+//        return degrees;
+//    }
+//
+//    public void setDegrees(List<Degree> degrees) {
+//        this.degrees = degrees;
+//    }
+//
+//    public void addDegree(Degree degree){
+//        this.degrees.add(degree);
+//    }
+//
+//    public void removeDegree(Degree degree){
+//        degrees.remove(degree);
+//    }
 
     public List<Course> getCourses() {
         return courses;
@@ -124,5 +127,13 @@ public class Subject {
 
     public void setTeacher(User teacher) {
         this.teacher = teacher;
+    }
+
+    public Degree getDegree() {
+        return degree;
+    }
+
+    public void setDegree(Degree degree) {
+        this.degree = degree;
     }
 }

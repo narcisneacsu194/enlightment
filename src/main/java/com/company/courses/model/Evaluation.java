@@ -17,11 +17,11 @@ public class Evaluation {
     @OneToMany(mappedBy = "evaluation", cascade = CascadeType.ALL)
     private List<Question> questions = new ArrayList<>();
 
-    @ManyToOne
-    private Course course;
-
-//    @OneToOne
+//    @ManyToOne
 //    private Course course;
+
+    @OneToOne
+    private Course course;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "evaluation_userAnswer",

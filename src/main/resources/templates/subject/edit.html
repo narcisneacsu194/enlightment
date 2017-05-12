@@ -42,7 +42,7 @@
                                     <label>Available degrees: </label>
                                     <ul>
                                         <li th:each="degree : ${degrees}">
-                                            <input type="checkbox" th:field="*{degrees}" th:value="${degree.id}" />
+                                            <input type="radio" th:field="*{degree}" th:value="${degree.id}" />
                                             <span th:text="${degree.name}"></span>
                                         </li>
                                     </ul><br/>

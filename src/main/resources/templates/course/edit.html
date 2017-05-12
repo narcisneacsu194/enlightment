@@ -19,6 +19,8 @@
                             <div class="single_blog">
                                 <form th:action="@{/courses/${course.id}/edit-course}" method="post" th:object="${course}" enctype="multipart/form-data" class="submitphoto_form" >
                                     <input type="hidden" th:field="*{id}"/>
+                                    <input type="hidden" th:field="*{teacher}"/>
+                                    <input type="hidden" th:field="*{evaluation}"/>
                                     <input type="text" class="wp-form-control wpcf7-text" th:field="*{name}" placeholder="Name"/>
                                     <textarea class="wp-form-control wpcf7-textarea" th:field="*{description}" cols="30" rows="10" placeholder="Description"></textarea><br/>
 

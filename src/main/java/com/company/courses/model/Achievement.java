@@ -29,6 +29,9 @@ public class Achievement {
     @ManyToMany
     private List<User> users = new ArrayList<>();
 
+    @ManyToOne
+    private User teacher;
+
     public Achievement(){}
 
     public Long getId() {
@@ -101,5 +104,13 @@ public class Achievement {
 
     public void removeUser(User user){
         users.remove(user);
+    }
+
+    public User getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(User teacher) {
+        this.teacher = teacher;
     }
 }

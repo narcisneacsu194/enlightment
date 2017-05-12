@@ -2,14 +2,18 @@ package com.company.courses.web.controller;
 
 import com.company.courses.model.Chapter;
 import com.company.courses.model.Course;
+import com.company.courses.model.User;
 import com.company.courses.services.ChapterService;
 import com.company.courses.services.CourseService;
+import com.company.courses.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +25,9 @@ public class ChapterController {
 
     @Autowired
     private CourseService courseService;
+
+    @Autowired
+    private UserService userService;
 
     @RequestMapping("/chapters/{chapterId}/detail")
     public String chapterDetail(@PathVariable Long chapterId, Model model){
@@ -34,6 +41,7 @@ public class ChapterController {
         model.addAttribute("course", course);
         model.addAttribute("previousChapters", previousChapters);
         model.addAttribute("nextChapters", nextChapters);
+        model.addAttribute("teacher", chapter.getTeacher());
 
         return "chapter/detail";
     }
@@ -69,6 +77,8 @@ public class ChapterController {
         Chapter chapter = chapterService.findChapterById(chapterId);
         Long courseId = chapter.getCourse().getId();
 
+        chapter.getTeacher().removeCreatedChapter(chapter);
+
         chapterService.delete(chapter);
 
         return String.format("redirect:/courses/%s/detail", courseId);
@@ -89,8 +99,13 @@ public class ChapterController {
     }
 
     @RequestMapping(value = "/chapters/create-chapter", method = RequestMethod.POST)
-    public String createChapter(Chapter chapter, @RequestParam MultipartFile file){
+    public String createChapter(Chapter chapter, @RequestParam MultipartFile file, Principal principal){
+        User user = (User)((UsernamePasswordAuthenticationToken)principal).getPrincipal();
+        User actualUser = userService.findByUsername(user.getUsername());
+
         chapter.getCourse().addChapter(chapter);
+        chapter.setTeacher(actualUser);
+        actualUser.addCreatedChapter(chapter);
         chapterService.save(chapter, file);
 
         return String.format("redirect:/chapters/%s/detail", chapter.getId());

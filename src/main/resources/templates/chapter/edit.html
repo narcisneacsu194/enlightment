@@ -19,6 +19,7 @@
                             <div class="single_blog">
                                 <form th:action="@{|/chapters/${chapter.id}/edit-chapter|}" method="post" th:object="${chapter}" enctype="multipart/form-data" class="submitphoto_form" >
                                     <input type="hidden" th:field="*{id}"/>
+                                    <input type="hidden" th:field="*{teacher}"/>
                                     <input type="text" class="wp-form-control wpcf7-text" th:field="*{title}" placeholder="Title"/>
                                     <textarea class="wp-form-control wpcf7-textarea" th:field="*{content}" cols="30" rows="10" placeholder="Content"></textarea>
                                     <label>Chapter image: </label><br/>

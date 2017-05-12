@@ -19,6 +19,9 @@ public class Chapter {
     @ManyToOne
     private Course course;
 
+    @ManyToOne
+    private User teacher;
+
     public Chapter(){}
 
     public Long getId() {
@@ -59,5 +62,13 @@ public class Chapter {
 
     public void setCourse(Course course) {
         this.course = course;
+    }
+
+    public User getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(User teacher) {
+        this.teacher = teacher;
     }
 }

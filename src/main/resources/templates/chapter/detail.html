@@ -21,7 +21,7 @@
                                 </div>
                                 <h2 class="blog_title" th:text="${chapter.title}">Curabitur ac dictum nisl eu hendrerit ante</h2>
                                 <div class="blog_commentbox">
-                                    <p><i class="fa fa-user"></i>Richard Remus</p>
+                                    <strong>Created by: </strong><a th:text="|${teacher.firstName} ${teacher.lastName}|" th:href="@{|/users/${teacher.id}/detail|}"></a><br/><br/>
                                 </div>
                                 <strong>Course: </strong><span th:text="${course.name}"></span>
                                 <p th:text="${chapter.content}" style="word-wrap: break-word;"></p><br/>
@@ -50,8 +50,8 @@
                                     <h3 class="singCourse_title"><a th:href="@{|/chapters/${previousChapter.id}/detail|}" th:text="${previousChapter.title}">Introduction To Matrix</a></h3>
                                     <p th:text="${previousChapter.content}" style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>
                                 </div>
-                                <div class="singCourse_author">
-                                    <p>Richard Remus, Teacher</p>
+                                <div class="blog_commentbox">
+                                    <a th:text="|${teacher.firstName} ${teacher.lastName}|" th:href="@{|/users/${teacher.id}/detail|}"></a><br/><br/>
                                 </div>
                             </div>
                         </div>
@@ -74,8 +74,8 @@
                                     <h3 class="singCourse_title"><a th:href="@{|/chapters/${nextChapter.id}/detail|}" th:text="${nextChapter.title}">Introduction To Matrix</a></h3>
                                     <p th:text="${nextChapter.content}" style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>
                                 </div>
-                                <div class="singCourse_author">
-                                    <p>Richard Remus, Teacher</p>
+                                <div class="blog_commentbox">
+                                    <a th:text="|${teacher.firstName} ${teacher.lastName}|" th:href="@{|/users/${teacher.id}/detail|}"></a><br/><br/>
                                 </div>
                             </div>
                         </div>

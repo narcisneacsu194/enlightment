@@ -1,9 +1,6 @@
 package com.company.courses.web.controller;
 
-import com.company.courses.model.Achievement;
-import com.company.courses.model.Course;
-import com.company.courses.model.Evaluation;
-import com.company.courses.model.Subject;
+import com.company.courses.model.*;
 import com.company.courses.services.AchievementService;
 import com.company.courses.services.CourseService;
 import com.company.courses.services.SubjectService;
@@ -37,13 +34,13 @@ public class CourseController {
     @RequestMapping("/courses/{courseId}/detail")
     public String courseDetails(@PathVariable Long courseId, Model model){
         Course course = courseService.findCourseById(courseId);
-        Long evaluationId = course.getEvaluations().get(0).getId();
+        Long evaluationId = course.getEvaluation().getId();
         model.addAttribute("course", course);
         model.addAttribute("subject", course.getSubject());
-//        model.addAttribute("achievements", course.getAchievements());
         model.addAttribute("achievement", course.getAchievement());
         model.addAttribute("chapters", course.getChapters());
         model.addAttribute("evaluationId", evaluationId);
+        model.addAttribute("teacher", course.getTeacher());
 
         return "course/detail";
     }
@@ -74,7 +71,7 @@ public class CourseController {
 
         Evaluation evaluation = new Evaluation();
         evaluation.setCourse(course);
-        course.addEvaluation(evaluation);
+        course.setEvaluation(evaluation);
 
         courseService.save(course, file);
 
@@ -88,6 +85,16 @@ public class CourseController {
         if(achievement != null){
             achievement.setCourse(null);
         }
+
+        course.getSubject().removeCourse(course);
+        course.getTeacher().removeCreatedCourse(course);
+
+        for(Chapter chapter : course.getChapters()){
+            chapter.setCourse(null);
+        }
+
+        course.getEvaluation().setCourse(null);
+
         courseService.delete(course);
 
         return "redirect:/courses";
@@ -108,9 +115,7 @@ public class CourseController {
 
     @RequestMapping(value = "/courses/{coursesId}/edit-course", method = RequestMethod.POST)
     public String editCourse(Course course, @RequestParam MultipartFile file){
-        // Course Inherintence -> Initially Classes (achievement), after that Inheritence
         Achievement achievement = course.getAchievement();
-        // Achievement Inheritence -> Initially Object (course), after that Inheritence
         Course course2 = achievement.getCourse();
         if(course2 != null){
             course2.setAchievement(null);
@@ -119,6 +124,7 @@ public class CourseController {
         for(Achievement achievement1 : achievementService.findAllAchievements()){
             if(achievement1.getCourse() != null && achievement1.getCourse().getId().equals(course.getId())){
                 achievement1.setCourse(null);
+                break;
             }
         }
 

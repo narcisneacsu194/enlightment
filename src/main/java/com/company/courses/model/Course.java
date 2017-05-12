@@ -26,11 +26,16 @@ public class Course {
     @OneToMany(mappedBy = "course", cascade = CascadeType.MERGE)
     private List<Chapter> chapters = new ArrayList<>();
 
-    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
-    private List<Evaluation> evaluations = new ArrayList<>();
+//    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
+//    private List<Evaluation> evaluations = new ArrayList<>();
+    @OneToOne
+    private Evaluation evaluation;
 
     @ManyToOne(targetEntity = Subject.class)
     private Subject subject;
+
+    @ManyToOne
+    private User teacher;
 
     public Course(){}
 
@@ -78,17 +83,17 @@ public class Course {
         this.chapters.add(chapter);
     }
 
-    public List<Evaluation> getEvaluations() {
-        return evaluations;
-    }
-
-    public void setEvaluations(List<Evaluation> evaluations) {
-        this.evaluations = evaluations;
-    }
-
-    public void addEvaluation(Evaluation evaluation){
-        this.evaluations.add(evaluation);
-    }
+//    public List<Evaluation> getEvaluations() {
+//        return evaluations;
+//    }
+//
+//    public void setEvaluations(List<Evaluation> evaluations) {
+//        this.evaluations = evaluations;
+//    }
+//
+//    public void addEvaluation(Evaluation evaluation){
+//        this.evaluations.add(evaluation);
+//    }
 
     public Subject getSubject() {
         return subject;
@@ -112,5 +117,21 @@ public class Course {
 
     public void setAchievement(Achievement achievement) {
         this.achievement = achievement;
+    }
+
+    public User getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(User teacher) {
+        this.teacher = teacher;
+    }
+
+    public Evaluation getEvaluation() {
+        return evaluation;
+    }
+
+    public void setEvaluation(Evaluation evaluation) {
+        this.evaluation = evaluation;
     }
 }

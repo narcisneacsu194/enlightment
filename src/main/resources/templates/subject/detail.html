@@ -50,8 +50,8 @@
                                     <h3 class="singCourse_title"><a th:href="@{|/courses/${course.id}/detail|}" th:text="${course.name}">Introduction To Matrix</a></h3>
                                     <p th:text="${course.description}" style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>
                                 </div>
-                                <div class="singCourse_author">
-                                    <p>Richard Remus, Teacher</p>
+                                <div class="blog_commentbox">
+                                    <a th:text="|${teacher.firstName} ${teacher.lastName}|" th:href="@{|/users/${teacher.id}/detail|}"></a><br/><br/>
                                 </div>
                             </div>
                         </div>
@@ -74,19 +74,19 @@
                                     <h3 class="singCourse_title"><a th:href="@{|/achievements/${achievement.id}/detail|}" th:text="${achievement.name}">Introduction To Matrix</a></h3>
                                     <p th:text="${achievement.description}" style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>
                                 </div>
-                                <div class="singCourse_author">
-                                    <p>Richard Remus, Teacher</p>
+                                <div class="blog_commentbox">
+                                    <a th:text="|${teacher.firstName} ${teacher.lastName}|" th:href="@{|/users/${teacher.id}/detail|}"></a><br/><br/>
                                 </div>
                             </div>
                         </div>
                         <!-- End single course -->
                     </div>
 
-                    <div class="row">
+                    <div class="row" th:if="${degree != null}">
                         <h2 class="blog_title2" style="margin-top: 50px;
-                            margin-bottom: 50px;">Degrees:</h2>
+                            margin-bottom: 50px;">Degree:</h2>
                         <!-- start single course -->
-                        <div class="col-lg-4 col-md-4 col-sm-4" th:each="degree : ${degrees}">
+                        <div class="col-lg-4 col-md-4 col-sm-4">
                             <div class="single_course wow fadeInUp">
                                 <div class="singCourse_imgarea">
                                     <img th:src="@{|/degrees/${degree.id}.png|}" width="500" height="150"/>
@@ -98,13 +98,14 @@
                                     <h3 class="singCourse_title"><a th:href="@{|/degrees/${degree.id}/detail|}" th:text="${degree.name}">Introduction To Matrix</a></h3>
                                     <p th:text="${degree.description}" style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>
                                 </div>
-                                <div class="singCourse_author">
-                                    <p>Richard Remus, Teacher</p>
+                                <div class="blog_commentbox">
+                                    <a th:text="|${teacher.firstName} ${teacher.lastName}|" th:href="@{|/users/${teacher.id}/detail|}"></a><br/><br/>
                                 </div>
                             </div>
                         </div>
                         <!-- End single course -->
                     </div>
+
                     <!-- end blog archive  -->
                 </div>
             </div>

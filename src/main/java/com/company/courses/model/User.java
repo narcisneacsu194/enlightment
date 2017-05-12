@@ -75,6 +75,18 @@ public class User implements UserDetails{
     @OneToMany(mappedBy = "teacher", cascade = CascadeType.ALL)
     private List<Subject> createdSubjects = new ArrayList<>();
 
+    @OneToMany(mappedBy = "teacher", cascade = CascadeType.ALL)
+    private List<Course> createdCourses = new ArrayList<>();
+
+    @OneToMany(mappedBy = "teacher", cascade = CascadeType.ALL)
+    private List<Achievement> createdAchievements = new ArrayList<>();
+
+    @OneToMany(mappedBy = "teacher", cascade = CascadeType.ALL)
+    private List<Degree> createdDegrees = new ArrayList<>();
+
+    @OneToMany(mappedBy = "teacher", cascade = CascadeType.ALL)
+    private List<Chapter> createdChapters = new ArrayList<>();
+
     public User(){
         id = null;
         username = null;
@@ -300,5 +312,69 @@ public class User implements UserDetails{
 
     public void removeCreatedSubject(Subject subject){
         createdSubjects.remove(subject);
+    }
+
+    public List<Course> getCreatedCourses() {
+        return createdCourses;
+    }
+
+    public void setCreatedCourses(List<Course> createdCourses) {
+        this.createdCourses = createdCourses;
+    }
+
+    public void addCreatedCourse(Course course){
+        createdCourses.add(course);
+    }
+
+    public void removeCreatedCourse(Course course){
+        createdCourses.remove(course);
+    }
+
+    public List<Achievement> getCreatedAchievements() {
+        return createdAchievements;
+    }
+
+    public void setCreatedAchievements(List<Achievement> createdAchievements) {
+        this.createdAchievements = createdAchievements;
+    }
+
+    public void addCreatedAchievement(Achievement achievement){
+        createdAchievements.add(achievement);
+    }
+
+    public void removeCreatedAchievement(Achievement achievement){
+        createdAchievements.remove(achievement);
+    }
+
+    public List<Degree> getCreatedDegrees() {
+        return createdDegrees;
+    }
+
+    public void setCreatedDegrees(List<Degree> createdDegrees) {
+        this.createdDegrees = createdDegrees;
+    }
+
+    public void addCreatedDegree(Degree degree){
+        createdDegrees.add(degree);
+    }
+
+    public void removeCreatedDegree(Degree degree){
+        createdDegrees.remove(degree);
+    }
+
+    public List<Chapter> getCreatedChapters() {
+        return createdChapters;
+    }
+
+    public void setCreatedChapters(List<Chapter> createdChapters) {
+        this.createdChapters = createdChapters;
+    }
+
+    public void addCreatedChapter(Chapter chapter){
+        createdChapters.add(chapter);
+    }
+
+    public void removeCreatedChapter(Chapter chapter){
+        createdChapters.remove(chapter);
     }
 }
