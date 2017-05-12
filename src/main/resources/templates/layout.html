@@ -75,7 +75,8 @@
                         <li th:classappend="${#httpServletRequest.servletPath.equals('/subjects') ? 'active' : ''}"><a th:href="@{/subjects}">Subjects</a></li>
                         <li th:classappend="${#httpServletRequest.servletPath.equals('/courses') ? 'active' : ''}"><a th:href="@{/courses}">Courses</a></li>
                         <li th:classappend="${#httpServletRequest.servletPath.equals('/achievements') ? 'active' : ''}"><a th:href="@{/achievements}">Achievements</a></li>
-                        <li th:classappend="${#httpServletRequest.servletPath.equals('/degrees') ? 'active' : ''}"><a th:href="@{/degrees}">Degrees</a></li>
+                        <li th:classappend="${#httpServletRequest.servletPath.equals('/degrees') ? 'active' : ''}"><a th:href="@{/degrees}"
+                                style="padding-right:50px;">Degrees</a></li>
                         <!--<li th:classappend="${#httpServletRequest.servletPath.equals('/contact') ? 'active' : ''}"><a th:href="@{/contact}"-->
                             <!--style="padding-right:50px;">Contact</a></li>-->
                         <li><a href="javascript:;" onclick="document.getElementById('logoutForm').submit()">Log out</a></li>
